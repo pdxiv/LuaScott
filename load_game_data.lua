@@ -2,7 +2,7 @@
 local load_game_data = {}
 
 -- Global game data file variables from header and footer:
---   unknown_1, number_of_items, number_of_actions, number_of_words,
+--   size_of_text, number_of_items, number_of_actions, number_of_words,
 --   number_of_rooms, max_items_carried, starting_room, total_treasures,
 --   word_length, time_limit, number_of_messages, treasure_room, engine_version,
 --   adventure_number, game_checksum
@@ -44,7 +44,7 @@ local function read_data_in_line()
 end
 
 local function read_header()
-  unknown_1          = tonumber(read_data_in_line())
+  size_of_text       = tonumber(read_data_in_line())
   number_of_items    = tonumber(read_data_in_line())
   number_of_actions  = tonumber(read_data_in_line())
   number_of_words    = tonumber(read_data_in_line())
@@ -71,7 +71,7 @@ end
 
 function load_game_data.condition_description(condition_code)
   condition_code_description = {
-    "Parameter",
+    "Pass a number to the commands",
     "Item <arg> carried",
     "Item <arg> in room with player",
     "Item <arg> carried or in room with player",
@@ -273,3 +273,62 @@ function load_game_data.load_data_file(filename)
 end
 
 return load_game_data
+
+-- CONDITIONS: 
+-- PAR    Passes a number to the commands.
+-- HAS    True if holding the object.
+-- IN/W   True if in same room as object (not holding it).
+-- AVL    True if in same room or holding object.
+-- IN     True if in room.
+-- -IN/W  True if holding object or if object is in another room.
+-- -HAVE  True if not holding object.
+-- -IN    True if not in room.
+-- BIT    True if bit flag set.
+-- -BIT   True if bit flag cleared.
+-- ANY    True if holding any objects.
+-- -ANY   True if not holding any objects.
+-- -AVL   True if object in another room.
+-- -RMO   True if object not in room zero.
+-- RMO    True if object in room zero.
+-- CT<=   True if counter less than or equal to number.
+-- CT>    True if counter greater than number.
+-- ORIG   True if object in original starting room.
+-- -ORIG  True if object not in original starting room.
+-- CT=    True if counter equal to number. 
+
+-- COMMANDS:
+-- GETX   Pick up object X.
+-- DROPX  Drop object X.
+-- GOTOY  Move player to room Y.
+-- X->RMO Send object X to room zero.
+-- NIGHT  Make it night (set bit flag 15).
+-- DAY    Make it day (clear bit flag 15).
+-- SETZ   Set bit flag Z.
+-- CLRZ   Clear bit flag Z.
+-- DEAD   Tell player he's dead, make DAY, move to last room, end game.
+-- X->Y   Send object X to room Y.
+-- FINI   Stop game and ask for another game.
+-- DSPRM  Display current room and account for DAY, NIGHT.
+-- SCORE  Compute the score.
+-- INV    Tell the player what he is carrying.
+-- SETO   Set bit flag 0.
+-- CLRO   Clear bit flag O.
+-- FILL   Fill artificial light source (clear bit flag 16).
+-- SAVE   Save the game.
+-- EXX,X  Exchange room location of object X with object X.
+-- CONT   Continue to next action/s.
+-- AGETX  Always get object X regardless of carry limit status.
+-- BYX->X Move second object X to same place as first object X.
+-- CT-1   Decrement counter.
+-- DSPCT  Display the counter.
+-- CT<-N  Set counter equal to N.
+-- EXRMO  Exchange current room with room held in alternate room register O.
+-- EXM,CT Exchange counter and alternate counter M.
+-- CT+N   Add N to counter.
+-- CT-N   Subtract N from counter.
+-- SAYW   Say the player's input noun.
+-- SAYWCR Say the noun of the player's input noun and a carriage return.
+-- SAYCR  Start a new line.
+-- EXC,CR Exchange current room with room in alternate room register C.
+-- DELAY  Pause for about 1 second.
+
