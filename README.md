@@ -9,3 +9,4 @@ It's currently not working at all. Some of the things needed to make this comple
   * "Cont" flag handling
 * User interface layer
 * Savegame functionality
+* Game patching functionality (for "modernizing" some aspects)
