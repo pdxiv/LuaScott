@@ -2,14 +2,7 @@ The ADVENTURE Data Base Format
 
 by  Allan Moluf
 
-The ADVENTURE program written by Scott Adams uses a file
-or data base which contains the details of the
-particular adventure.
-This article describes the organization of these data
-bases.
-The primary use of this information is to create new
-adventures; although it possible to examine or edit
-existing adventures.
+The ADVENTURE program written by Scott Adams uses a file or data base which contains the details of the particular adventure. This article describes the organization of these data bases. The primary use of this information is to create new adventures; although it possible to examine or edit existing adventures.
 
 The data base constains the following sections:
 
