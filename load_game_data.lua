@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 -- load_game_data.lua
 local load_game_data = {}
 
@@ -667,5 +666,3 @@ return load_game_data
 -- SAYCR  Start a new line.
 -- EXC,CR Exchange current room with room in alternate room register C.
 -- DELAY  Pause for about 1 second.
-
->>>>>>> 5cda95f210baa3080356306c65c52bbf53be1e38

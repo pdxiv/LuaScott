@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 The ADVENTURE Data Base Format
 
 by Allan Moluf
@@ -474,4 +473,3 @@ The trailer information (8) contains the version, the adventure number and the s
 When ADVENTURE is interpreting the player's input, it ignores the AUTO action entries and searches for the first action entry which has a matching verb and noun and no failing conditions. After performing the commands in that entry, it goes to the AUTO actions and then gets more player input. If no actions match, it checks to see if the verb is CARRY or DROP with an appropriate object name.
 
 After performing the commands in that entry, it goes to the AUTO actions and then gets more player input. If no actions match, it checks to see if the verb is CARRY or DROP with an appropriate object.
->>>>>>> 5cda95f210baa3080356306c65c52bbf53be1e38
