@@ -37,6 +37,7 @@ The first number is (150*verb + noun). If the verb is zero, it represents an aut
 If the action is considered, the five conditions are evaluated. If any fail, the action is not performed. The conditions are (20*number + cond). The possible condition codes and their meanings are:
 
 Code | Symbol | Description
+---- | ------ | -----------
 0 | Par | The condition always passes. The number may be used as a parameter for the commands in this action entry. See the commands for the uses of parameters.
 1 | HAS | The condition passes is the player is carry the numbered object. It fails if the numbered object is in this room or any other room.
 2 | IN/W | The condition passes if the player is in the room with the numbered object. It fails if the numbered object is in any other room or is being carried.
