@@ -120,10 +120,13 @@ Code | Symbol | Description
 Each vocabulary entry (3) consists of a verb string and a noun string. Synonyms are handled by words beginning with an asterisk, which are treated the same as the previous verb or noun without an asterisk. Some of the vocabulary entries are predefined for the ADVENTURE program:
 
 Verbs
-* 0  AUTO   This is not entered by the player. It denotes the action entries which are automatic after a player action.
-* 1  GO     This is a special case for the direction nouns 1-6.
-* 10  CARRY  This is used to pick up objects if there is no action entry that applies and the noun matches the name enclosed in slashes in an object in this room.
-* 18  DROP   This is used to drop objects if there is no action entry that applies and the noun matches the name enclosed in slashes in an object being carried.
+
+Code | Symbol | Description
+---- | ------ | -----------
+0 | AUTO | This is not entered by the player. It denotes the action entries which are automatic after a player action.
+1 | GO | This is a special case for the direction nouns 1-6.
+10 | CARRY | This is used to pick up objects if there is no action entry that applies and the noun matches the name enclosed in slashes in an object in this room.
+18 | DROP | This is used to drop objects if there is no action entry that applies and the noun matches the name enclosed in slashes in an object being carried.
 
 Nouns
 * 0  ANY    This is not entered by the player. It denotes the action entries which can match any noun (or no noun).
