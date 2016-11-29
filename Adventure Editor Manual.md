@@ -173,8 +173,7 @@ Code | Symbol | Description
 70 | CLS | This command did a clear screen in the BASIC version of ADVENTURE and does nothing in the machine language version.
 71 | SAVE | Saves the game to disk or tape depending on which version is being used. It writes some user variables such as the current room, current locations of all objects, status of all bit flags, current values of all alternate room registers and the current values of all counters.
 72 | EXX,X | Exchange the room location of the Par #1 object with the room location of the Par #2 object. A DSPRM is automatically performed if either Par #1 or Par #2 objects were in the current room.
-73 | CONT | This command sets a flag to allow more than four commands to be performed. When all commands in this action entry have been performed, the conditions of all subsequent action entries with a zero verb and noun (up to the first non-zero verb and noun) will be evaluated. The checking procedure continues regardless if the entry being checked is true or false, For example, consider the following actions:
-```
+73 | CONT | This command sets a flag to allow more than four commands to be performed. When all commands in this action entry have been performed, the conditions of all subsequent action entries with a zero verb and noun (up to the first non-zero verb and noun) will be evaluated. The checking procedure continues regardless if the entry being checked is true or false, For example, consider the following actions: ```
 LIGHT TORCH   HAS 12   PAR 9    PAR 12   PAR 0    PAR 0
      EXX,X   MSG5   CONT   -
 AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
