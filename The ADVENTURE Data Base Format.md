@@ -5,7 +5,6 @@ by Allan Moluf
 The ADVENTURE program written by Scott Adams uses a file or data base which contains the details of the particular adventure. This article describes the organization of these data bases. The primary use of this information is to create new adventures; although it possible to examine or edit existing adventures.
 
 The data base constains the following sections:
-
 1. Header information which specifies how big the different sections are and some other constants.
 2. Action entries which determine how the player input is handled and what automatic actions happen.
 3. Vocabulary entries which are the verbs and nouns that the player may use in this game.
@@ -16,7 +15,6 @@ The data base constains the following sections:
 8. Trailer information containing the version, number of the adventure and a security checksum.
 
 The header information (1) contains the following numbers:
-
 1. The number of bytes required to contain the text of the verbs, nouns, messages, room descriptions and object descriptions. This number includes a fixed number of bytes for each verb and noun (one more thean the max word length). It includes one more than the number of characters between quotes in the messages and room and object descriptions. It also includes one more byte for each object than can be carried and dropped. The number of bytes specified may be larger than is necessary, but must not be smaller or the ADVENTURE program will tell how much too small it is and quit.
 2. The highest numbered object in this adventure. Objects are numbered starting at zero, so the number of objects is one more than this value.
 3. The highest numbered action in this adventure. Actions are numbered starting at zero, so the number of actions is one more than this value.
@@ -32,9 +30,9 @@ The header information (1) contains the following numbers:
 
 The action entries (2) contain information on when they are to be applied and what is to be done then. Some action entries respond to the player's input and some control automatic actions. The action entries consist of eight numbers. The first determines when the action is considered. The next five specify conditions necessary or give parameters for the commands. The last two words specify what primitive commands are to be performed.
 
-The first number is (150*verb + noun). If the verb is zero, it represents an automatic action and the noun (1-100) determines the probability with which it occurs. If the verb is not zero, it must match the verb in the player's input and the noun must match the noun in the player's input for this action to be considered. (If the noun is zero, it matches any possible noun in the player's input.)
+The first number is `(150*verb + noun)`. If the verb is zero, it represents an automatic action and the noun (1-100) determines the probability with which it occurs. If the verb is not zero, it must match the verb in the player's input and the noun must match the noun in the player's input for this action to be considered. (If the noun is zero, it matches any possible noun in the player's input.)
 
-If the action is considered, the five conditions are evaluated. If any fail, the action is not performed. The conditions are (20*number + cond). The possible condition codes and their meanings are:
+If the action is considered, the five conditions are evaluated. If any fail, the action is not performed. The conditions are `(20*number + cond)`. The possible condition codes and their meanings are:
 
 Code | Symbol | Description
 ---- | ------ | -----------
@@ -67,7 +65,7 @@ The counter is special value which can be incremented and decremented by special
 
 The value of the current room may be saved and restored by exchanging the current room register with one of the alternate room registers. The saved value may be restored at a later time by another exchange.
 
-The seventh and eighth numbers in an action entry contain four command codes. The seventh number is (150*CMD1 + CMD2) and the eighth number is (150*CMD3 + CMD4).
+The seventh and eighth numbers in an action entry contain four command codes. The seventh number is `(150*CMD1 + CMD2)` and the eighth number is `(150*CMD3 + CMD4)`.
 
 These commands may use one or more parameters found in the condition numbers for this action entry. If a command uses one parameter, its value is represented by Par #1 in the following descriptions. If a command uses two parameters the first is represented by Par #1 and the second by Par #2. The parameters used by any command are skipped by following commands if they also use parameters.
 
@@ -155,7 +153,7 @@ The object description should begin with an asterisk if the object is to be reco
 An example of a treasure that can be picked up is:
 `"\*FIRESTONE\* (cold now)/FIR/"`
 
-which can be picked up by the word "FIR". Before the firestone cools, this object was in the storeroom and a different object was in the room:
+which can be picked up by the word `"FIR"`. Before the firestone cools, this object was in the storeroom and a different object was in the room:
 `"glowing \*FIRESTONE\*"`
 
 Because it does not begin with an asterisk, it is not recognized as a treasure if it is in the treasure room, and it cannot be picked up because it has no name. The action that cools the firestone swaps the locations of these two similar objects.
@@ -164,7 +162,7 @@ The object number 9 should be the artificial light source in its lighted state. 
 
 The action titles (7) in the data base are labels for the actions which serve as reminders of what this action does to simplify the adventure writer's writing. Each title is a string. The ADVENTURE program discards the titles, because they are only used by the ADVENTURE EDITOR program.
 
-The trailer information (8) contains the version, the adventure number and the security checksum. The version number 415 will be displayed as "4.15". The adventure number is simply a number identifying the adventure. The security checksum is (2*#actions + #objects + version). If this is not correct, the ADVENTURE program will not allow the use of this data base.
+The trailer information (8) contains the version, the adventure number and the security checksum. The version number 415 will be displayed as "4.15". The adventure number is simply a number identifying the adventure. The security checksum is `(2*#actions + #objects + version)`. If this is not correct, the ADVENTURE program will not allow the use of this data base.
 
 When ADVENTURE is interpreting the player's input, it ignores the AUTO action entries and searches for the first action entry which has a matching verb and noun and no failing conditions. After performing the commands in that entry, it goes to the AUTO actions and then gets more player input. If no actions match, it checks to see if the verb is CARRY or DROP with an appropriate object name.
 
