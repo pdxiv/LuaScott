@@ -1,4 +1,4 @@
-The ADVENTURE Data Base Format
+#The ADVENTURE Data Base Format
 
 by Allan Moluf
 
@@ -6,40 +6,40 @@ The ADVENTURE program written by Scott Adams uses a file or data base which cont
 
 The data base constains the following sections:
 
-1)   Header information which specifies how big the different sections are and some other constants.
-2)   Action entries which determine how the player input is handled and what automatic actions happen.
-3)   Vocabulary entries which are the verbs and nouns that the player may use in this game.
-4)   Messages given by the program under control of the various action entries.
-5)   Rooms which include the directions to adjacent rooms and text descriptions.
-6)   Object descriptions and initial locations; the description has special information identifying treasures and objects description has special information identifying treasures and objects that may be carried and dropped.
-7)   Titles for the action entries, which are ignored by the ADVENTURE program but may be used when editing the ADVENTURE.
-8)   Trailer information containing the version, number of the adventure and a security checksum.
+1. Header information which specifies how big the different sections are and some other constants.
+2. Action entries which determine how the player input is handled and what automatic actions happen.
+3. Vocabulary entries which are the verbs and nouns that the player may use in this game.
+4. Messages given by the program under control of the various action entries.
+5. Rooms which include the directions to adjacent rooms and text descriptions.
+6. Object descriptions and initial locations; the description has special information identifying treasures and objects description has special information identifying treasures and objects that may be carried and dropped.
+7. Titles for the action entries, which are ignored by the ADVENTURE program but may be used when editing the ADVENTURE.
+8. Trailer information containing the version, number of the adventure and a security checksum.
 
 The header information (1) contains the following numbers:
 
-1)   The number of bytes required to contain the text of the verbs, nouns, messages, room descriptions and object descriptions. This number includes a fixed number of bytes for each verb and noun (one more thean the max word length). It includes one more than the number of characters between quotes in the messages and room and object descriptions. It also includes one more byte for each object than can be carried and dropped. The number of bytes specified may be larger than is necessary, but must not be smaller or the ADVENTURE program will tell how much too small it is and quit.
+1. The number of bytes required to contain the text of the verbs, nouns, messages, room descriptions and object descriptions. This number includes a fixed number of bytes for each verb and noun (one more thean the max word length). It includes one more than the number of characters between quotes in the messages and room and object descriptions. It also includes one more byte for each object than can be carried and dropped. The number of bytes specified may be larger than is necessary, but must not be smaller or the ADVENTURE program will tell how much too small it is and quit.
 
-2)   The highest numbered object in this adventure. Objects are numbered starting at zero, so the number of objects is one more than this value.
+2. The highest numbered object in this adventure. Objects are numbered starting at zero, so the number of objects is one more than this value.
 
-3)  The highest numbered action in this adventure. Actions are numbered starting at zero, so the number of actions is one more than this value.
+3. The highest numbered action in this adventure. Actions are numbered starting at zero, so the number of actions is one more than this value.
 
-4)   The highest numbered vocabulary word in this adventure. This applies to both verbs and nouns, being the larger value if they are different. Vocabulary words are numbered from zero, so the number of verbs and the number of nouns is one more than this value.
+4. The highest numbered vocabulary word in this adventure. This applies to both verbs and nouns, being the larger value if they are different. Vocabulary words are numbered from zero, so the number of verbs and the number of nouns is one more than this value.
 
-5)   The highest numbered room in this adventure. Rooms are numbered from zero, but room zero is reserved; so the the total number of rooms is one more than this value.
+5. The highest numbered room in this adventure. Rooms are numbered from zero, but room zero is reserved; so the the total number of rooms is one more than this value.
 
-6)   The maximum number of objects which can be carried. Under certain circumstances, the actions may cause more than this to be carried (usually bad things like chigger bites) but the player will not be able to pick up anything unless the number of objects he is carrying is less than this value.
+6. The maximum number of objects which can be carried. Under certain circumstances, the actions may cause more than this to be carried (usually bad things like chigger bites) but the player will not be able to pick up anything unless the number of objects he is carrying is less than this value.
 
-7)   The starting room for this adventure.
+7. The starting room for this adventure.
 
-8)   The number of treasures in this adventure. The SCORE command uses this to give a percentage score.
+8. The number of treasures in this adventure. The SCORE command uses this to give a percentage score.
 
-9)   The word length used in this adventure. The nouns and verbs and the words to pick up objects are affected by this value. This is the minimum number of characters the player must type in his verbs and nouns.
+9. The word length used in this adventure. The nouns and verbs and the words to pick up objects are affected by this value. This is the minimum number of characters the player must type in his verbs and nouns.
 
-10)  The time limit. This may be used in some games to control how long the artificial light lasts, or if there is no articial light it may limit the number of turns in the game. If the artificial light is re-filled, this value is put back in the time limit.
+10. The time limit. This may be used in some games to control how long the artificial light lasts, or if there is no articial light it may limit the number of turns in the game. If the artificial light is re-filled, this value is put back in the time limit.
 
-11)  The highest numbered message. Since messages are numbered from zero, the number of messages is one more than this value. Message 0 is reserved.
+11. The highest numbered message. Since messages are numbered from zero, the number of messages is one more than this value. Message 0 is reserved.
 
-12)  The treasure room number. When treasures are in this room, they are considered to be collected and the score routine counts them.
+12. The treasure room number. When treasures are in this room, they are considered to be collected and the score routine counts them.
 
 The action entries (2) contain information on when they are to be applied and what is to be done then. Some action entries respond to the player's input and some control automatic actions. The action entries consist of eight numbers. The first determines when the action is considered. The next five specify conditions necessary or give parameters for the commands. The last two words specify what primitive commands are to be performed.
 
@@ -89,9 +89,9 @@ If the action is considered, the five conditions are evaluated. If any fail, the
 
 There are thirty-two possible flag-bits numbered from 0 to 31. They are all initially cleared. There are commands to set and clear them as well as the conditions to test their values. Two of the flags have assigned meanings:
 
-15)  Means it is dark out when the flag is set. The room will be in darkness if the artificial light source is not in the room or being carried.  (Object 9 is the lighted artificial light source.) There are two special commands (NIGHT and DAY) to set and clear this flag-bit.
+15. Means it is dark out when the flag is set. The room will be in darkness if the artificial light source is not in the room or being carried.  (Object 9 is the lighted artificial light source.) There are two special commands (NIGHT and DAY) to set and clear this flag-bit.
 
-16)  Means the artificial light has run out when it is set. The FILL command clears this flag-bit when it resets the time limit to the original maximum.
+16. Means the artificial light has run out when it is set. The FILL command clears this flag-bit when it resets the time limit to the original maximum.
 
 The counter is special value which can be incremented and decremented by special commands as well as tested by some conditions. There are also alternate counters which can be exchanged with the counter in order to operate on other numbers.
 
@@ -202,7 +202,6 @@ Nouns
 4  WEST   This is reserved for the fourth room direction entry with verb 1.
 5  UP     This is reserved for the fifth room direction entry with verb 1.
 6  DOWN   This is reserved for the sixth room direction entry with verb 1.
-
 
 The room entries (4) consist of the number of the adjacent rooms in the six reserved directions N, S, E, W, U and D plus a room description string. If the adjacent room number is zero, there is "no obvious exit" in that direction. If a description does not begin with an asterisk, the ADVENTURE program with preface the display of the room with "You're in a "; otherwise, it will just display the description, omitting the asterisk.
 
