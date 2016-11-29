@@ -1,25 +1,27 @@
 -- main.lua
 
+command_argument = {}
+
 -- Game state arrays
 item_location = {}
-command_argument = {}
-bit_flag = {}
-counter = {}
+bit_flag = {} -- 32 flags
+counter = {} -- 8 counters
+alternate_room = {} -- 6 alternate rooms
 
--- Game engine constants (with array index starting at 0)
-VERB_AUTO       = 0
-VERB_GO         = 1
-VERB_GET        = 10
-VERB_DROP       = 18
-NOUN_ANY        = 0
-NOUN_NORTH      = 1
-NOUN_SOUTH      = 2
-NOUN_EAST       = 3
-NOUN_WEST       = 4
-NOUN_UP         = 5
-NOUN_DOWN       = 6
-FLAG_DARK       = 15
-FLAG_LAMP_EMPTY = 16
+-- Game engine constants (with array index starting at 1)
+VERB_AUTO       = 1
+VERB_GO         = 2
+VERB_GET        = 11
+VERB_DROP       = 19
+NOUN_ANY        = 1
+NOUN_NORTH      = 2
+NOUN_SOUTH      = 3
+NOUN_EAST       = 4
+NOUN_WEST       = 5
+NOUN_UP         = 6
+NOUN_DOWN       = 7
+FLAG_DARK       = 16
+FLAG_LAMP_EMPTY = 17
 
 -- Functions below
 function initialize_game()

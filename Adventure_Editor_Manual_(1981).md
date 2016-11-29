@@ -4125,7 +4125,7 @@ BYX->X | Move second object X to same place as first object X.
 CT-1 | Decrement counter.
 DSPCT | Display the counter.
 CT<-N | Set counter equal to N.
-EXRMO | Exchange current room with room held in alternate room register 0.
+EXRM0 | Exchange current room with room held in alternate room register 0.
 EXM,CT | Exchange counter and alternate counter M.
 CT+N | Add N to counter.
 CT-N | Subtract N from counter.
