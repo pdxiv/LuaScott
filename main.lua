@@ -39,20 +39,6 @@ function show_room()
   end
 end
 
--- Include game data file load library
-load_game_data = require "load_game_data"
-
--- Load game data from file in first commandline argument.
--- Initializes global variables
-load_game_data.load_data_file(arg[1])
-
--- Global game instance variables:
---   current_room
-
-initialize_game()
-show_room()
-
-
 function table.slice(table_to_slice, first, last, step)
   local sliced = {}
   for i = first or 1, last or #table_to_slice, step or 1 do
@@ -109,6 +95,19 @@ function process_word_actions()
     end
   end
 end
+
+-- Include game data file load library
+load_game_data = require "load_game_data"
+
+-- Load game data from file in first commandline argument.
+-- Initializes global variables
+load_game_data.load_data_file(arg[1])
+
+-- Global game instance variables:
+--   current_room
+
+initialize_game()
+show_room()
 
 process_auto_actions()
 process_word_actions()
