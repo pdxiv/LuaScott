@@ -253,29 +253,24 @@ Each vocabulary entry consists of a verb string and a noun string. Synonyms are 
 
 Verbs
 
-AUTO This is not entered by the player while playing the adventure. It signifies the auto action entries which are all evaluated before a valid player input.
-
-1 GO This is a special case for the direction nouns 1-6.
-
-10 GET This is used to pick up objects if there is no action entry that applies and the noun matches the name enclosed in slashes in an object name in the current room. See the OBJECT section of this chapter for more information on the object name.
-
-18 DROP This is used to drop objects if there is no action entry that applies and the noun matches the name enclosed in slashes in an object name being carried.
+Code | Symbol | Description
+---- | ------ | -----------
+0 | AUTO | This is not entered by the player while playing the adventure. It signifies the auto action entries which are all evaluated before a valid player input.
+1 | GO | This is a special case for the direction nouns 1-6.
+10 | GET | This is used to pick up objects if there is no action entry that applies and the noun matches the name enclosed in slashes in an object name in the current room. See the OBJECT section of this chapter for more information on the object name.
+18 | DROP | This is used to drop objects if there is no action entry that applies and the noun matches the name enclosed in slashes in an object name being carried.
 
 Nouns
 
-0 ANY This is not entered by the player while playing the adventure. It denotes the action entries which can match any noun (or no noun).
-
-1 NORTH This is reserved for the first room direction entry with verb 1.
-
-2 SOUTH This is reserved for the second room direction entry with verb 1.
-
-3 EAST This is reserved for the third room direction entry with verb 1.
-
-4 WEST This is reserved for the fourth room direction entry with verb 1.
-
-5 UP This is reserved for the fifth room direction entry with verb 1.
-
-6 DOWN This is reserved for the sixth room direction entry with verb 1.
+Code | Symbol | Description
+---- | ------ | -----------
+0 | ANY | This is not entered by the player while playing the adventure. It denotes the action entries which can match any noun (or no noun).
+1 | NORTH | This is reserved for the first room direction entry with verb 1.
+2 | SOUTH | This is reserved for the second room direction entry with verb 1.
+3 | EAST | This is reserved for the third room direction entry with verb 1.
+4 | WEST | This is reserved for the fourth room direction entry with verb 1.
+5 | UP | This is reserved for the fifth room direction entry with verb 1.
+6 | DOWN | This is reserved for the sixth room direction entry with verb 1.
 
 ###ROOM entries
 
@@ -335,13 +330,12 @@ entries for this pick up and drop feature to work. The
 object name must also be a primary noun, not a synonym.
 
 An example of a treasure that can be picked up is:
-*FIRESTONE* (cold now)/FIR/
+`*FIRESTONE* (cold now)/FIR/`
 
 which can be picked up by the word "FIR". Before the
 firestone is cooled, the treasure was in the storeroom and
 the following object was in the room:
-
-glowing *FIRESTONE*
+`glowing *FIRESTONE*`
 
 Because this object does not begin with an asterisk it is
 not recognized as a treasure. Also, it can not be picked up
@@ -371,7 +365,7 @@ adventure number and a security checksum. If the version
 number was 415 it will be displayed as "4.15". The
 adventure number is simply the number identifying the
 adventure (0-9, A-Z). The security checksum is
-(2 * #actions + #objects + version). If the checksum
+`(2 * #actions + #objects + version)`. If the checksum
 computed by the ADVENTURE program does not equal the one in
 the adventure file the ADVENTURE program will hang up.
 
