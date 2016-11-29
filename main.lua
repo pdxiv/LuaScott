@@ -1,6 +1,12 @@
 -- main.lua
 
+-- Game state arrays
 item_location = {}
+command_argument = {}
+bit_flag = {}
+counter = {}
+
+
 
 -- Functions below
 function initialize_game()
@@ -46,6 +52,90 @@ function table.slice(table_to_slice, first, last, step)
   end
   return sliced
 end
+
+
+condition = {
+  -- PAR    Passes a number to the commands.
+  [1] = function (condition_parameter)
+     table.insert(command_argument, condition_parameter)
+  end,
+  -- HAS    True if holding the object.
+  [2] = function (condition_parameter)
+    -- do things
+  end,
+  -- IN/W   True if in same room as object (not holding it).
+  [3] = function (condition_parameter)
+    -- do things
+  end,
+  -- AVL    True if in same room or holding object.
+  [4] = function (condition_parameter)
+    -- do things
+  end,
+  -- IN     True if in room.
+  [5] = function (condition_parameter)
+    -- do things
+  end,
+  -- -IN/W  True if holding object or if object is in another room.
+  [6] = function (condition_parameter)
+    -- do things
+  end,
+  -- -HAVE  True if not holding object.
+  [7] = function (condition_parameter)
+    -- do things
+  end,
+  -- -IN    True if not in room.
+  [8] = function (condition_parameter)
+    -- do things
+  end,
+  -- BIT    True if bit flag set.
+  [9] = function (condition_parameter)
+    -- do things
+  end,
+  -- -BIT   True if bit flag cleared.
+  [10] = function (condition_parameter)
+    -- do things
+  end,
+  -- ANY    True if holding any objects.
+  [11] = function (condition_parameter)
+    -- do things
+  end,
+  -- -ANY   True if not holding any objects.
+  [12] = function (condition_parameter)
+    -- do things
+  end,
+  -- -AVL   True if object in another room.
+  [13] = function (condition_parameter)
+    -- do things
+  end,
+  -- -RMO   True if object not in room zero.
+  [14] = function (condition_parameter)
+    -- do things
+  end,
+  -- RMO    True if object in room zero.
+  [15] = function (condition_parameter)
+    -- do things
+  end,
+  -- CT<=   True if counter less than or equal to number.
+  [16] = function (condition_parameter)
+    -- do things
+  end,
+  -- CT>    True if counter greater than number.
+  [17] = function (condition_parameter)
+    -- do things
+  end,
+  -- ORIG   True if object in original starting room.
+  [18] = function (condition_parameter)
+    -- do things
+  end,
+  -- -ORIG  True if object not in original starting room.
+  [19] = function (condition_parameter)
+    -- do things
+  end,
+  -- CT=    True if counter equal to number. 
+  [20] = function (condition_parameter)
+    -- do things
+  end,
+}
 
 
 function process_auto_actions()

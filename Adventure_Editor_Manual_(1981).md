@@ -99,6 +99,8 @@ When player input actions are being evaluated, the action entries are scanned in
 
 However, when automatic actions are being evaluated, they are all scanned regardless of how many are true or false.
 
+###CONDITIONS
+
 If the action is to be considered, the five conditions are evaluated. If any conditions fail, the commands in the action are not performed. The conditions are `(20 * number + condition)`. The condition codes and their meanings are as follows:
 
 Code | Symbol | Description
@@ -139,6 +141,8 @@ The counters are values which may be incremented, decremented, assigned values b
 ###ALTERNATE ROOM REGISTERS
 
 The value of the current room may be saved and restored by exchanging it with an alternate room register. The saved room value may be restored by performing another exchange with the same alternate room register.
+
+###COMMANDS
 
 The seventh and eighth bytes of the action entry are the four command codes. The seventh number is `(150*command 1 + command 2)` and the eighth number is `(150*command 3 + command 4)`.
 
