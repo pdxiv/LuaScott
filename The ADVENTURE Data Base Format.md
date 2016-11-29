@@ -18,27 +18,16 @@ The data base constains the following sections:
 The header information (1) contains the following numbers:
 
 1. The number of bytes required to contain the text of the verbs, nouns, messages, room descriptions and object descriptions. This number includes a fixed number of bytes for each verb and noun (one more thean the max word length). It includes one more than the number of characters between quotes in the messages and room and object descriptions. It also includes one more byte for each object than can be carried and dropped. The number of bytes specified may be larger than is necessary, but must not be smaller or the ADVENTURE program will tell how much too small it is and quit.
-
 2. The highest numbered object in this adventure. Objects are numbered starting at zero, so the number of objects is one more than this value.
-
 3. The highest numbered action in this adventure. Actions are numbered starting at zero, so the number of actions is one more than this value.
-
 4. The highest numbered vocabulary word in this adventure. This applies to both verbs and nouns, being the larger value if they are different. Vocabulary words are numbered from zero, so the number of verbs and the number of nouns is one more than this value.
-
 5. The highest numbered room in this adventure. Rooms are numbered from zero, but room zero is reserved; so the the total number of rooms is one more than this value.
-
 6. The maximum number of objects which can be carried. Under certain circumstances, the actions may cause more than this to be carried (usually bad things like chigger bites) but the player will not be able to pick up anything unless the number of objects he is carrying is less than this value.
-
 7. The starting room for this adventure.
-
 8. The number of treasures in this adventure. The SCORE command uses this to give a percentage score.
-
 9. The word length used in this adventure. The nouns and verbs and the words to pick up objects are affected by this value. This is the minimum number of characters the player must type in his verbs and nouns.
-
 10. The time limit. This may be used in some games to control how long the artificial light lasts, or if there is no articial light it may limit the number of turns in the game. If the artificial light is re-filled, this value is put back in the time limit.
-
 11. The highest numbered message. Since messages are numbered from zero, the number of messages is one more than this value. Message 0 is reserved.
-
 12. The treasure room number. When treasures are in this room, they are considered to be collected and the score routine counts them.
 
 The action entries (2) contain information on when they are to be applied and what is to be done then. Some action entries respond to the player's input and some control automatic actions. The action entries consist of eight numbers. The first determines when the action is considered. The next five specify conditions necessary or give parameters for the commands. The last two words specify what primitive commands are to be performed.
