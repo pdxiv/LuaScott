@@ -6,7 +6,20 @@ command_argument = {}
 bit_flag = {}
 counter = {}
 
-
+-- Game engine constants (with array index starting at 0)
+VERB_AUTO       = 0
+VERB_GO         = 1
+VERB_GET        = 10
+VERB_DROP       = 18
+NOUN_ANY        = 0
+NOUN_NORTH      = 1
+NOUN_SOUTH      = 2
+NOUN_EAST       = 3
+NOUN_WEST       = 4
+NOUN_UP         = 5
+NOUN_DOWN       = 6
+FLAG_DARK       = 15
+FLAG_LAMP_EMPTY = 16
 
 -- Functions below
 function initialize_game()
