@@ -196,7 +196,7 @@ Note that action commands 89-101 are not used. Scott Adams may use these in futu
 
 The automatic action entries have a variety of uses. All of them are considered before a player input. Such things as falling asleep, checking for day/night or any other tasks that must be performed without player input are candidates for automatic action entries. Chapter 5 contain.s a more detailed description of automatic actions.
 
-For example, consider the following actions:
+For an example of the CONT command, consider the following actions:
 ```
 LIGHT TORCH   HAS 12   PAR 9    PAR 12   PAR 0    PAR 0
      EXX,X   MSG5   CONT   -
