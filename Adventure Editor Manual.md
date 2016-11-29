@@ -4036,7 +4036,7 @@ In mission adventures, the object of the game is to accomplish a task. In advent
 
 In treasure adventures, the object of the game is to collect treasures and store them in the treasure room.
 
-###SOLVING "MISSION" TYPE ADVENTURES
+###Solving "MISSION" type adventures
 
 Mission type adventures end with a winning message. The first step to solving these types of adventures is to list the messages and find the message number. This should be an obvious message. The message number should be noted.
 
@@ -4048,7 +4048,7 @@ The XREF command can be used to find where the objects needed in the winning act
 
 The procedure continues in this fashion. It may take a while to get it down pat, but it is basically a simple procedure.
 
-###SOLVING "TREASURE" TYPE ADVENTURES
+###Solving "TREASURE" type adventures
 
 These types of adventures are very similar to mission types adventures when solving them.
 
