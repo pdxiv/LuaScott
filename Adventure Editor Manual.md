@@ -1595,7 +1595,7 @@ should have an adventure you could be proud of.
 
 
 
-Chapter 5
+##Chapter 5
 Sample Adventure
 
 
@@ -4110,7 +4110,7 @@ pose much more of a challenge.
 
 
 
-Chapter 6
+##Chapter 6
 Solving an ADVENTURE
 
 
@@ -4202,7 +4202,7 @@ Remember, adventures are meant to be brain-teasers.
 
 
 
-Appendix A
+##Appendix A
 ADVENTURE Command summary
 
 
@@ -4324,7 +4324,7 @@ DELAY Pause for about 1 second.
 
 
 
-Appendix B
+##Appendix B
 Submitting your adventures for marketing considerations
 
 All you need to do is send a diskette with the data base(s)
