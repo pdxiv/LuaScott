@@ -129,13 +129,16 @@ Code | Symbol | Description
 18 | DROP | This is used to drop objects if there is no action entry that applies and the noun matches the name enclosed in slashes in an object being carried.
 
 Nouns
-* 0  ANY    This is not entered by the player. It denotes the action entries which can match any noun (or no noun).
-* 1  NORTH  This is reserved for the first room direction entry with verb 1.
-* 2  SOUTH  This is reserved for the second room direction entry with verb 1.
-* 3  EAST   This is reseved for the third room direction entry with verb 1.
-* 4  WEST   This is reserved for the fourth room direction entry with verb 1.
-* 5  UP     This is reserved for the fifth room direction entry with verb 1.
-* 6  DOWN   This is reserved for the sixth room direction entry with verb 1.
+
+Code | Symbol | Description
+---- | ------ | -----------
+0 | ANY | This is not entered by the player. It denotes the action entries which can match any noun (or no noun).
+1 | NORTH | This is reserved for the first room direction entry with verb 1.
+2 | SOUTH | This is reserved for the second room direction entry with verb 1.
+3 | EAST | This is reseved for the third room direction entry with verb 1.
+4 | WEST | This is reserved for the fourth room direction entry with verb 1.
+5 | UP | This is reserved for the fifth room direction entry with verb 1.
+6 | DOWN | This is reserved for the sixth room direction entry with verb 1.
 
 The room entries (4) consist of the number of the adjacent rooms in the six reserved directions N, S, E, W, U and D plus a room description string. If the adjacent room number is zero, there is "no obvious exit" in that direction. If a description does not begin with an asterisk, the ADVENTURE program with preface the display of the room with "You're in a "; otherwise, it will just display the description, omitting the asterisk.
 
