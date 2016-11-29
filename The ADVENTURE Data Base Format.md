@@ -153,10 +153,10 @@ The object entries (6) consist of a string describing the object and the number 
 The object description should begin with an asterisk if the object is to be recognized as a treasure; treasures have asterisks around the description. Also, if the object is to be picked up or put down, the word to use for it is enclosed in slashes at the end of the description. If the verb is 10 (CARRY) or 18 (DROP) and no other action applies, the ADVENTURE program will automatically pick up or drop the object if the name matches the noun in the player's input.  (The name does not have to be a noun in the vocabulary for this pick up or drop to work.)
 
 An example of a treasure that can be picked up is:
-  "\*FIRESTONE\* (cold now)/FIR/"
+    "\*FIRESTONE\* (cold now)/FIR/"
 
 which can be picked up by the word "FIR". Before the firestone cools, this object was in the storeroom and a different object was in the room:
-  "glowing \*FIRESTONE\*"
+    "glowing \*FIRESTONE\*"
 
 Because it does not begin with an asterisk, it is not recognized as a treasure if it is in the treasure room, and it cannot be picked up because it has no name. The action that cools the firestone swaps the locations of these two similar objects.
 
