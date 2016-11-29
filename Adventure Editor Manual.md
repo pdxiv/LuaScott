@@ -101,53 +101,36 @@ However, when automatic actions are being evaluated, they are all scanned regard
 
 If the action is to be considered, the five conditions are evaluated. If any conditions fail, the commands in the action are not performed. The conditions are (20 * number + condition). The condition codes and their meanings are as follows:
 
-PAR This condition always passes. The number included with PAR (i.e. PAR 20) may be used by the commands in this entry. See the list of commands for uses of parameters.
-
-HAS The condition passes if the player is carrying the numbered object (i.e. HAS 15). It fails if the object is either in the same room as the player or in any other room.
-
-IN/W The condition passes if the player is in the same room as the numbered object. It fails if the player is either holding the object or the object is in any other room.
-
-AVL The condition passes if the numbered object is available because the player is either carrying the object or in the same room as the object. It fails if the object is in any other room.
-
-IN The condition passes if the player is in the numbered room (i.e. IN 5). It fails if the player is in any other room.
-
--IN/W The condition passes if the numbered object is held by the player or if the object is in any other room. It fails if the object is in the same room as the player.
-
--HAVE The condition passes if the player is not carrying the numbered object. It fails if the player is carrying the object.
-
--IN The condition passes if the player is not in the numbered room. The condition fails if the player is in any other room.
-
-BIT The condition passes if the numbered bit flag is set. It fails if the flag is cleared. See the description of bit flags later on for more information.
-
--BIT The condition passes if the numbered bit flag is cleared. It fails if the flag is set. See the description of bit flags later on for more information.
-
-ANY The condition passes if the player is carrying any objects at all. It fails if the player is not carrying any objects. The parameter entered (i.e. ANY 50) has no affect on this Condition.
-
--ANY The condition passes if the player is not carrying any objects. It fails if the player is carrying any objects at all.
-
--AVL The condition passes if the .numbered object is in any other room. It fails if the object is available either because it is being carried or it is in the same room as the player.
-
--RMO The condition passes if the numbered object is not in room zero. Room zero is reserved as a storeroom. The condition fails if the object is in room zero.
-
-RMO The condition passes if the numbered object is in room zero. The condition fails if the object is in any room other than room zero.
-
-CT<= The condition passes if the counter is less than or equal to the number. It fails if the counter is greater than the number. See the description of the counters later on for more information.
-
-CT> The condition passes if the counter is greater than the number. It fails if the counter is less than or equal to the number.
-
-ORIG The condition passes if the numbered object is in the same room it started in. It fails if the object is in any other room or is being carried.
-
--ORIG The condition passes if the numbered object is in any room other than its starting room or is being carried. It fails if the object is in the same room it started in.
-
-CT= The condition passes if the counter is equal to the number. It fails if the counter is not equal to the number.
+Code | Symbol | Description
+---- | ------ | -----------
+0 | PAR | This condition always passes. The number included with PAR (i.e. PAR 20) may be used by the commands in this entry. See the list of commands for uses of parameters.
+1 | HAS | The condition passes if the player is carrying the numbered object (i.e. HAS 15). It fails if the object is either in the same room as the player or in any other room.
+2 | IN/W | The condition passes if the player is in the same room as the numbered object. It fails if the player is either holding the object or the object is in any other room.
+3 | AVL | The condition passes if the numbered object is available because the player is either carrying the object or in the same room as the object. It fails if the object is in any other room.
+4 | IN | The condition passes if the player is in the numbered room (i.e. IN 5). It fails if the player is in any other room.
+5 | -IN/W | The condition passes if the numbered object is held by the player or if the object is in any other room. It fails if the object is in the same room as the player.
+6 | -HAVE | The condition passes if the player is not carrying the numbered object. It fails if the player is carrying the object.
+7 | -IN | The condition passes if the player is not in the numbered room. The condition fails if the player is in any other room.
+8 | BIT | The condition passes if the numbered bit flag is set. It fails if the flag is cleared. See the description of bit flags later on for more information.
+9 | -BIT | The condition passes if the numbered bit flag is cleared. It fails if the flag is set. See the description of bit flags later on for more information.
+10 | ANY | The condition passes if the player is carrying any objects at all. It fails if the player is not carrying any objects. The parameter entered (i.e. ANY 50) has no affect on this Condition.
+11 | -ANY | The condition passes if the player is not carrying any objects. It fails if the player is carrying any objects at all.
+12 | -AVL | The condition passes if the .numbered object is in any other room. It fails if the object is available either because it is being carried or it is in the same room as the player.
+13 | -RM0 | The condition passes if the numbered object is not in room zero. Room zero is reserved as a storeroom. The condition fails if the object is in room zero.
+14 | RM0 | The condition passes if the numbered object is in room zero. The condition fails if the object is in any room other than room zero.
+15 | CT<= | The condition passes if the counter is less than or equal to the number. It fails if the counter is greater than the number. See the description of the counters later on for more information.
+16 | CT> | The condition passes if the counter is greater than the number. It fails if the counter is less than or equal to the number.
+17 | ORIG | The condition passes if the numbered object is in the same room it started in. It fails if the object is in any other room or is being carried.
+18 | -ORIG | The condition passes if the numbered object is in any room other than its starting room or is being carried. It fails if the object is in the same room it started in.
+19 | CT= | The condition passes if the counter is equal to the number. It fails if the counter is not equal to the number.
 
 ###BIT FLAGS
 
 There are thirty-two bit flags available to the user. They are numbered to 31. When the adventure is started, they are all cleared. There are commands to set and clear them as well as conditions to test their values. Two bit flags are reserved by ADVENTURE 8.2 and ADV:
 
-15) If this bit flag is set it is dark outside. The room will be in darkness unless the artificial light source is available. The artificial light source is discussed in the OBJECT section of this chapter. There are two commands (DAY and NIGHT) to clear and set this bit flag.
+* 15) If this bit flag is set it is dark outside. The room will be in darkness unless the artificial light source is available. The artificial light source is discussed in the OBJECT section of this chapter. There are two commands (DAY and NIGHT) to clear and set this bit flag.
 
-16) When this flag is set the artificial light source has run out. The "FILL" command will clear this flag and set the time limit to its original value.
+* 16) When this flag is set the artificial light source has run out. The "FILL" command will clear this flag and set the time limit to its original value.
 
 ###COUNTERS
 
