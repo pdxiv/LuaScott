@@ -99,7 +99,7 @@ When player input actions are being evaluated, the action entries are scanned in
 
 However, when automatic actions are being evaluated, they are all scanned regardless of how many are true or false.
 
-If the action is to be considered, the five conditions are evaluated. If any conditions fail, the commands in the action are not performed. The conditions are (20 * number + condition). The condition codes and their meanings are as follows:
+If the action is to be considered, the five conditions are evaluated. If any conditions fail, the commands in the action are not performed. The conditions are `(20 * number + condition)`. The condition codes and their meanings are as follows:
 
 Code | Symbol | Description
 ---- | ------ | -----------
@@ -148,54 +148,32 @@ If a command uses one parameter, its value is represented by "Par #1" in the fol
 
 These are the possible command codes in ADVENTURE 8.3:
 
-No command or message.
-
-1-51 Display message numbers 1-51.
-
-52 GETX Pick up Par #1 object unless the player is already carrying the maximum number or limit. The object may be in the current room or in any other room.
-
-53 DROPX Drop the Par #1 object in the same room as the player. The object may be carried or in another room.
-
-54 GOTOY Move the player to the Par #1 room. This command should be followed by a DSPRM command. Also, this may need to be followed by a DAY/NIGHT command depending on the light status of the room.
-
-55 X-RM0 This command moves the Par #1 object to room zero.
-
-56 NIGHT This command sets the light/darkness bit flag (15). The room will be dark if the artificial light source is not available. This command should be followed by a DSPRM command.
-
-57 DAY Clear the light/darkness bit flag (15). This should also be followed by a DSPRM command.
-
-58 SETZ Set the Par #1 bit flag.
-
-59 X->RM0 This command is a repeat of command 55.
-
-60 CLRZ This clears the Par #1 bit flag.
-
-61 DEAD This clears the light/darkness flag (makes it light) , moves the player to the last room and tells him he is dead.
-
-62 X->Y Move the Par #1 object to Par #2 room. This command will automatically display the room if the Par #1 object either entered or exited the current room.
-
-63 FINI Indicate to the player that the game is over and inquire if he wants to play again.
-
-64 DSPRM Display the current room. This checks the light/darkness flag and if the artificial light source is present. If it is light, the room description, visible objects and obvious exits are displayed. If it is dark, nothing is displayed (it is too dark to see) unless the artificial light source is present.
-
-65 SCORE Tells the player how many treasures are in the treasure room and what percentage the total is. If one hundred percent is stored, then the winning message is displayed and the player is given the option of playing again.
-
-66 INV Tells the player what objects are being carried.
-
-67 SET0 This sets the zero bit flag. It may be useful since no parameter from the conditions is necessary.
-
-68 CLR0 Clears the zero bit flag. It may be useful since no parameter from the conditions is necessary.
-
-69 FILL Re-fills the artificial light source and clears the bit flag 16 (indicator of light source status). This also picks up the artificial light source. This command should immediately be followed by a X->RM0 command where Par #1 is the unlighted artificial light source (they are two different objects).
-
-70 CLS This command did a clear screen in the BASIC version of ADVENTURE and does nothing in the machine language version.
-
-71 SAVE Saves the game to disk or tape depending on which version is being used. It writes some user variables such as the current room, current locations of all objects, status of all bit flags, current values of all alternate room registers and the current values of all counters.
-
-72 EXX,X Exchange the room location of the Par #1 object with the room location of the Par #2 object. A DSPRM is automatically performed if either Par #1 or Par #2 objects were in the current room.
-
-73 CONT This command sets a flag to allow more than four commands to be performed. When all commands in this action entry have been performed, the conditions of all subsequent action entries with a zero verb and noun (up to the first non-zero verb and noun) will be evaluated. The checking procedure continues regardless if the entry being checked is true or false, For example, consider the following actions:
-
+Code | Symbol | Description
+---- | ------ | -----------
+0 | | No command or message.
+1-51 | | Display message numbers 1-51.
+52 | GETX | Pick up Par #1 object unless the player is already carrying the maximum number or limit. The object may be in the current room or in any other room.
+53 | DROPX | Drop the Par #1 object in the same room as the player. The object may be carried or in another room.
+54 | GOTOY | Move the player to the Par #1 room. This command should be followed by a DSPRM command. Also, this may need to be followed by a DAY/NIGHT command depending on the light status of the room.
+55 | X-RM0 | This command moves the Par #1 object to room zero.
+56 | NIGHT | This command sets the light/darkness bit flag (15). The room will be dark if the artificial light source is not available. This command should be followed by a DSPRM command.
+57 | DAY | Clear the light/darkness bit flag (15). This should also be followed by a DSPRM command.
+58 | SETZ | Set the Par #1 bit flag.
+59 | X->RM0 | This command is a repeat of command 55.
+60 | CLRZ | This clears the Par #1 bit flag.
+61 | DEAD | This clears the light/darkness flag (makes it light) , moves the player to the last room and tells him he is dead.
+62 | X->Y | Move the Par #1 object to Par #2 room. This command will automatically display the room if the Par #1 object either entered or exited the current room.
+63 | FINI | Indicate to the player that the game is over and inquire if he wants to play again.
+64 | DSPRM | Display the current room. This checks the light/darkness flag and if the artificial light source is present. If it is light, the room description, visible objects and obvious exits are displayed. If it is dark, nothing is displayed (it is too dark to see) unless the artificial light source is present.
+65 | SCORE | Tells the player how many treasures are in the treasure room and what percentage the total is. If one hundred percent is stored, then the winning message is displayed and the player is given the option of playing again.
+66 | INV | Tells the player what objects are being carried.
+67 | SET0 | This sets the zero bit flag. It may be useful since no parameter from the conditions is necessary.
+68 | CLR0 | Clears the zero bit flag. It may be useful since no parameter from the conditions is necessary.
+69 | FILL | Re-fills the artificial light source and clears the bit flag 16 (indicator of light source status). This also picks up the artificial light source. This command should immediately be followed by a X->RM0 command where Par #1 is the unlighted artificial light source (they are two different objects).
+70 | CLS | This command did a clear screen in the BASIC version of ADVENTURE and does nothing in the machine language version.
+71 | SAVE | Saves the game to disk or tape depending on which version is being used. It writes some user variables such as the current room, current locations of all objects, status of all bit flags, current values of all alternate room registers and the current values of all counters.
+72 | EXX,X | Exchange the room location of the Par #1 object with the room location of the Par #2 object. A DSPRM is automatically performed if either Par #1 or Par #2 objects were in the current room.
+73 | CONT | This command sets a flag to allow more than four commands to be performed. When all commands in this action entry have been performed, the conditions of all subsequent action entries with a zero verb and noun (up to the first non-zero verb and noun) will be evaluated. The checking procedure continues regardless if the entry being checked is true or false, For example, consider the following actions:
     LIGHT TORCH   HAS 12   PAR 9    PAR 12   PAR 0    PAR 0
          EXX,X   MSG5   CONT   -
     AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
@@ -206,42 +184,26 @@ No command or message.
         EXM,CT    -      -     -
     SHOOT GUN     HAS 23   IN/W 2   PAR 2    PAR 4    PAR 0
          EXX,X   MSG8    -     -
-
 If the conditions of the action with the verb-noun of "LIGHT TORCH" are found to be true, then its commands are executed. One of the commands is a "CONT". This means that all "AUTO 0" verb-noun actions following "LIGHT TORCH" will be considered. In this case there are three of them. All three are considered even if none of them are true or false. For example, the third one is considered even if the second one was true.
+74 | AGETX | Always get Par #1 object even if the carry limit is overflowed.
+75 | BYX->X | Put the Par #1 object in the same room as the Par #2 object. If the Par #2 object is being carried this will pick up the Par #1 object also, regardless of the carry limit. If this command changes any objects in the current room a DSPRM command is automatically executed.
+76 | DSPRM | This is a copy of command 64.
+77 | CT-1 | Subtract one from the counter value.
+78 | DSPCT | This displays the value of the counter. No carriage return is printed after the value.
+79 | CT<-N | The sets the counter equal to the Par #1 value.
+80 | EXRM0 | This exchanges the current room with the room number held in alternate room register zero. This may be used to save a player's current room for return to it later on. This command should be followed by a GOTOY command if the alternate room register zero had not been set.
+81 | EXM,CT | Exchange the value of the counter and the value of the Par #1 alternate counter. There are eight counters numbered to 7 . When the adventure starts these are not set to any particular value so initialization automatic action entries should set them. Also, the time limit may be accessed by exchanging with alternate counter eight (8).
+82 | CT+N | Add the Par #1 value to the counter.
+83 | CT-N | Subtract the Par #1 value from the counter.
+84 | SAYW | This displays the noun (second word) input by the player.
+85 | SAYWCR | This displays the noun (second word) input by the player followed by a carriage return.
+86 | SAYCR | Starts a new line on the display.
+87 | EXC,CR | Exchange the value of the current room with the Par tfi alternate room register. This may be used to remember more than one room. There are six alternate room registers numbered to 5.
+88 | DELAY | This command pauses for about 1 second before going on to the next command.
+89-101 | | These commands are undefined by version 8.3 of ADVENTURE but may be used in future ADVENTURE releases.
+102-149 | | Display messages 52-99.
 
-74 AGETX Always get Par #1 object even if the carry limit is overflowed.
 
-75 BYX->X Put the Par #1 object in the same room as the Par #2 object. If the Par #2 object is being carried this will pick up the Par #1 object also, regardless of the carry limit. If this command changes any objects in the current room a DSPRM command is automatically executed.
-
-76 DSPRM This is a copy of command 64.
-
-77 CT-1 Subtract one from the counter value.
-
-78 DSPCT This displays the value of the counter. No carriage return is printed after the value.
-
-79 CT<-N The sets the counter equal to the Par #1 value.
-
-80 EXRM0 This exchanges the current room with the room number held in alternate room register zero. This may be used to save a player's current room for return to it later on. This command should be followed by a GOTOY command if the alternate room register zero had not been set.
-
-81 EXM,CT Exchange the value of the counter and the value of the Par #1 alternate counter. There are eight counters numbered to 7 . When the adventure starts these are not set to any particular value so initialization automatic action entries should set them. Also, the time limit may be accessed by exchanging with alternate counter eight (8).
-
-82 CT+N Add the Par #1 value to the counter.
-
-83 CT-N Subtract the Par #1 value from the counter.
-
-84 SAYW This displays the noun (second word) input by the player.
-
-85 SAYWCR This displays the noun (second word) input by the player followed by a carriage return.
-
-86 SAYCR Starts a new line on the display.
-
-87 EXC,CR Exchange the value of the current room with the Par tfi alternate room register. This may be used to remember more than one room. There are six alternate room registers numbered to 5.
-
-88 DELAY This command pauses for about 1 second before going on to the next command.
-
-89-101 These commands are undefined by version 8.3 of ADVENTURE but may be used in future ADVENTURE releases.
-
-102-149 Display messages 52-99.
 
 Note that action commands 89-101 are not used. Scott Adams may use these in future updates of the adventure driver. However, they may also be defined by THE ADVENTURE SYSTEM. If you have any suggestions for added commands, send them to the author for consideration.
 
