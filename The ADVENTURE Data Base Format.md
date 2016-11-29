@@ -72,6 +72,7 @@ The seventh and eighth numbers in an action entry contain four command codes. Th
 These commands may use one or more parameters found in the condition numbers for this action entry. If a command uses one parameter, its value is represented by Par #1 in the following descriptions. If a command uses two parameters the first is represented by Par #1 and the second by Par #2. The parameters used by any command are skipped by following commands if they also use parameters.
 
 The possible command codes mean the following:
+
 Code | Symbol | Description
 ---- | ------ | -----------
 0 | No | command or message. This command actually displays message 0 which is null.
