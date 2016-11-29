@@ -45,7 +45,7 @@ The action entries (2) contain information on when they are to be applied and wh
 
 The first number is (150*verb + noun). If the verb is zero, it represents an automatic action and the noun (1-100) determines the probability with which it occurs. If the verb is not zero, it must match the verb in the player's input and the noun must match the noun in the player's input for this action to be considered. (If the noun is zero, it matches any possible noun in the player's input.)
 
-If the action is considered, the five conditions are evaluated. If any fail, the action is not performed. The conditions are (20*number + cond). The possible condition codes and their meanings are:
+If the action is considered, the five conditions are evaluated. If any fail, the action is not performed. The conditions are (20*number + cond). The possible condition codes (plus one) and their meanings are:
 
 0. "Par": The condition always passes. The number may be used as a parameter for the commands in this action entry. See the commands for the uses of parameters.
 
@@ -88,10 +88,9 @@ If the action is considered, the five conditions are evaluated. If any fail, the
 19. "CT=": The condition passes if the counter is equal to the number. It fails if the counter is not equal to the number.
 
 There are thirty-two possible flag-bits numbered from 0 to 31. They are all initially cleared. There are commands to set and clear them as well as the conditions to test their values. Two of the flags have assigned meanings:
+15: Means it is dark out when the flag is set. The room will be in darkness if the artificial light source is not in the room or being carried.  (Object 9 is the lighted artificial light source.) There are two special commands (NIGHT and DAY) to set and clear this flag-bit.
 
-15. Means it is dark out when the flag is set. The room will be in darkness if the artificial light source is not in the room or being carried.  (Object 9 is the lighted artificial light source.) There are two special commands (NIGHT and DAY) to set and clear this flag-bit.
-
-16. Means the artificial light has run out when it is set. The FILL command clears this flag-bit when it resets the time limit to the original maximum.
+16: Means the artificial light has run out when it is set. The FILL command clears this flag-bit when it resets the time limit to the original maximum.
 
 The counter is special value which can be incremented and decremented by special commands as well as tested by some conditions. There are also alternate counters which can be exchanged with the counter in order to operate on other numbers.
 
