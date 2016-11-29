@@ -154,11 +154,11 @@ The object description should begin with an asterisk if the object is to be reco
 
 An example of a treasure that can be picked up is:
 
-"*FIRESTONE* (cold now)/FIR/"
+"\*FIRESTONE\* (cold now)/FIR/"
 
 which can be picked up by the word "FIR". Before the firestone cools, this object was in the storeroom and a different object was in the room:
 
-"glowing *FIRESTONE*"
+"glowing \*FIRESTONE\*"
 
 Because it does not begin with an asterisk, it is not recognized as a treasure if it is in the treasure room, and it cannot be picked up because it has no name. The action that cools the firestone swaps the locations of these two similar objects.
 
