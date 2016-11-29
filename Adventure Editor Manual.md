@@ -1,4 +1,4 @@
-*Preface
+##Preface
 
 THE ADVENTURE SYSTEM contains programs for creating/editing adventure data bases and running the data bases. This package requires a 48K disk system.
 
@@ -30,7 +30,7 @@ Any adventures you write are your property. You may market them on your own if y
     Lansing, MI 48910
 
 
-Introduction
+##Introduction
 
 ADVEDIT is an editing program for adventures. With it, most adventure data bases can be read in and viewed or modified. Even a Scott Adams' ADVENTURE can be read in and solved. This manual is divided into chapters, each containing a different section of ADVENTURE and using the ADVEDIT program. A summary of the chapters and appendices is given below:
 
@@ -50,8 +50,7 @@ Appendix A contains an abbreviated ADVEDIT command summary. This will be highly 
 
 Appendix B tells how to submit your adventures to THE ALTERNATE SOURCE for marketing purposes.
 
-
-Chapter 1
+##Chapter 1
 
 Overview of ADVEDIT and Adventures in general
 
@@ -64,7 +63,7 @@ ADVENTURE 8.2 (by Adams') has recently been superceded by version 8.3. The newes
 The concept of adventure is very simple. The basic idea is that certain commands are executed when certain conditions are met. The only problem, as all adventurers have found, is getting the conditions to be met. The trick to writing good adventures (like Scott's) is making the conditions subtle, but logical. The purchase of Scott's adventures is highly recommended. The techniques in his data bases are excellent teaching tools along with being fun to play.
 
 
-Chapter 2
+##Chapter 2
 
 Adventure data base format
 
@@ -419,7 +418,7 @@ adventure (0-9, A-Z). The security checksum is
 computed by the ADVENTURE program does not equal the one in
 the adventure file the ADVENTURE program will hang up.
 
-Chapter 3
+##Chapter 3
 
 ADVENTURE Instructions
 
