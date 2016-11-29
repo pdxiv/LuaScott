@@ -174,16 +174,18 @@ Code | Symbol | Description
 71 | SAVE | Saves the game to disk or tape depending on which version is being used. It writes some user variables such as the current room, current locations of all objects, status of all bit flags, current values of all alternate room registers and the current values of all counters.
 72 | EXX,X | Exchange the room location of the Par #1 object with the room location of the Par #2 object. A DSPRM is automatically performed if either Par #1 or Par #2 objects were in the current room.
 73 | CONT | This command sets a flag to allow more than four commands to be performed. When all commands in this action entry have been performed, the conditions of all subsequent action entries with a zero verb and noun (up to the first non-zero verb and noun) will be evaluated. The checking procedure continues regardless if the entry being checked is true or false, For example, consider the following actions:
-    LIGHT TORCH   HAS 12   PAR 9    PAR 12   PAR 0    PAR 0
-         EXX,X   MSG5   CONT   -
-    AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
-        EXM,CT   CT-1    -     -
-    AUTO 0        CT= 0    PAR 9    PAR 12   PAR 0    PAR 0
-        EXX,X    MSG6    -     -
-    AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
-        EXM,CT    -      -     -
-    SHOOT GUN     HAS 23   IN/W 2   PAR 2    PAR 4    PAR 0
-         EXX,X   MSG8    -     -
+```
+LIGHT TORCH   HAS 12   PAR 9    PAR 12   PAR 0    PAR 0
+     EXX,X   MSG5   CONT   -
+AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
+    EXM,CT   CT-1    -     -
+AUTO 0        CT= 0    PAR 9    PAR 12   PAR 0    PAR 0
+    EXX,X    MSG6    -     -
+AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
+    EXM,CT    -      -     -
+SHOOT GUN     HAS 23   IN/W 2   PAR 2    PAR 4    PAR 0
+     EXX,X   MSG8    -     -
+```
 If the conditions of the action with the verb-noun of "LIGHT TORCH" are found to be true, then its commands are executed. One of the commands is a "CONT". This means that all "AUTO 0" verb-noun actions following "LIGHT TORCH" will be considered. In this case there are three of them. All three are considered even if none of them are true or false. For example, the third one is considered even if the second one was true.
 74 | AGETX | Always get Par #1 object even if the carry limit is overflowed.
 75 | BYX->X | Put the Par #1 object in the same room as the Par #2 object. If the Par #2 object is being carried this will pick up the Par #1 object also, regardless of the carry limit. If this command changes any objects in the current room a DSPRM command is automatically executed.
