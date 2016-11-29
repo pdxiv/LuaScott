@@ -61,36 +61,57 @@ function table.slice(table_to_slice, first, last, step)
   return sliced
 end
 
-for i = 1, #action do
-  print(i - 1 .. ": \"" .. action_comment[i] .. "\"")
 
-  local condition_code = table.slice(action[i], 3, 11, 2)
-  local condition_argument = table.slice(action[i], 4, 12, 2)
-  local command = table.slice(action[i], 13,16)
+function process_auto_actions()
+  for i = 1, #action do
+    local condition_code = table.slice(action[i], 3, 11, 2)
+    local condition_argument = table.slice(action[i], 4, 12, 2)
+    local command = table.slice(action[i], 13,16)
 
-  for j = 1, #action[i] do
-    print('  ' .. j - 1 .. ": " .. action[i][j])
-  end
+    if action[i][1] == 0 then
+      print(i - 1 .. ": \"" .. action_comment[i] .. "\"")
+      print('Chance to execute: ' .. action[i][2] .. "%")
+      for j = 1, #condition_code do
+        print('Condition ' .. j - 1 .. ': ' .. condition_code[j] .. " " .. condition_argument[j] .. " - " .. load_game_data.condition_description(condition_code[j]))
+      end
 
-  if action[i][1] > 0 then
-    print('Verb: "' .. verb[action[i][1] + 1] .. '", Noun: "'.. noun[action[i][2] + 1] .. '"')
-  else
-  	print('Chance to execute: ' .. action[i][2] .. "%")
-  end
-
-  for j = 1, #condition_code do
-    print('Condition ' .. j - 1 .. ': ' .. condition_code[j] .. " " .. condition_argument[j] .. " - " .. load_game_data.condition_description(condition_code[j]))
-  end
-
-  for j = 1, #command do
-  	if command[j] < 51 then
-      print('Command ' .. j - 1 .. ': ' .. command[j] .. " - " .. load_game_data.command_description(command[j]))
-    else
-      print('Command ' .. j - 1 .. ': ' .. command[j] .. " - \"" .. message[command[j] - 49] .. "\"")
+      for j = 1, #command do
+        if command[j] < 51 then
+          print('Command ' .. j - 1 .. ': ' .. command[j] .. " - " .. load_game_data.command_description(command[j]))
+        else
+          print('Command ' .. j - 1 .. ': ' .. command[j] .. " - \"" .. message[command[j] - 49] .. "\"")
+        end
+      end
     end
   end
 end
 
+function process_word_actions()
+  for i = 1, #action do
+    local condition_code = table.slice(action[i], 3, 11, 2)
+    local condition_argument = table.slice(action[i], 4, 12, 2)
+    local command = table.slice(action[i], 13,16)
+
+    if action[i][1] > 0 then
+      print(i - 1 .. ": \"" .. action_comment[i] .. "\"")
+      print('Verb: "' .. verb[action[i][1] + 1] .. '", Noun: "'.. noun[action[i][2] + 1] .. '"')
+      for j = 1, #condition_code do
+        print('Condition ' .. j - 1 .. ': ' .. condition_code[j] .. " " .. condition_argument[j] .. " - " .. load_game_data.condition_description(condition_code[j]))
+      end
+
+      for j = 1, #command do
+        if command[j] < 51 then
+          print('Command ' .. j - 1 .. ': ' .. command[j] .. " - " .. load_game_data.command_description(command[j]))
+        else
+          print('Command ' .. j - 1 .. ': ' .. command[j] .. " - \"" .. message[command[j] - 49] .. "\"")
+        end
+      end
+    end
+  end
+end
+
+process_auto_actions()
+process_word_actions()
 
 -- Example datastructure for communication with user interface in JSON format
 -- Data is divided into two parts: "Basic data" and "Update data".
