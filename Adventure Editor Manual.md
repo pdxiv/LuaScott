@@ -34,14 +34,14 @@ Any adventures you write are your property. You may market them on your own if y
 
 ADVEDIT is an editing program for adventures. With it, most adventure data bases can be read in and viewed or modified. Even a Scott Adams' ADVENTURE can be read in and solved. This manual is divided into chapters, each containing a different section of ADVENTURE and using the ADVEDIT program. A summary of the chapters and appendices is given below:
 
-* Chapter 1 Overview of ADVEDIT and adventures in general. This chapter describes what ADVEDIT does and the basics of adventure.
-* Chapter 2 Description of the ADVENTURE data base structure. This chapter will describe in detail what "the different conditions and commands of ADVENTURE are. This is the most important chapter to know before trying to write your own adventures.
-* Chapter 3 ADVENTURE program instructions. This chapter describes how adventures must be entered so they will work properly with Scott Adams' ADVENTURE program or Bruce Hansen's ADV/CMD program.
-* Chapter 4 Operating Instructions. This chapter contains the instructions for ADVEDIT. A suggested procedure is also given to assist you in entering an adventure.
-* Chapter 5 Sample ADVENTURE. This chapter will describe a short adventure written to show how to use most of the commands and conditions.
-* Chapter 6 ADVENTURE solving techniques. This chapter will describe how to solve any adventure readable by the ADVEDIT program.
-* Appendix A contains an abbreviated ADVEDIT command summary. This will be highly useful when writing adventures once you are familiar with the commands and conditions.
-* Appendix B tells how to submit your adventures to THE ALTERNATE SOURCE for marketing purposes.
+* **Chapter 1** Overview of ADVEDIT and adventures in general. This chapter describes what ADVEDIT does and the basics of adventure.
+* **Chapter 2** Description of the ADVENTURE data base structure. This chapter will describe in detail what "the different conditions and commands of ADVENTURE are. This is the most important chapter to know before trying to write your own adventures.
+* **Chapter 3** ADVENTURE program instructions. This chapter describes how adventures must be entered so they will work properly with Scott Adams' ADVENTURE program or Bruce Hansen's ADV/CMD program.
+* **Chapter 4** Operating Instructions. This chapter contains the instructions for ADVEDIT. A suggested procedure is also given to assist you in entering an adventure.
+* **Chapter 5** Sample ADVENTURE. This chapter will describe a short adventure written to show how to use most of the commands and conditions.
+* **Chapter 6** ADVENTURE solving techniques. This chapter will describe how to solve any adventure readable by the ADVEDIT program.
+* **Appendix A** contains an abbreviated ADVEDIT command summary. This will be highly useful when writing adventures once you are familiar with the commands and conditions.
+* **Appendix B** tells how to submit your adventures to THE ALTERNATE SOURCE for marketing purposes.
 
 ##Chapter 1
 
