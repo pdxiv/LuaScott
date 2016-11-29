@@ -75,8 +75,8 @@ The possible command codes mean the following:
 
 Code | Symbol | Description
 ---- | ------ | -----------
-0 | No | command or message. This command actually displays message 0 which is null.
-1-51 | Display | message number 1-51.
+0 | | No command or message. This command actually displays message 0 which is null.
+1-51 | | Display message number 1-51.
 52 | GETx | Pick up the Par #1 object unless he already is carrying the limit. The object may be in this room or in any other room.
 53 | DROPx | Drop the Par #1 object in the current room. The object may be carried or may be in another room.
 54 | GOTOy | Move the player to the Par #1 room. This command should be followed by a DspRM command. Also, this may need to be followed by a DAY/NIGHT command.
