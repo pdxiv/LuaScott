@@ -1,14 +1,14 @@
 ##Preface
 
-THE ADVENTURE SYSTEM contains programs for creating/editing adventure data bases and running the data bases. This package requires a 48K disk system.
+THE ADVENTURE SYSTEM contains programs for creating/editing adventure databases and running the databases. This package requires a 48K disk system.
 
 ADVLIST (the original adventure creator/editor) was written by Allan Moluf for his own use. This version was written in BASIC and worked quite well. Bruce Hansen enhanced ADVLIST with new commands. Since some ADVLIST commands could' take close to three minutes to complete their tasks, the slower routines were written in assembly language by Bruce Hansen. The program was consequently renamed ADVEDIT.
 
-The ADVENTUR/CMD driver program written by Scott Adams could not be sold with this package as this would be a copyright violation. Moreover, this program is not readily accessible from the newer adventure diskettes which are protected. However, this driver program is required to run the data bases created/edited by ADVEDIT. To alleviate this problem, the ADV/CMD program was written by Bruce Hansen. This program functions exactly as Scott Adams' Adventure driver program.
+The ADVENTUR/CMD driver program written by Scott Adams could not be sold with this package as this would be a copyright violation. Moreover, this program is not readily accessible from the newer adventure diskettes which are protected. However, this driver program is required to run the databases created/edited by ADVEDIT. To alleviate this problem, the ADV/CMD program was written by Bruce Hansen. This program functions exactly as Scott Adams' Adventure driver program.
 
-A disk to tape utility program is available from the dealer for an extra charge. The ADVTAPE/CMD program will read in a disk adventure data base and write out a tape version of the adventure. The tape will contain the adventure driver written by Bruce Hansen and the data from the disk data- base file. This allows a 16K computer to run adventures created with ADVEDIT. Since the tape contains the adventure driver written by Hansen, these tape versions can not be sold without written permission from the author. For more information on selling your adventures, see Appendix B of this manual.
+A disk to tape utility program is available from the dealer for an extra charge. The ADVTAPE/CMD program will read in a disk adventure database and write out a tape version of the adventure. The tape will contain the adventure driver written by Bruce Hansen and the data from the disk data- base file. This allows a 16K computer to run adventures created with ADVEDIT. Since the tape contains the adventure driver written by Hansen, these tape versions cannot be sold without written permission from the author. For more information on selling your adventures, see Appendix B of this manual.
 
-Since ADVEDIT requires the data bases to not be on protected diskettes, the ADVCOPY/CMD utility was written. This program will read the data base from a Scott Adams' protected diskette and put it on an unprotected one. This program is also available from your dealer for an extra charge.
+Since ADVEDIT requires the databases to not be on protected diskettes, the ADVCOPY/CMD utility was written. This program will read the database from a Scott Adams' protected diskette and put it on an unprotected one. This program is also available from your dealer for an extra charge.
 
 A great deal of work has been put into this manual. It is intended to instruct the user on everything he needs to know to write and edit adventures. You supply the ideas.
 
@@ -32,10 +32,10 @@ Any adventures you write are your property. You may market them on your own if y
 
 ##Introduction
 
-ADVEDIT is an editing program for adventures. With it, most adventure data bases can be read in and viewed or modified. Even a Scott Adams' ADVENTURE can be read in and solved. This manual is divided into chapters, each containing a different section of ADVENTURE and using the ADVEDIT program. A summary of the chapters and appendices is given below:
+ADVEDIT is an editing program for adventures. With it, most adventure databases can be read in and viewed or modified. Even a Scott Adams' ADVENTURE can be read in and solved. This manual is divided into chapters, each containing a different section of ADVENTURE and using the ADVEDIT program. A summary of the chapters and appendices is given below:
 
 * **Chapter 1** Overview of ADVEDIT and adventures in general. This chapter describes what ADVEDIT does and the basics of adventure.
-* **Chapter 2** Description of the ADVENTURE data base structure. This chapter will describe in detail what "the different conditions and commands of ADVENTURE are. This is the most important chapter to know before trying to write your own adventures.
+* **Chapter 2** Description of the ADVENTURE database structure. This chapter will describe in detail what "the different conditions and commands of ADVENTURE are. This is the most important chapter to know before trying to write your own adventures.
 * **Chapter 3** ADVENTURE program instructions. This chapter describes how adventures must be entered so they will work properly with Scott Adams' ADVENTURE program or Bruce Hansen's ADV/CMD program.
 * **Chapter 4** Operating Instructions. This chapter contains the instructions for ADVEDIT. A suggested procedure is also given to assist you in entering an adventure.
 * **Chapter 5** Sample ADVENTURE. This chapter will describe a short adventure written to show how to use most of the commands and conditions.
@@ -47,27 +47,27 @@ ADVEDIT is an editing program for adventures. With it, most adventure data bases
 
 Overview of ADVEDIT and Adventures in general
 
-ADVEDIT has only one purpose: To edit and create adventure data bases. All user created adventures must be run with either Scott Adams' ADVENTURE program (version 8.2) or Bruce Hansen's ADV program. ADVENTUR/CMD is the file name for the main or driver program. Adventure data bases are saved on disk as ADVENT/Dx, where x is a number from 0-9 or a letter A-Z. Adventures X and Y are on your master diskette as ADVENT/DX and ADVENT/DY. Adventure "X" is a "Miner's adventure" and adventure "Y" is a "Burglar's adventure".
+ADVEDIT has only one purpose: To edit and create adventure databases. All user created adventures must be run with either Scott Adams' ADVENTURE program (version 8.2) or Bruce Hansen's ADV program. ADVENTUR/CMD is the file name for the main or driver program. Adventure databases are saved on disk as ADVENT/Dx, where x is a number from 0-9 or a letter A-Z. Adventures X and Y are on your master diskette as ADVENT/DX and ADVENT/DY. Adventure "X" is a "Miner's adventure" and adventure "Y" is a "Burglar's adventure".
 
-Recently Scott Adams started selling all of his adventures on "protected" diskettes. The adventure data bases on these diskettes are unusable by ADVEDIT. However, a program is available from your dealer which will transfer the data base from a protected diskette to an un-protected one. This program is called "ADVCOPY". The adventure driver program on these protected diskettes can not be copied to an unprotected diskette thus raising the need for ADV/CMD.
+Recently Scott Adams started selling all of his adventures on "protected" diskettes. The adventure databases on these diskettes are unusable by ADVEDIT. However, a program is available from your dealer which will transfer the database from a protected diskette to an un-protected one. This program is called "ADVCOPY". The adventure driver program on these protected diskettes cannot be copied to an unprotected diskette thus raising the need for ADV/CMD.
 
-ADVENTURE 8.2 (by Adams') has recently been superceded by version 8.3. The newest version is included on all Adventure 0-12 diskettes. ADVEDIT supports all commands of Adventure 8.2 and 8.3, however, as new versions are released, new commands may be added. This may make ADVEDIT and ADV/CMD incompatible with the adventure data bases used by this new version. ADVEDIT and ADV/CMD will be maintained so they work with new versions of ADVENTURE. At this time, ADVEDIT and ADV/CMD will work with Scott Adams' Adventures 0-12.
+ADVENTURE 8.2 (by Adams') has recently been superseded by version 8.3. The newest version is included on all Adventure 0-12 diskettes. ADVEDIT supports all commands of Adventure 8.2 and 8.3, however, as new versions are released, new commands may be added. This may make ADVEDIT and ADV/CMD incompatible with the adventure databases used by this new version. ADVEDIT and ADV/CMD will be maintained so they work with new versions of ADVENTURE. At this time, ADVEDIT and ADV/CMD will work with Scott Adams' Adventures 0-12.
 
-The concept of adventure is very simple. The basic idea is that certain commands are executed when certain conditions are met. The only problem, as all adventurers have found, is getting the conditions to be met. The trick to writing good adventures (like Scott's) is making the conditions subtle, but logical. The purchase of Scott's adventures is highly recommended. The techniques in his data bases are excellent teaching tools along with being fun to play.
+The concept of adventure is very simple. The basic idea is that certain commands are executed when certain conditions are met. The only problem, as all adventurers have found, is getting the conditions to be met. The trick to writing good adventures (like Scott's) is making the conditions subtle, but logical. The purchase of Scott's adventures is highly recommended. The techniques in his databases are excellent teaching tools along with being fun to play.
 
 ##Chapter 2
 
-Adventure data base format
+Adventure database format
 
-The data base is the actual adventure. By changing this data base different adventures may be obtained.
+The database is the actual adventure. By changing this database different adventures may be obtained.
 
-The data base consists of the following sections:
+The database consists of the following sections:
 
 1. HEADER information. The header contains the number of actions, vocabulary entries, rooms, messages, objects and some other variables.
 2. ACTION entries. The action entries contain the known player inputs (verb, noun), conditions and commands. Also contained are automatic actions. The automatic actions serve mainly for bookkeeping.
 3. VOCABULARY entries. These two lists (verbs and nouns) contain all of the words the player may use in this particular adventure.
 4. MESSAGE text. These are the messages used by the adventure and are controlled by the actions.
-5. ROOM description. This is a list of directions tc other rooms along with a text room description.
+5. ROOM description. This is a list of directions to other rooms along with a text room description.
 6. OBJECT description and starting locations. The description of the object determines if it is a treasure, an object which may be carried and dropped or something else. The starting location tells in which room the object starts in, if it is being carried at the start of the adventure or if it starts in the storeroom.
 7. ACTION TITLES. These are optional text descriptions of the actions. They are ignored by the ADVENTURE driver program but serve as remarks to the actions when using the ADVEDIT program.
 8. TRAILER information. This contains the version number, adventure number and a checksum.
@@ -84,7 +84,7 @@ The header contains the following information:
 6. The maximum number of objects which may be carried. Under certain conditions the actions can cause more than this number to be carried. The player will not be able to pick up anything unless the number of objects currently being carried is less than this number.
 7. The starting room number for this adventure.
 8. The number of treasures in this adventure. When the SCORE command is issued this number is divided by the number of treasures in the treasure room to give the percent score.
-9. The word length used by this adventure. This number affects the nouns and verbs. When the adventure data base is read in by the ADVENTURE driver program, all nouns and verbs are either truncated or padded to this length plus one. This value is the minimum length of verbs and nouns the player may input.
+9. The word length used by this adventure. This number affects the nouns and verbs. When the adventure database is read in by the ADVENTURE driver program, all nouns and verbs are either truncated or padded to this length plus one. This value is the minimum length of verbs and nouns the player may input.
 10. The time limit. This may be used in some games to control how long the artificial light will last. If there is no artificial light, it may control the number of turns in this adventure. If the artificial light is re-filled, this value is put back in the time limit. The limit is 32767.
 11. The highest numbered message. Messages are numbered from zero so this value is the number of messages plus one.
 12. The treasure room number. When treasures are in this room they are considered collected. When the SCORE command is issued they are summed and divided into the number of treasures for the percentage score.
@@ -113,9 +113,9 @@ Code | Symbol | Description
 7 | -IN | The condition passes if the player is not in the numbered room. The condition fails if the player is in any other room.
 8 | BIT | The condition passes if the numbered bit flag is set. It fails if the flag is cleared. See the description of bit flags later on for more information.
 9 | -BIT | The condition passes if the numbered bit flag is cleared. It fails if the flag is set. See the description of bit flags later on for more information.
-10 | ANY | The condition passes if the player is carrying any objects at all. It fails if the player is not carrying any objects. The parameter entered (i.e. ANY 50) has no affect on this Condition.
+10 | ANY | The condition passes if the player is carrying any objects at all. It fails if the player is not carrying any objects. The parameter entered (i.e. ANY 50) has no effect on this Condition.
 11 | -ANY | The condition passes if the player is not carrying any objects. It fails if the player is carrying any objects at all.
-12 | -AVL | The condition passes if the .numbered object is in any other room. It fails if the object is available either because it is being carried or it is in the same room as the player.
+12 | -AVL | The condition passes if the numbered object is in any other room. It fails if the object is available either because it is being carried or it is in the same room as the player.
 13 | -RM0 | The condition passes if the numbered object is not in room zero. Room zero is reserved as a storeroom. The condition fails if the object is in room zero.
 14 | RM0 | The condition passes if the numbered object is in room zero. The condition fails if the object is in any room other than room zero.
 15 | CT<= | The condition passes if the counter is less than or equal to the number. It fails if the counter is greater than the number. See the description of the counters later on for more information.
@@ -144,7 +144,7 @@ The seventh and eighth bytes of the action entry are the four command codes. The
 
 These four commands may use one or more parameters found in the condition line of the same action entry. For example, if the first parameter found in the conditions was a 10 (PAR 10) and the first command which used a parameter in the commands was a GOTOY command, the player would move to room 10 (GOTO 10).
 
-If a command uses one parameter, its value is represented by "Par #1" in the following command description. If the command uses two parameters the first is represented by "Par #1" and the second by "Par #2." The parameters used by any command are skipped by later commands if they also use parameters. For example, if the conditions held three parameters: PAR 3, PAR 15, PAR 26 in that order, the first command that used a parameter would use the 3, the second command would use the 15 and the third would use the 26. Too many parameters in the conditions has no effect. But not having as many parameters in the conditions as the number expected by the commands will produce strange results. For example, specifying no parameters in the conditions and having a "GETX" command in the commands.
+If a command uses one parameter, its value is represented by "Par #1" in the following command description. If the command uses two parameters, the first is represented by "Par #1" and the second by "Par #2." The parameters used by any command are skipped by later commands if they also use parameters. For example, if the conditions held three parameters: PAR 3, PAR 15, PAR 26 in that order, the first command that used a parameter would use the 3, the second command would use the 15 and the third would use the 26. Too many parameters in the conditions has no effect. But not having as many parameters in the conditions as the number expected by the commands will produce strange results. For example, specifying no parameters in the conditions and having a "GETX" command in the commands.
 
 These are the possible command codes in ADVENTURE 8.3:
 
@@ -167,8 +167,8 @@ Code | Symbol | Description
 64 | DSPRM | Display the current room. This checks the light/darkness flag and if the artificial light source is present. If it is light, the room description, visible objects and obvious exits are displayed. If it is dark, nothing is displayed (it is too dark to see) unless the artificial light source is present.
 65 | SCORE | Tells the player how many treasures are in the treasure room and what percentage the total is. If one hundred percent is stored, then the winning message is displayed and the player is given the option of playing again.
 66 | INV | Tells the player what objects are being carried.
-67 | SET0 | This sets the zero bit flag. It may be useful since no parameter from the conditions is necessary.
-68 | CLR0 | Clears the zero bit flag. It may be useful since no parameter from the conditions is necessary.
+67 | SET0 | This sets the zero-bit flag. It may be useful since no parameter from the conditions is necessary.
+68 | CLR0 | Clears the zero-bit flag. It may be useful since no parameter from the conditions is necessary.
 69 | FILL | Re-fills the artificial light source and clears the bit flag 16 (indicator of light source status). This also picks up the artificial light source. This command should immediately be followed by a X->RM0 command where Par #1 is the unlighted artificial light source (they are two different objects).
 70 | CLS | This command did a clear screen in the BASIC version of ADVENTURE and does nothing in the machine language version.
 71 | SAVE | Saves the game to disk or tape depending on which version is being used. It writes some user variables such as the current room, current locations of all objects, status of all bit flags, current values of all alternate room registers and the current values of all counters.
@@ -187,14 +187,14 @@ Code | Symbol | Description
 84 | SAYW | This displays the noun (second word) input by the player.
 85 | SAYWCR | This displays the noun (second word) input by the player followed by a carriage return.
 86 | SAYCR | Starts a new line on the display.
-87 | EXC,CR | Exchange the value of the current room with the Par tfi alternate room register. This may be used to remember more than one room. There are six alternate room registers numbered to 5.
+87 | EXC,CR | Exchange the value of the current room with the Par #1 alternate room register. This may be used to remember more than one room. There are six alternate room registers numbered to 5.
 88 | DELAY | This command pauses for about 1 second before going on to the next command.
 89-101 | | These commands are undefined by version 8.3 of ADVENTURE but may be used in future ADVENTURE releases.
 102-149 | | Display messages 52-99.
 
 Note that action commands 89-101 are not used. Scott Adams may use these in future updates of the adventure driver. However, they may also be defined by THE ADVENTURE SYSTEM. If you have any suggestions for added commands, send them to the author for consideration.
 
-The automatic action entries have a variety of uses. All of them are considered before a player input. Such things as falling asleep, checking for day/night or any other tasks that must be performed without player input are candidates for automatic action entries. Chapter 5 contain.s a more detailed description of automatic actions.
+The automatic action entries have a variety of uses. All of them are considered before a player input. Such things as falling asleep, checking for day/night or any other tasks that must be performed without player input are candidates for automatic action entries. Chapter 5 contains a more detailed description of automatic actions.
 
 For an example of the CONT command, consider the following actions:
 ```
@@ -213,7 +213,7 @@ If the conditions of the action with the verb-noun of "LIGHT TORCH" are found to
 
 ###VOCABULARY entries
 
-Each vocabulary entry consists of a verb string and a noun string. Synonyms are handled by beginning the word with an asterisk, which are then treated the same as the first previous word with out an asterisk. Some of the vocabulary entries are predefined by ADVENTURE and SHOULD NOT be changed. These predefined verbs and nouns are listed below:
+Each vocabulary entry consists of a verb string and a noun string. Synonyms are handled by beginning the word with an asterisk, which are then treated the same as the first previous word without an asterisk. Some of the vocabulary entries are predefined by ADVENTURE and SHOULD NOT be changed. These predefined verbs and nouns are listed below:
 
 Verbs
 
@@ -256,7 +256,7 @@ video driver program is being used. The ADVENTURE program
 will automatically change these to quotes.
 
 Room zero is reserved as a storeroom for objects currently
-not in any room. The player can not get to room zero by
+not in any room. The player cannot get to room zero by
 using one of the reserved directions. Actions usually do
 not permit the player to enter this room.
 The last room is reserved for some sort of limbo state
@@ -266,7 +266,7 @@ to the other rooms.
 
 ###MESSAGE entries
 
-The messages consists of a string of characters for each
+The messages consist of a string of characters for each
 message to be displayed by any of the action entries. Entry
 should always be left as a null string. To get quotes to
 appear within a message simply type a SHIFTed @ in place of
@@ -302,7 +302,7 @@ the following object was in the room:
 `glowing *FIRESTONE*`
 
 Because this object does not begin with an asterisk it is
-not recognized as a treasure. Also, it can not be picked up
+not recognized as a treasure. Also, it cannot be picked up
 since it has no name between slashes. The action that cools
 the firestone exchanges the locations of these two objects.
 
@@ -331,7 +331,7 @@ adventure number is simply the number identifying the
 adventure (0-9, A-Z). The security checksum is
 `(2 * #actions + #objects + version)`. If the checksum
 computed by the ADVENTURE program does not equal the one in
-the adventure file the ADVENTURE program will hang up.
+the adventure file, the ADVENTURE program will hang up.
 
 ##Chapter 3
 
@@ -390,7 +390,7 @@ Room rules are as follows:
 1) No quotes can be used in the room description. Quote
 marks are used as delimiters for the room description,
 thus using them within a description will cause problems
-when trying to read the adventure data base. If quote
+when trying to read the adventure database. If quote
 marks are desired, a SHIFTed @ sign (a character 60 hex)
 should be used in their place. The ADVENTURE program
 will change these to quotes (the SHIFTed @ sign will
@@ -404,7 +404,7 @@ something similar.
 
 3) Each room has six values associated with it. These are
 the room numbers which are entered on a direction
-command (i. e. GO NORTH). These values should be legal
+command (i.e. GO NORTH). These values should be legal
 room numbers (ADVEDIT won't let a bad number be
 entered). A zero is used if no exit is possible in that
 direction.
@@ -448,14 +448,14 @@ There are a few differences in the ADVENTURE drivers "ADV"
 and "ADVENTUR". The biggest difference is the disk
 input/output of each.
 
-"ADVENTUR" limits the name of the adventure data base being
+"ADVENTUR" limits the name of the adventure database being
 read in to one character. For example, legal adventure
 names are:
 
 ADVENT /DA
 ADVENT /D7
 
-"ADV" limits the name of the adventure data base to two
+"ADV" limits the name of the adventure database to two
 characters. For example, legal adventure names are:
 
 ADVENT/DA
@@ -465,7 +465,7 @@ ADVENT/DOA
 
 The other difference is the file structure of a game saved
 in progress. These saved games are not compatible with each
-other (a game saved by "ADV" can not be read in by
+other (a game saved by "ADV" cannot be read in by
 "ADVENTUR").
 
 The file names written out are also different. The main
@@ -478,7 +478,7 @@ adventure number being played.
 
 With "ADV", the extension is "/Sxn" where "x" is the first
 character of the adventure number (the second one is ignored
-if the adventure data base had a two letter name like
+if the adventure database had a two letter name like
 ADVENT/DOA) and "n" is the game version written out. "ADV"
 allows up to ten different files to be written from the same
 adventure. This allows the progress of an adventure to be
@@ -533,19 +533,19 @@ Next, type in:
 RUN "ADVEDIT/BAS"
 
 To modify or just peek (that's cheating!) at an existing
-data base, READ it into memory and then use the ADVEDIT
+database, READ it into memory and then use the ADVEDIT
 commands to review it. To create a new adventure simply run
 ADVEDIT and start entering data via the MODIFY command.
 
 The ADVEDIT commands and corresponding menu keys are listed
 below:
 
-R READ an adventure data base in.
-W WRITE an adventure data base out.
-L LIST the data base.
-P PRINT (hardcopy) the data base.
-M MODIFY a data base section.
-I INSERT blanks into the data base.
+R READ an adventure database in.
+W WRITE an adventure database out.
+L LIST the database.
+P PRINT (hardcopy) the database.
+M MODIFY a database section.
+I INSERT blanks into the database.
 X XREF: reference every occurrence of a database section in the actions.
 E END the ADVEDIT program.
 
@@ -554,7 +554,7 @@ description of each command is given below.
 
 READ command:
 
-This command will read in an adventure data base. Simply
+This command will read in an adventure database. Simply
 supply the adventure number and the drive number. If the
 drive number is not entered, the first occurrence of the
 file is used.
@@ -569,7 +569,7 @@ displayed by the adventure driver program (ADVENTUR/CMD or
 ADV/CMD) will be from 0-35. Only the first character of the
 file name is used in determining this number. A 0-9 are
 displayed as that number, an "A" is displayed as a 10 , a "B"
-as an 11, etc. The TRAILER of the data base contains the
+as an 11, etc. The TRAILER of the database contains the
 adventure number. Scott Adams' adventure driver program
 requires this value to be a single digit from 0-9.
 Therefore, only the least significant digit of the adventure
@@ -584,18 +584,18 @@ ZD           ADVENT/DZD
 
 
 
-If an error occurs while reading a data base, an appropriate
+If an error occurs while reading a database, an appropriate
 error message is displayed and control returns to the main
 menu.
 
-If bad data somehow gets into the data base, a "*BAD
-SECURITY*" message is displayed. The data base will have
-been read in, but the accuracy of the data can not be
+If bad data somehow gets into the database, a "*BAD
+SECURITY*" message is displayed. The database will have
+been read in, but the accuracy of the data cannot be
 guaranteed.
 
 WRITE command:
 
-The WRITE command will store an adventure data base on disk.
+The WRITE command will store an adventure database on disk.
 The adventure number and drive number are requested. If the
 adventure being written out was previously read in, hitting
 <ENTER> for the adventure number and drive number will write
@@ -604,11 +604,11 @@ the adventure out with the same specifications.
 The adventure number entered must be in the same format as
 in the READ command.
 
-Before writing the data base, ADVEDIT verifies that the
+Before writing the database, ADVEDIT verifies that the
 HEADER is holding the correct limiting values of the number
 of actions, messages, etc. For example, suppose you entered
 50 messages but the HEADER said there were only 40. Writing
-the data base out without checking the limits would result
+the database out without checking the limits would result
 in some lost data (messages 41-50). ADVEDIT makes a check
 and would write out all 50 messages.
 
@@ -626,9 +626,9 @@ letter of its name. For example, if "A" is pressed, the
 Action entries will be listed. If the "-" key is pressed,
 the LIST sub-menu is exited back to the main menu.
 
-After a section of the data base is selected, the lower and
+After a section of the database is selected, the lower and
 upper limits to be displayed are input. If the ENTER key is
-depressed for this inquiry, all of that data base section
+depressed for this inquiry, all of that database section
 will be listed. The listing will automatically pause after
 so many lines are displayed. To continue the listing, hit
 any key (except BREAK).
@@ -638,30 +638,30 @@ cause the listing to be exited and the LIST sub-menu to be
 reentered. If the listing has paused, then pressing the
 SPACE BAR will not exit back to the LIST sub-menu.
 
-The number of items in each data base section is kept in the
+The number of items in each database section is kept in the
 
 HEADER. This value is the upper limit used by ADVEDIT when
 the ENTER key is depressed on the limit inquiry (lower and
 upper bounds). The MODIFY command will allow input past
 this value without changing the value. As a result, all
-items of a data base section may not be reviewed on a LIST,
+items of a database section may not be reviewed on a LIST,
 PRINT or MODIFY. To fix this, just make sure the HEADER
-points to at least the highest value of the data base
+points to at least the highest value of the database
 section in question.
 
 To LIST Action entries 5 through 65, input the following
-(user inputs are underlined) :
+(user inputs are underlined):
 
 L (Hit the "L" key from the main menu to enter the
 LIST sub-menu)
 
 The computer will display the following:
 
-Which section of the data base do you want to list:
+Which section of the database do you want to list:
 Header, Actions, Vocab, Rooms, Messages or Objects
 Type: H, A, V, R, M, or - ?
 
-To select a data base section, hit the first letter of that
+To select a database section, hit the first letter of that
 section. In our example this would be the "A" key:
 
 A (To select the Action entries)
@@ -682,7 +682,7 @@ the LIST sub-menu will be reentered.
 PRINT command:
 
 The PRINT command will give a hardcopy listing of any one
-section or all of the data base. Hitting the "P" key while
+section or all of the database. Hitting the "P" key while
 at the main menu will enter the PRINT sub-menu.
 
 The options of the PRINT sub-menu are:
@@ -691,19 +691,19 @@ Everything, Header, Actions, Vocab, Messages, Rooms or
 Objects.
 
 The PRINT sub-menu gives the option of printing any or all
-of the data base. Hitting the SPACE BAR while a section is
+of the database. Hitting the SPACE BAR while a section is
 
 being printed will return control to the PRINT sub-menu.
 The PRINT command, unlike the LIST command, gives no options
 for upper and lower bounds of printing. Hitting any of the
-PRINT sub-menu options will cause that data base section to
+PRINT sub-menu options will cause that database section to
 be printed. The section is selected by pressing the first
 character of its name.
 
 When the "P" key is pressed from the main menu the computer
 will display the following:
 
-Do you want to print Everything in the data base
+Do you want to print Everything in the database
 
 or just the Header, Actions, Vocab, Messages, Rooms or
 
@@ -711,10 +711,10 @@ Type: E, H, A, V, R, M, or - ? _
 
 If the "-" key is pressed, the main menu is reentered.
 
-If any section of the data base has been entered past its
+If any section of the database has been entered past its
 limiting value (the value held in the HEADER) then all of
 the data will not be printed. To fix this, make sure the
-HEADER points to at least the highest value of the data base
+HEADER points to at least the highest value of the database
 section being PRINTed.
 
 MODIFY command:
@@ -728,19 +728,19 @@ Which section do you want to modify:
 Header, Actions, Vocab, Rooms, Messages or Objects
 Type: H, A, V, R, M, or - ? _
 
-To modify a section of the data base, simply key in the
+To modify a section of the database, simply key in the
 first letter of its name. If the option selected is
 anything other than the HEADER, an inquiry is made for the
-lower and upper limits of the data base section to be
+lower and upper limits of the database section to be
 modified. Hitting ENTER here will let the user modify all
 elements of that section. One note however, the user can
 MODIFY past the limit value held in the HEADER for each data
 base section. If ENTER is hit for the lower and upper
 bounds inquiry, any elements above the upper limit in the
 HEADER will be missed. The fix is to make sure the HEADER
-points to at least the last item in each data base section.
+points to at least the last item in each database section.
 
-When modifying any section of the data base, hitting the
+When modifying any section of the database, hitting the
 ENTER key as a response will leave the item the same.
 
 When an Action is modified, and all conditions and commands
@@ -765,7 +765,7 @@ Verbs and nouns input into actions must match exactly with
 ones found in the vocabulary or an error message will be
 printed. For example, if EXAMINE was the entry in the
 vocabulary list. EXAMINE would have to be the entry in the
-action (EXAM wouid not work).
+action (EXAM would not work).
 
 Suppose an action entry was to have "LIGHT TORCH" as its
 verb-noun, the conditions were that object 10 must be being
@@ -958,7 +958,7 @@ insertion before the DROP verb would move it from its
 predefined position, an insertion before it is not allowed.
 
 No insertions are allowed before noun 6. Nouns 1-6 are the
-predefined room directions and they can not have any
+predefined room directions and they cannot have any
 synonyms so no insertions may be done in them.
 
 Also, at times a few blank lines may be needed between two
@@ -1034,7 +1034,7 @@ the INSERT
 
 
 
-What section of the data base do you want to insert into:
+What section of the database do you want to insert into:
 Actions, Verbs or Nouns
 Type: A, V, N or - ? N
 
@@ -1101,7 +1101,7 @@ operation (instead of referring to noun 26, refer to noun
 27).
 
 One warning about INSERT. When an insertion is made, the
-highest item in the data base section selected will be moved
+highest item in the database section selected will be moved
 up in the list. The limiting value in the HEADER is not
 updated however. A check should be made to determine if
 this is the case.
@@ -1135,7 +1135,7 @@ from action entry 5 through action entry 134 reference
 object 34.
 
 There are a few oddities about the XREF command. An XREF
-can not be done on message 0. It may also give strange
+cannot be done on message 0. It may also give strange
 results on nouns. XREF can find every occurrence of a noun
 number. However, no distinction is made from nouns and auto
 action probabilities. Just list the actions after the
@@ -1167,7 +1167,7 @@ more than one part. Another solution is to send the output
 to the printer.
 
 The following table tells what conditions are searched for
-when doing an XREF on the appropriate data base section:
+when doing an XREF on the appropriate database section:
 
 OBJECTS ROOMS BIT FLAGS
 
@@ -1189,7 +1189,7 @@ ORIG
 
 
 The following table tells what commands are checked for when
-doing an XREF on the appropriate data base section:
+doing an XREF on the appropriate database section:
 
 
 
@@ -1306,7 +1306,7 @@ key to enter the XREF
 
 
 
-What section of the data base do you want an XREF of:
+What section of the database do you want an XREF of:
 Verbs, Nouns, Rooms, Messages, Objects, Bit flags
 Counters
 
@@ -1493,7 +1493,7 @@ Hansen's ADV program. The adventure number to be entered
 must be the same as the one used when writing the adventure
 out. Scott Adams' ADVENTURE program only allows one
 character to be input (0-9, A-Z). If the adventure data
-base was written out with a two character file name and
+base was written out with a two-character file name and
 Scott's driver is to be used, it must be RENAMEd from DOS to
 one with a single character name (for example, ADVENT/DA not
 ADVENT /DA A) .
@@ -1518,8 +1518,8 @@ Sample Adventure
 This chapter explains, in depth, a short adventure entitled
 "MINI-VENTURE." This adventure uses most of the conditions
 and commands available in ADVENTURE. Every significant part
-of the data base is explained. But first here's a listing
-of the data base:
+of the database is explained. But first here's a listing
+of the database:
 
 Adventure 35 Version 1.01 7837 bytes under 16K (tape) or
 11214
@@ -3396,7 +3396,7 @@ OBJECTS
 
 
 
-The data base will be explained one section at a time.
+The database will be explained one section at a time.
 First the HEADER:
 
 Adventure 35 is the adventure number (Z in this case). The
@@ -3431,7 +3431,7 @@ considered even -if a previous one is true.
 
 This description does not tell what the messages, objects
 and rooms are (i.e. their word description) in most cases so
-refer to the above data base listing for that information.
+refer to the above database listing for that information.
 
 
 
@@ -3663,13 +3663,13 @@ MSG8 MSG9
 This is a common type of EXAMINE action. A message is
 printed when the object is examined, provided the player is
 by the object. The IN/W condition is usually used for an
-object which can not be carried. The AVL condition is used
+object which cannot be carried. The AVL condition is used
 for an object which can be carried. In this case, if the
 player is in with object 3 (IN/W 3), then messages 8 and 9
 are printed (MSG8 and MSG9). Note that message 8 contains
 only the first half of the EXAM message. The second half is
 message 9 for this door. Message 10 and message 11 are used
-for the second halves of the two doors which can not be
+for the second halves of the two doors which cannot be
 
 
 
@@ -3897,7 +3897,7 @@ This action is not used.
 
 VOCABULARY
 
-The user must refer to the VOCABULARY words in the data base
+The user must refer to the VOCABULARY words in the database
 list for this explanation. Notice that the predefined verbs
 and nouns are in their proper places (AUTO, GO, GET, DROP,
 ANY, NORTH, SOUTH, EAST, WEST, UP and DOWN). The only thing
@@ -4062,7 +4062,7 @@ The procedure continues for all of the treasures.
 
 It may take some time to solve an adventure by this method, but it is possible. In fact, the author solved Scott Adams' adventure 9 using this method.
 
-However, the best way to solve an adventure is to play it through. If you get stuck, look at the data base as little as possible unless you're fed up with the adventure. Remember, adventures are meant to be brain-teasers.
+However, the best way to solve an adventure is to play it through. If you get stuck, look at the database as little as possible unless you're fed up with the adventure. Remember, adventures are meant to be brain-teasers.
 
 ##Appendix A
 ADVENTURE Command summary
@@ -4134,7 +4134,7 @@ DELAY | Pause for about 1 second.
 ##Appendix B
 Submitting your adventures for marketing considerations
 
-All you need to do is send a diskette with the data base(s) on it to:
+All you need to do is send a diskette with the database(s) on it to:
 
     THE ALTERNATE SOURCE
     1806 Ada Street
@@ -4142,8 +4142,8 @@ All you need to do is send a diskette with the data base(s) on it to:
 
 TAS will review the adventure for originality and general bugs. The adventure may not be acceptable because it is not original (a copy of someone else's) or is thought not to be in good taste. Or, heaven forbid, it just may not be good enough. Before sending in any adventures ask yourself if you would buy it if you saw it?
 
-The diskette may returned with some suggestions for improvement. TAS also reserves the right to make simple changes to the data base to improve its play.
+The diskette may returned with some suggestions for improvement. TAS also reserves the right to make simple changes to the database to improve its play.
 
-If your adventure is accepted, you will be notified. A contract will be sent to you upon acceptance discussing the royalty payment. You may decide not to market the adventure without going through TAS. If you so choose, remember that the adventure driver program "ADV" is copyrighted and can not be sold with your adventures unless written permission is given by the author.
+If your adventure is accepted, you will be notified. A contract will be sent to you upon acceptance discussing the royalty payment. You may decide not to market the adventure without going through TAS. If you so choose, remember that the adventure driver program "ADV" is copyrighted and cannot be sold with your adventures unless written permission is given by the author.
 
 Please allow at least 4 weeks for the selection procedure.
