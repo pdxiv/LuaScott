@@ -5,6 +5,7 @@ by Allan Moluf
 The ADVENTURE program written by Scott Adams uses a file or data base which contains the details of the particular adventure. This article describes the organization of these data bases. The primary use of this information is to create new adventures; although it possible to examine or edit existing adventures.
 
 The data base constains the following sections:
+
 1. Header information which specifies how big the different sections are and some other constants.
 2. Action entries which determine how the player input is handled and what automatic actions happen.
 3. Vocabulary entries which are the verbs and nouns that the player may use in this game.
@@ -15,6 +16,7 @@ The data base constains the following sections:
 8. Trailer information containing the version, number of the adventure and a security checksum.
 
 The header information (1) contains the following numbers:
+
 1. The number of bytes required to contain the text of the verbs, nouns, messages, room descriptions and object descriptions. This number includes a fixed number of bytes for each verb and noun (one more thean the max word length). It includes one more than the number of characters between quotes in the messages and room and object descriptions. It also includes one more byte for each object than can be carried and dropped. The number of bytes specified may be larger than is necessary, but must not be smaller or the ADVENTURE program will tell how much too small it is and quit.
 2. The highest numbered object in this adventure. Objects are numbered starting at zero, so the number of objects is one more than this value.
 3. The highest numbered action in this adventure. Actions are numbered starting at zero, so the number of actions is one more than this value.
