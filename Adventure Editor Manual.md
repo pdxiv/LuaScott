@@ -55,7 +55,6 @@ ADVENTURE 8.2 (by Adams') has recently been superceded by version 8.3. The newes
 
 The concept of adventure is very simple. The basic idea is that certain commands are executed when certain conditions are met. The only problem, as all adventurers have found, is getting the conditions to be met. The trick to writing good adventures (like Scott's) is making the conditions subtle, but logical. The purchase of Scott's adventures is highly recommended. The techniques in his data bases are excellent teaching tools along with being fun to play.
 
-
 ##Chapter 2
 
 Adventure data base format
@@ -73,7 +72,7 @@ The data base consists of the following sections:
 7. ACTION TITLES. These are optional text descriptions of the actions. They are ignored by the ADVENTURE driver program but serve as remarks to the actions when using the ADVEDIT program.
 8. TRAILER information. This contains the version number, adventure number and a checksum.
 
-HEADER information
+###HEADER information
 
 The header contains the following information:
 
@@ -90,7 +89,7 @@ The header contains the following information:
 11. The highest numbered message. Messages are numbered from zero so this value is the number of messages plus one.
 12. The treasure room number. When treasures are in this room they are considered collected. When the SCORE command is issued they are summed and divided into the number of treasures for the percentage score.
 
-ACTION entries
+###ACTION entries
 
 These are the heart of the adventure. Some are player input and others are automatic operation actions. The entries are stored as eight numbers. The first determines when the action is to be evaluated. The next five are conditions to be met or parameters for the commands. The last two bytes specify what commands are to be performed if all of the conditions were met.
 
@@ -142,7 +141,7 @@ ORIG The condition passes if the numbered object is in the same room it started 
 
 CT= The condition passes if the counter is equal to the number. It fails if the counter is not equal to the number.
 
-BIT FLAGS
+###BIT FLAGS
 
 There are thirty-two bit flags available to the user. They are numbered to 31. When the adventure is started, they are all cleared. There are commands to set and clear them as well as conditions to test their values. Two bit flags are reserved by ADVENTURE 8.2 and ADV:
 
@@ -150,11 +149,11 @@ There are thirty-two bit flags available to the user. They are numbered to 31. W
 
 16) When this flag is set the artificial light source has run out. The "FILL" command will clear this flag and set the time limit to its original value.
 
-COUNTERS
+###COUNTERS
 
 The counters are values which may be incremented, decremented, assigned values by commands as well as be tested against a number for numeric conditions. There are alternate counters which may be switched with the CT counter in order to operate on other numbers. When the adventure is started, CT is not assigned any particular value. See Chapter 5 for more details on how counters may be used in adventures.
 
-ALTERNATE ROOM REGISTERS
+###ALTERNATE ROOM REGISTERS
 
 The value of the current room may be saved and restored by exchanging it with an alternate room register. The saved room value may be restored by performing another exchange with the same alternate room register.
 
@@ -265,7 +264,7 @@ Note that action commands 89-101 are not used. Scott Adams may use these in futu
 
 The automatic action entries have a variety of uses. All of them are considered before a player input. Such things as falling asleep, checking for day/night or any other tasks that must be performed without player input are candidates for automatic action entries. Chapter 5 contain.s a more detailed description of automatic actions.
 
-VOCABULARY entries
+###VOCABULARY entries
 
 Each vocabulary entry consists of a verb string and a noun string. Synonyms are handled by beginning the word with an asterisk, which are then treated the same as the first previous word with out an asterisk. Some of the vocabulary entries are predefined by ADVENTURE and SHOULD NOT be changed. These predefined verbs and nouns are listed below:
 
@@ -295,7 +294,7 @@ Nouns
 
 6 DOWN This is reserved for the sixth room direction entry with verb 1.
 
-ROOM entries
+###ROOM entries
 
 The room entries consist of the number of the adjacent room
 in the six reserved directions N, S, E, W, U and D plus a
@@ -323,7 +322,7 @@ should the player die. This is where the player is sent
 with a DEAD command. It may or may not contain exits back
 to the other rooms.
 
-MESSAGE entries
+###MESSAGE entries
 
 The messages consists of a string of characters for each
 message to be displayed by any of the action entries. Entry
@@ -331,7 +330,7 @@ should always be left as a null string. To get quotes to
 appear within a message simply type a SHIFTed @ in place of
 the quote. ADVENTURE will change this to a quote.
 
-OBJECT entries
+###OBJECT entries
 
 The object entries consist of a text description of the
 object along with its starting room number. Room zero is
@@ -373,7 +372,7 @@ to see if object 9 is available when a room is in darkness
 light is recharged. Examples of object 9 are a lit
 flashlight and a lit lamp.
 
-ACTION TITLES
+###ACTION TITLES
 
 The action titles are labels for the action entries. They
 aid in commenting the actions and ease in editing the
@@ -382,7 +381,7 @@ an adventure is read in because they are only used by an
 adventure editor program. These descriptions SHOULD NOT
 contain quote marks.
 
-TRAILER
+###TRAILER
 
 The trailer information contains the version number, the
 adventure number and a security checksum. If the version
