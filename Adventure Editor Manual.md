@@ -34,21 +34,14 @@ Any adventures you write are your property. You may market them on your own if y
 
 ADVEDIT is an editing program for adventures. With it, most adventure data bases can be read in and viewed or modified. Even a Scott Adams' ADVENTURE can be read in and solved. This manual is divided into chapters, each containing a different section of ADVENTURE and using the ADVEDIT program. A summary of the chapters and appendices is given below:
 
-Chapter 1 Overview of ADVEDIT and adventures in general. This chapter describes what ADVEDIT does and the basics of adventure.
-
-Chapter 2 Description of the ADVENTURE data base structure. This chapter will describe in detail what "the different conditions and commands of ADVENTURE are. This is the most important chapter to know before trying to write your own adventures.
-
-Chapter 3 ADVENTURE program instructions. This chapter describes how adventures must be entered so they will work properly with Scott Adams' ADVENTURE program or Bruce Hansen's ADV/CMD program.
-
-Chapter 4 Operating Instructions. This chapter contains the instructions for ADVEDIT. A suggested procedure is also given to assist you in entering an adventure.
-
-Chapter 5 Sample ADVENTURE. This chapter will describe a short adventure written to show how to use most of the commands and conditions.
-
-Chapter 6 ADVENTURE solving techniques. This chapter will describe how to solve any adventure readable by the ADVEDIT program.
-
-Appendix A contains an abbreviated ADVEDIT command summary. This will be highly useful when writing adventures once you are familiar with the commands and conditions.
-
-Appendix B tells how to submit your adventures to THE ALTERNATE SOURCE for marketing purposes.
+* Chapter 1 Overview of ADVEDIT and adventures in general. This chapter describes what ADVEDIT does and the basics of adventure.
+* Chapter 2 Description of the ADVENTURE data base structure. This chapter will describe in detail what "the different conditions and commands of ADVENTURE are. This is the most important chapter to know before trying to write your own adventures.
+* Chapter 3 ADVENTURE program instructions. This chapter describes how adventures must be entered so they will work properly with Scott Adams' ADVENTURE program or Bruce Hansen's ADV/CMD program.
+* Chapter 4 Operating Instructions. This chapter contains the instructions for ADVEDIT. A suggested procedure is also given to assist you in entering an adventure.
+* Chapter 5 Sample ADVENTURE. This chapter will describe a short adventure written to show how to use most of the commands and conditions.
+* Chapter 6 ADVENTURE solving techniques. This chapter will describe how to solve any adventure readable by the ADVEDIT program.
+* Appendix A contains an abbreviated ADVEDIT command summary. This will be highly useful when writing adventures once you are familiar with the commands and conditions.
+* Appendix B tells how to submit your adventures to THE ALTERNATE SOURCE for marketing purposes.
 
 ##Chapter 1
 
@@ -71,55 +64,37 @@ The data base is the actual adventure. By changing this data base different adve
 
 The data base consists of the following sections:
 
-1) HEADER information. The header contains the number of actions, vocabulary entries, rooms, messages, objects and some other variables.
-
-2) ACTION entries. The action entries contain the known player inputs (verb, noun), conditions and commands. Also contained are automatic actions. The automatic actions serve mainly for bookkeeping.
-
-3) VOCABULARY entries. These two lists (verbs and nouns) contain all of the words the player may use in this particular adventure.
-
-4) MESSAGE text. These are the messages used by the adventure and are controlled by the actions.
-
-5) ROOM description. This is a list of directions tc other rooms along with a text room description.
-
-6) OBJECT description and starting locations. The description of the object determines if it is a treasure, an object which may be carried and dropped or something else. The starting location tells in which room the object starts in, if it is being carried at the start of the adventure or if it starts in the storeroom.
-
-7) ACTION TITLES. These are optional text descriptions of the actions. They are ignored by the ADVENTURE driver program but serve as remarks to the actions when using the ADVEDIT program.
-
-8) TRAILER information. This contains the version number, adventure number and a checksum.
+1. HEADER information. The header contains the number of actions, vocabulary entries, rooms, messages, objects and some other variables.
+2. ACTION entries. The action entries contain the known player inputs (verb, noun), conditions and commands. Also contained are automatic actions. The automatic actions serve mainly for bookkeeping.
+3. VOCABULARY entries. These two lists (verbs and nouns) contain all of the words the player may use in this particular adventure.
+4. MESSAGE text. These are the messages used by the adventure and are controlled by the actions.
+5. ROOM description. This is a list of directions tc other rooms along with a text room description.
+6. OBJECT description and starting locations. The description of the object determines if it is a treasure, an object which may be carried and dropped or something else. The starting location tells in which room the object starts in, if it is being carried at the start of the adventure or if it starts in the storeroom.
+7. ACTION TITLES. These are optional text descriptions of the actions. They are ignored by the ADVENTURE driver program but serve as remarks to the actions when using the ADVEDIT program.
+8. TRAILER information. This contains the version number, adventure number and a checksum.
 
 HEADER information
 
 The header contains the following information:
 
-1) The number of bytes required to hold all of the text descriptions such as verbs, nouns, messages, room descriptions and object descriptions. This number includes a fixed number of bytes for each verb and noun. This fixed number is the word length of this adventure plus one. It includes one more than the number of characters between quotes in the messages and room and object descriptions. The number of bytes specified may be larger than necessary, but must not be smaller or the ADVENTURE driver program will tell how much too small and quit.
-
-2) The highest numbered object in this particular adventure. The objects are numbered starting at zero, so the number of objects is one plus this number.
-
-3) The highest numbered action in this particular adventure. Actions are numbered starting at zero, so the number of actions is one plus this number.
-
-4) The highest numbered vocabulary word in this adventure. This applies to both verbs and nouns, being the larger value if they are different. Vocabulary words are numbered starting at zero, so the total number of verbs and total number of nouns is one plus this number.
-
-5) The highest numbered room in this adventure. Rooms are numbered starting at zero, but room zero is reserved as a storeroom so the total number of rooms in which the player may enter is this value.
-
-6) The maximum number of objects which may be carried. Under certain conditions the actions can cause more than this number to be carried. The player will not be able to pick up anything unless the number of objects currently being carried is less than this number.
-
-7) The starting room number for this adventure.
-
-8) The number of treasures in this adventure. When the SCORE command is issued this number is divided by the number of treasures in the treasure room to give the percent score.
-
-9) The word length used by this adventure. This number affects the nouns and verbs. When the adventure data base is read in by the ADVENTURE driver program, all nouns and verbs are either truncated or padded to this length plus one. This value is the minimum length of verbs and nouns the player may input.
-
-10; The time limit. This may be used in some games to control how long the artificial light will last. If there is no artificial light, it may control the number of turns in this adventure. If the artificial light is re-filled, this value is put back in the time limit. The limit is 32767.
-
-11) The highest numbered message. Messages are numbered from zero so this value is the number of messages plus one.
-
-12) The treasure room number. When treasures are in this room they are considered collected. When the SCORE command is issued they are summed and divided into the number of treasures for the percentage score.
+1. The number of bytes required to hold all of the text descriptions such as verbs, nouns, messages, room descriptions and object descriptions. This number includes a fixed number of bytes for each verb and noun. This fixed number is the word length of this adventure plus one. It includes one more than the number of characters between quotes in the messages and room and object descriptions. The number of bytes specified may be larger than necessary, but must not be smaller or the ADVENTURE driver program will tell how much too small and quit.
+2. The highest numbered object in this particular adventure. The objects are numbered starting at zero, so the number of objects is one plus this number.
+3. The highest numbered action in this particular adventure. Actions are numbered starting at zero, so the number of actions is one plus this number.
+4. The highest numbered vocabulary word in this adventure. This applies to both verbs and nouns, being the larger value if they are different. Vocabulary words are numbered starting at zero, so the total number of verbs and total number of nouns is one plus this number.
+5. The highest numbered room in this adventure. Rooms are numbered starting at zero, but room zero is reserved as a storeroom so the total number of rooms in which the player may enter is this value.
+6. The maximum number of objects which may be carried. Under certain conditions the actions can cause more than this number to be carried. The player will not be able to pick up anything unless the number of objects currently being carried is less than this number.
+7. The starting room number for this adventure.
+8. The number of treasures in this adventure. When the SCORE command is issued this number is divided by the number of treasures in the treasure room to give the percent score.
+9. The word length used by this adventure. This number affects the nouns and verbs. When the adventure data base is read in by the ADVENTURE driver program, all nouns and verbs are either truncated or padded to this length plus one. This value is the minimum length of verbs and nouns the player may input.
+10. The time limit. This may be used in some games to control how long the artificial light will last. If there is no artificial light, it may control the number of turns in this adventure. If the artificial light is re-filled, this value is put back in the time limit. The limit is 32767.
+11. The highest numbered message. Messages are numbered from zero so this value is the number of messages plus one.
+12. The treasure room number. When treasures are in this room they are considered collected. When the SCORE command is issued they are summed and divided into the number of treasures for the percentage score.
 
 ACTION entries
 
 These are the heart of the adventure. Some are player input and others are automatic operation actions. The entries are stored as eight numbers. The first determines when the action is to be evaluated. The next five are conditions to be met or parameters for the commands. The last two bytes specify what commands are to be performed if all of the conditions were met.
 
-The first number is (150*verb + noun). If the verb is zero, this is an automatic action and the noun number (1-100) is the probability of this action being evaluated. If the verb is not zero, it must match the verb in the player's input and the noun must match the noun in the player's input for the action to be considered. If the noun is zero, it matches any possible noun in the player's input.
+The first number is `(150*verb + noun)`. If the verb is zero, this is an automatic action and the noun number (1-100) is the probability of this action being evaluated. If the verb is not zero, it must match the verb in the player's input and the noun must match the noun in the player's input for the action to be considered. If the noun is zero, it matches any possible noun in the player's input.
 
 When player input actions are being evaluated, the action entries are scanned in numeric order. When the verb and noun of an action entry match the player's input, the conditions are evaluated. If all of the conditions were true, then the commands of this entry are performed. When a "true" match is made, no further player input actions are evaluated on this pass. However, if a match is made and all of the conditions were not true, then the scanning procedure continues until either a "true" match is made or all of the actions are evaluated. If a match was found but the conditions were not true, then the message "I can't do that . . . yet!" is displayed. If no match was found, then the message "I must be stupid but I don't understand what you mean" is display.
 
@@ -239,16 +214,16 @@ No command or message.
 
 73 CONT This command sets a flag to allow more than four commands to be performed. When all commands in this action entry have been performed, the conditions of all subsequent action entries with a zero verb and noun (up to the first non-zero verb and noun) will be evaluated. The checking procedure continues regardless if the entry being checked is true or false, For example, consider the following actions:
 
-LIGHT TORCH   HAS 12   PAR 9    PAR 12   PAR 0    PAR 0
-     EXX,X   MSG5   CONT   -
-AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
-    EXM,CT   CT-1    -     -
-AUTO 0        CT= 0    PAR 9    PAR 12   PAR 0    PAR 0
-    EXX,X    MSG6    -     -
-AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
-    EXM,CT    -      -     -
-SHOOT GUN     HAS 23   IN/W 2   PAR 2    PAR 4    PAR 0
-     EXX,X   MSG8    -     -
+    LIGHT TORCH   HAS 12   PAR 9    PAR 12   PAR 0    PAR 0
+         EXX,X   MSG5   CONT   -
+    AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
+        EXM,CT   CT-1    -     -
+    AUTO 0        CT= 0    PAR 9    PAR 12   PAR 0    PAR 0
+        EXX,X    MSG6    -     -
+    AUTO 0        PAR 1    PAR 0    PAR 0    PAR 0    PAR 0
+        EXM,CT    -      -     -
+    SHOOT GUN     HAS 23   IN/W 2   PAR 2    PAR 4    PAR 0
+         EXX,X   MSG8    -     -
 
 If the conditions of the action with the verb-noun of "LIGHT TORCH" are found to be true, then its commands are executed. One of the commands is a "CONT". This means that all "AUTO 0" verb-noun actions following "LIGHT TORCH" will be considered. In this case there are three of them. All three are considered even if none of them are true or false. For example, the third one is considered even if the second one was true.
 
