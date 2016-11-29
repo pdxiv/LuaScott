@@ -4026,249 +4026,120 @@ pose much more of a challenge.
 
 
 ##Chapter 6
-Solving an ADVENTURE
+###Solving an ADVENTURE
 
+This chapter will briefly describe a method for solving adventures using the ADVEDIT program.
 
+There are two basic types of adventures: mission and treasure.
 
-This chapter will briefly describe a method for solving
-adventures using the ADVEDIT program.
+In mission adventures, the object of the game is to accomplish a task. In adventure 3, the task is to disarm a saboteur's time bomb. In adventure 4, the mission is to save Count Cristo.
 
-There are two basic types of adventures: mission and
-treasure.
+In treasure adventures, the object of the game is to collect treasures and store them in the treasure room.
 
-In mission adventures, the object of the game is to
-accomplish a task. In adventure 3, the task is to disarm a
-saboteur's time bomb. In adventure 4, the mission is to
-save Count Cristo.
+###SOLVING "MISSION" TYPE ADVENTURES
 
-In treasure adventures, the object of the game is to collect
-treasures and store them in the treasure room.
+Mission type adventures end with a winning message. The first step to solving these types of adventures is to list the messages and find the message number. This should be an obvious message. The message number should be noted.
 
+Next, do an XREF for that message number in the actions. This procedure will tell you which actions display the winning message. The number(s) of these action(s) should be noted.
 
+Now, list the action(s) containing the winning message. Note what the conditions are. These conditions must be true before the winning message will be displayed.
 
-SOLVING "MISSION" TYPE ADVENTURES
+The XREF command can be used to find where the objects needed in the winning action are referenced. This will tell you how to get them if they are not simply laying in a room (where they could be picked up). If a bit flag needs to be set before the winning message is displayed, an XREF can be done on that particular bit flag to find out what must be done to set it.
 
-Mission type adventures end with a winning message. The
-first step to solving these types of adventures is to list
-the messages and find the message number. This should be an
-obvious message. The message number should be noted.
+The procedure continues in this fashion. It may take a while to get it down pat, but it is basically a simple procedure.
 
-Next, do an XREF for that message number in the actions.
-This procedure will tell you which actions display the
-winning message. The number(s) of these action(s) should be
-noted.
+###SOLVING "TREASURE" TYPE ADVENTURES
 
-Now, list the action(s) containing the winning message.
-Note what the conditions are. These conditions must be true
-before the winning message will be displayed.
+These types of adventures are very similar to mission types adventures when solving them.
 
-The XREF command can be used to find where the objects
-needed in the winning action are referenced. This will tell
-you how to get them if they are not simply laying in a room
-(where they could be picked up). If a bit flag needs to be
-set before the winning message is displayed, an XREF can be
-done on that particular bit flag to find out what must be
-done to set it.
+The first step in solving them is to list the OBJECTS. Note which objects are treasures.
 
-The procedure continues in this fashion. It may take a
-while to get it down pat, but it is basically a simple
-procedure.
+Treasures that have a non-zero room number are simply laying in a room. The only potential problem here is that some actions must need to be taken to get into the room. For example, a locked door may block the entrance of the room. By looking at the room descriptions, it can be determined if this room can be moved into from another room (for example, GO EAST from another room moves you into the one in question). If not, do an XREF to find what conditions must be true to enter the room.
 
-
-
-SOLVING "TREASURE" TYPE ADVENTURES
-
-These types of adventures are very similar to mission types
-adventures when solving them.
-
-
-
-The first step in solving them is to list the OBJECTS. Note
-which objects are treasures.
-
-Treasures that have a non-zero room number are simply laying
-in a room. The only potential problem here is that some
-actions must need to be taken to get into the room. For
-example, a locked door may block the entrance of the room.
-By looking at the room descriptions, it can be determined if
-this room can be moved into from another room (for example,
-GO EAST from another room moves you into the one in
-question). If not, do an XREF to find what conditions must
-be true to enter the room.
-
-If the treasure has a room number of zero, then some action
-must take place to drop it in a room. By doing an XREF on
-the treasure, it can be determined what conditions must be
-met for the treasure to enter a room so it may be picked up.
+If the treasure has a room number of zero, then some action must take place to drop it in a room. By doing an XREF on the treasure, it can be determined what conditions must be met for the treasure to enter a room so it may be picked up.
 
 The procedure continues for all of the treasures.
 
-It may take some time to solve an adventure by this method,
-but it is possible. In fact, the author solved Scott Adams'
-adventure 9 using this method.
+It may take some time to solve an adventure by this method, but it is possible. In fact, the author solved Scott Adams' adventure 9 using this method.
 
-However, the best way to solve an adventure is to play it
-
-through. If you get stuck, look at the data base as little
-
-as possible unless you're fed up with the adventure.
-
-Remember, adventures are meant to be brain-teasers.
-
-
+However, the best way to solve an adventure is to play it through. If you get stuck, look at the data base as little as possible unless you're fed up with the adventure. Remember, adventures are meant to be brain-teasers.
 
 ##Appendix A
 ADVENTURE Command summary
 
-
-
-CONDITIONS:
+###Conditions:
 
 PAR Passes a number to the commands.
-
 HAS True if holding the object.
-
 IN/W True if in same room as object (not holding it).
-
 AVL True if in same room or holding object.
-
 IN True if in room.
-
--IN/W True if holding object or if object is in another
-
-room.
-
+-IN/W True if holding object or if object is in another room.
 -HAVE True if not holding object.
-
 -IN True if not in room.
-
 BIT True if bit flag set.
-
 -BIT True if bit flag cleared.
-
 ANY True if holding any objects.
-
 -ANY True if not holding any objects.
-
 -AVL True if object in another room.
-
--RMO True if object not in room zero.
-
-RMO True if object in room zero.
-
+-RM0 True if object not in room zero.
+RM0 True if object in room zero.
 CT<= True if counter less than or equal to number.
-
 CT> True if counter greater than number.
-
 ORIG True if object in original starting room.
-
 -ORIG True if object not in original starting room.
-
 CT= True if counter equal to number.
 
-Commands:
+###Commands:
 
 GETX Pick up object X.
-
 DROPX Drop object X.
-
 GOTOY Move player to room Y.
-
 X->RM0 Send object X to room zero.
-
 NIGHT Make it night (set bit flag 15).
-
 DAY Make it day (clear bit flag 15).
-
 SETZ Set bit flag Z.
-
 CLRZ Clear bit flag Z.
-
-DEAD Tell player he's dead, make DAY, move to last room,
-
-end game.
-
+DEAD Tell player he's dead, make DAY, move to last room, end game.
 X->Y Send object X to room Y.
-
 FINI Stop game and ask for another game.
-
 DSPRM Display current room and account for DAY, NIGHT.
-
 SCORE Compute the score.
-
 INV Tell the player what he is carrying.
-
-SETO Set bit flag 0.
-
-CLRO Clear bit flag 0.
-
+SET0 Set bit flag 0.
+CLR0 Clear bit flag 0.
 FILL Fill artificial light source (clear bit flag 16).
-
 SAVE Save the game.
-
 EXX,X Exchange room location of object X with object X.
-
 CONT Continue to next action/s.
-
-AGETX Always get object X regardless of carry limit
-status.
-
-
-
-BYX->X Move second object X to same place as first object
-
-X.
+AGETX Always get object X regardless of carry limit status.
+BYX->X Move second object X to same place as first object X.
 CT-1 Decrement counter.
 DSPCT Display the counter.
 CT<-N Set counter equal to N.
-EXRMO Exchange current room with room held in alternate
-
-room register 0.
+EXRMO Exchange current room with room held in alternate room register 0.
 EXM,CT Exchange counter and alternate counter M.
 CT+N Add N to counter.
 CT-N Subtract N from counter.
 SAYW Say the player's input noun.
-SAYWCR Say the noun of the player's input noun and a
-
-carriage return.
+SAYWCR Say the noun of the player's input noun and a carriage return.
 SAYCR Start a new line.
-EXC.CR Exchange current room with room in alternate room
-
-register C.
+EXC.CR Exchange current room with room in alternate room register C.
 DELAY Pause for about 1 second.
-
-
 
 ##Appendix B
 Submitting your adventures for marketing considerations
 
-All you need to do is send a diskette with the data base(s)
-on it to:
+All you need to do is send a diskette with the data base(s) on it to:
 
-THE ALTERNATE SOURCE
-1806 Ada Street
-Lansing, MI 48910
+    THE ALTERNATE SOURCE
+    1806 Ada Street
+    Lansing, MI 48910
 
-TAS will review the adventure for originality and general
-bugs. The adventure may not be acceptable because it is not
-original (a copy of someone else's) or is thought not to be
-in good taste. Or, heaven forbid, it just may not be good
-enough. Before sending in any adventures ask yourself if
-you would buy it if you saw it?
+TAS will review the adventure for originality and general bugs. The adventure may not be acceptable because it is not original (a copy of someone else's) or is thought not to be in good taste. Or, heaven forbid, it just may not be good enough. Before sending in any adventures ask yourself if you would buy it if you saw it?
 
-The diskette may returned with some suggestions for
-improvement. TAS also reserves the right to make simple
-changes to the data base to improve its play.
+The diskette may returned with some suggestions for improvement. TAS also reserves the right to make simple changes to the data base to improve its play.
 
-If your adventure is accepted, you will be notified. A
-contract will be sent to you upon acceptance discussing the
-royalty payment. You may decide not to market the adventure
-without going through TAS. If you so choose, remember that
-the adventure driver program "ADV" is copyrighted and can
-not be sold with your adventures unless written permission
-is given by the author.
+If your adventure is accepted, you will be notified. A contract will be sent to you upon acceptance discussing the royalty payment. You may decide not to market the adventure without going through TAS. If you so choose, remember that the adventure driver program "ADV" is copyrighted and can not be sold with your adventures unless written permission is given by the author.
 
-Please allow at least 4 weeks for the selection
-procedure.
-
-
+Please allow at least 4 weeks for the selection procedure.
