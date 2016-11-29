@@ -140,7 +140,7 @@ The counters are values which may be incremented, decremented, assigned values b
 
 The value of the current room may be saved and restored by exchanging it with an alternate room register. The saved room value may be restored by performing another exchange with the same alternate room register.
 
-The seventh and eighth bytes of the action entry are the four command codes. The seventh number is (150*command 1 + command 2) and the eighth number is (150*command 3 + command 4) .
+The seventh and eighth bytes of the action entry are the four command codes. The seventh number is `(150*command 1 + command 2)` and the eighth number is `(150*command 3 + command 4)`.
 
 These four commands may use one or more parameters found in the condition line of the same action entry. For example, if the first parameter found in the conditions was a 10 (PAR 10) and the first command which used a parameter in the commands was a GOTOY command, the player would move to room 10 (GOTO 10).
 
