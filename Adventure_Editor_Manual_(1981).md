@@ -640,61 +640,17 @@ Also, at times a few blank lines may be needed between two action entries. For e
 
 Another use for the INSERT command on actions is for making more space for the automatic actions. The automatic action entries must precede all player input actions. If there is no more room for auto-actions, the INSERT command can make room by inserting some blank lines before the player input actions.
 
+An example of INSERTing follows. Suppose you have the following partial noun list:
 
+    23:   SHELF
+    24:   \*BOOK
+    25:   CASSETTE
+    26:   DISKETTE
+    27:   DOG
 
-An example of INSERTing follows, following partial noun list:
+If you wanted to add the synonym "*TAPE" to the noun "CASSETTE" the INSERT command could be used. The procedure goes as follows (all user input is underlined):
 
-
-
-Suppose you have the
-
-
-
-23
-
-
-SHELF
-
-
-24
-
-
-♦BOOK
-
-
-25
-
-
-CASSETTE
-
-
-26
-
-
-DISKETTE
-
-
-27
-
-
-DOG
-
-
-
-If you wanted to add the synonym "*TAPE" to the noun
-"CASSETTE" the INSERT command could be used. The procedure
-goes as follows (all user input is underlined):
-
-
-
-Hit the "I" key from the main menu to enter
-sub-menu. This message will be displayed:
-
-
-
-the INSERT
-
-
+Hit the "I" key from the main menu to enter the INSERT sub-menu. This message will be displayed:
 
 What section of the database do you want to insert into:
 Actions, Verbs or Nouns
@@ -705,7 +661,7 @@ Type: A, V, N or - ? N
 The computer will respond with:
 
 ``
-How many blank lines ? _1_
+How many blank lines ? __1__
 ``
 
 (We need to insert only one blank line)
@@ -713,7 +669,7 @@ How many blank lines ? _1_
 The computer will inquire:
 
 ``
-After what noun # ? _25_
+After what noun # ? __25__
 ``
 
 After a few seconds the insertion will be completed. After the task is finished the nouns will be listed as follows:
