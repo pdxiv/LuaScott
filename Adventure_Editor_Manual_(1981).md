@@ -718,14 +718,12 @@ After what noun # ? _25_
 
 After a few seconds the insertion will be completed. After the task is finished the nouns will be listed as follows:
 
-``
-23:   SHELF
-24:   \*BOOK
-25:   CASSETTE
-26:
-27:   DISKETTE
-28:   DOG
-``
+    23:   SHELF
+    24:   \*BOOK
+    25:   CASSETTE
+    26:
+    27:   DISKETTE
+    28:   DOG
 
 Now the MODIFY command could be used to place the noun synonym "*TAPE" at noun 26.
 
