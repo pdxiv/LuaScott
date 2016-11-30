@@ -281,41 +281,28 @@ ADVENTURE Instructions
 This chapter will give some rules governing the entering of a user adventure. These are rules pertaining to Scott Adams' ADVENTURE program and Bruce Hansen's ADV program, not ADVEDIT. Rules are given in sections such as Action entries, etc.
 
 Rules for the Action entries are as follows:
-
-1) All of the automatic actions must proceed player input actions. If the auto-actions are not placed first they will be ignored.
-
-2) If the action entry uses commands which require parameters, there must be parameters in the condition line. If not, strange messages and objects will appear.
+1. All of the automatic actions must proceed player input actions. If the auto-actions are not placed first they will be ignored.
+2. If the action entry uses commands which require parameters, there must be parameters in the condition line. If not, strange messages and objects will appear.
 
 Rules for the vocabulary:
-
-1) The predefined verbs and nouns (NORTH, GET, etc.) must remain in their preset positions. Failure to do so will cause difficulty in moving from room to room and/or carrying objects.
-
-2) This is not a rule, but a strong suggestion. When keying in verbs and nouns with ADVEDIT, use only the word length specified in the header. This will make unintentional duplicate words easy to find. Duplicate nouns and verbs can be a big problem. For example, suppose noun 10 was SHED and noun 11 was SHELF. If the word length was three, SHED and SHELF would appear to be the same noun, SHE. This is where the problem occurs. If an action entry refers to SHELF (i.e. EXAMINE SHELF), the ADVENTURE driver program starts scanning the list of nouns for a match. The first occurrence of SHE is in SHED and since the noun number ADVENTURE is looking for (11) is not the same as the one it found (10), the action does not work. By limiting the length of inputted nouns and verbs to the word length, this problem will never crop up.
-
-3) If a word is to be a synonym, it should be preceded by an asterisk and placed after the primary noun or verb. For example, if GO is the verb and RUN, WALK and ENTER are to be synonyms, the list of verbs would read GO, *RUN, *WALK and *ENTER.
-
-4) Nouns and verbs must not contain embedded quotes.
+1. The predefined verbs and nouns (NORTH, GET, etc.) must remain in their preset positions. Failure to do so will cause difficulty in moving from room to room and/or carrying objects.
+2. This is not a rule, but a strong suggestion. When keying in verbs and nouns with ADVEDIT, use only the word length specified in the header. This will make unintentional duplicate words easy to find. Duplicate nouns and verbs can be a big problem. For example, suppose noun 10 was SHED and noun 11 was SHELF. If the word length was three, SHED and SHELF would appear to be the same noun, SHE. This is where the problem occurs. If an action entry refers to SHELF (i.e. EXAMINE SHELF), the ADVENTURE driver program starts scanning the list of nouns for a match. The first occurrence of SHE is in SHED and since the noun number ADVENTURE is looking for (11) is not the same as the one it found (10), the action does not work. By limiting the length of inputted nouns and verbs to the word length, this problem will never crop up.
+3. If a word is to be a synonym, it should be preceded by an asterisk and placed after the primary noun or verb. For example, if GO is the verb and RUN, WALK and ENTER are to be synonyms, the list of verbs would read GO, *RUN, *WALK and *ENTER.
+4. Nouns and verbs must not contain embedded quotes.
 
 Room rules are as follows:
-
-1) No quotes can be used in the room description. Quote marks are used as delimiters for the room description, thus using them within a description will cause problems when trying to read the adventure database. If quote marks are desired, a SHIFTed @ sign (a character 60 hex) should be used in their place. The ADVENTURE program will change these to quotes (the SHIFTed @ sign will look like a normal @ sign unless a software video driver is being used) .
-
-2) The header contains the number of rooms, the last being used to send the player to after a DEAD command. The last room should be some sort of limbo state or something similar.
-
-3) Each room has six values associated with it. These are the room numbers which are entered on a direction command (i.e. GO NORTH). These values should be legal room numbers (ADVEDIT won't let a bad number be entered). A zero is used if no exit is possible in that direction.
+1. No quotes can be used in the room description. Quote marks are used as delimiters for the room description, thus using them within a description will cause problems when trying to read the adventure database. If quote marks are desired, a SHIFTed @ sign (a character 60 hex) should be used in their place. The ADVENTURE program will change these to quotes (the SHIFTed @ sign will look like a normal @ sign unless a software video driver is being used) .
+2. The header contains the number of rooms, the last being used to send the player to after a DEAD command. The last room should be some sort of limbo state or something similar.
+3. Each room has six values associated with it. These are the room numbers which are entered on a direction command (i.e. GO NORTH). These values should be legal room numbers (ADVEDIT won't let a bad number be entered). A zero is used if no exit is possible in that direction.
 
 The rules for Messages are as follows:
-
-1) No quotes can be embedded in the messages. Quote marks are used as delimiters for the messages, thus using quotes within a message will cause problems with a disk read. To get quote marks within a message, type SHIFTed @ signs in their place. The ADVENTURE program will change these to quote marks.
-2) Message 0 should be null.
+1. No quotes can be embedded in the messages. Quote marks are used as delimiters for the messages, thus using quotes within a message will cause problems with a disk read. To get quote marks within a message, type SHIFTed @ signs in their place. The ADVENTURE program will change these to quote marks.
+2. Message 0 should be null.
 
 Object rules:
-
-1) The starting room for an object should be a valid room number. Objects not found yet or not used at the beginning of the adventure should be in room zero (the storeroom). Objects the player is carrying at the start of the adventure should have a starting room of minus one.
-
-2) The object description should not contain any embedded quote marks. Quote marks are used as description delimiters while stored on disk and embedded quote marks will mess up the disk file. Use a SHIFTed @ sign in place of quotes. The ADVENTURE program will change these to quotes after they are read in.
-
-3) An object name is placed between slashes at the end of the object description if it is to be carried and dropped. The name should be the same length or less than the word length of the adventure. The object name must be a primary noun in the vocabulary list, not a synonym. If it is a synonym the pick up and drop feature will not work for that object.
+1. The starting room for an object should be a valid room number. Objects not found yet or not used at the beginning of the adventure should be in room zero (the storeroom). Objects the player is carrying at the start of the adventure should have a starting room of minus one.
+2. The object description should not contain any embedded quote marks. Quote marks are used as description delimiters while stored on disk and embedded quote marks will mess up the disk file. Use a SHIFTed @ sign in place of quotes. The ADVENTURE program will change these to quotes after they are read in.
+3. An object name is placed between slashes at the end of the object description if it is to be carried and dropped. The name should be the same length or less than the word length of the adventure. The object name must be a primary noun in the vocabulary list, not a synonym. If it is a synonym the pick up and drop feature will not work for that object.
 
 There are a few differences in the ADVENTURE drivers "ADV" and "ADVENTUR". The biggest difference is the disk input/output of each.
 
@@ -766,83 +753,37 @@ DOG
 
 
 
-Now the MODIFY command could be used to place the noun
-synonym "*TAPE" at noun 26.
+Now the MODIFY command could be used to place the noun synonym "*TAPE" at noun 26.
 
-As you can see, noun 26 (DISKETTE) was moved to noun 27 (all
-nouns following the selected noun are moved down). The
-INSERT command changes all affected action entries by this
-operation (instead of referring to noun 26, refer to noun
-27).
+As you can see, noun 26 (DISKETTE) was moved to noun 27 (all nouns following the selected noun are moved down). The INSERT command changes all affected action entries by this operation (instead of referring to noun 26, refer to noun 27).
 
-One warning about INSERT. When an insertion is made, the
-highest item in the database section selected will be moved
-up in the list. The limiting value in the HEADER is not
-updated however. A check should be made to determine if
-this is the case.
+One warning about INSERT. When an insertion is made, the highest item in the database section selected will be moved up in the list. The limiting value in the HEADER is not updated however. A check should be made to determine if this is the case.
 
-Most of the code of the INSERT command is contained in the
-machine language file "XREF/CMD". If this file is not
-loaded before ADVEDIT is run do not use the INSERT command.
-
-
+Most of the code of the INSERT command is contained in the machine language file "XREF/CMD". If this file is not loaded before ADVEDIT is run do not use the INSERT command.
 
 XREF command:
 
-The XREF command returns the number of every action entry a
-noun, verb, room, message, object, bit flag or counter
-appears in. To use this command type "X" from the main
-menu.
+The XREF command returns the number of every action entry a noun, verb, room, message, object, bit flag or counter appears in. To use this command type "X" from the main menu.
 
+The XREF sub-menu will be printed on the screen. Hit the first letter of the section the XREF is to be run on. Enter the item number for the XREF (for example, which object number). ADVEDIT will not allow illegal values to be input.
 
+Output may be routed to the screen or printer by typing an "S" or "P" when asked.
 
-The XREF sub-menu will be printed on the screen. Hit the
-first letter of the section the XREF is to be run on. Enter
-the item number for the XREF (for example, which object
-number). ADVEDIT will not allow illegal values to be input.
+Finally, the limits of the actions the XREF is to be run on is entered. For example, you may want to see which actions from action entry 5 through action entry 134 reference object 34.
 
-Output may be routed to the screen or printer by typing an
-"S" or "P" when asked.
+There are a few oddities about the XREF command. An XREF cannot be done on message 0. It may also give strange results on nouns. XREF can find every occurrence of a noun number. However, no distinction is made from nouns and auto action probabilities. Just list the actions after the references are made so a distinction can be made.
 
-Finally, the limits of the actions the XREF is to be run on
-is entered. For example, you may want to see which actions
-from action entry 5 through action entry 134 reference
-object 34.
+When an XREF is run on the verbs, nouns or messages, a match is displayed by the message "ACTION: n" where "n" is the action number that particular item was found in.
 
-There are a few oddities about the XREF command. An XREF
-cannot be done on message 0. It may also give strange
-results on nouns. XREF can find every occurrence of a noun
-number. However, no distinction is made from nouns and auto
-action probabilities. Just list the actions after the
-references are made so a distinction can be made.
+When an XREF is run on an object, room, bit flag or counter one of two messages will be displayed.
 
-When an XREF is run on the verbs, nouns or messages, a match
-is displayed by the message "ACTION: n" where "n" is the
-action number that particular item was found in.
+The first one is "CONDITION - ACTION: n". This message is displayed if the item found was referenced in the conditions of the action. For example, "BIT 30", "HAS 10" and "IN 3" are references in the conditions.
 
-When an XREF is run on an object, room, bit flag or counter
-one of two messages will be displayed.
+The second one is "COMMAND - ACTION: n". This message is displayed if the item found was referenced in the commands of X the action. For example, "GOTOY" where the associated parameter in the conditions was a "PAR 3" or "AGETX" where "PAR 10" was in the conditions.
 
-The first one is "CONDITION - ACTION: n". This message is
-displayed if the item found was referenced in the conditions
-of the action. For example, "BIT 30", "HAS 10" and "IN 3"
-are references in the conditions.
+When displaying matches, XREF does not pause the output. Therefore, if there are more than 15 or so matches, the first ones may be hard to read. In this case, select a smaller range of actions to be scanned and do the XREF in more than one part. Another solution is to send the output to the printer.
 
-The second one is "COMMAND - ACTION: n". This message is
-displayed if the item found was referenced in the commands
-of X the action. For example, "GOTOY" where the associated
-parameter in the conditions was a "PAR 3" or "AGETX" where
-"PAR 10" was in the conditions.
-
-When displaying matches, XREF does not pause the output.
-Therefore, if there are more than 15 or so matches, the
-first ones may be hard to read. In this case, select a
-smaller range of actions to be scanned and do the XREF in
-more than one part. Another solution is to send the output
-to the printer.
-
-The following table tells what conditions are searched for
-when doing an XREF on the appropriate database section:
+The following table tells what conditions are searched for when doing an XREF on the appropriate database section:
 
 OBJECTS ROOMS BIT FLAGS
 
@@ -863,8 +804,7 @@ ORIG
 
 
 
-The following table tells what commands are checked for when
-doing an XREF on the appropriate database section:
+The following table tells what commands are checked for when doing an XREF on the appropriate database section:
 
 
 
@@ -945,27 +885,15 @@ BYX->X
 
 
 
-As you can see by the above table, the only command searched
-for when doing an XREF on a counter is the "EXM,CT" command.
-The reason for searching for only this command even though
-others may affect the counter (i.e. CT-1) is that there is
-no way of checking if the other commands (such as CT-1) are
-affecting that particular counter.
+As you can see by the above table, the only command searched for when doing an XREF on a counter is the "EXM,CT" command. The reason for searching for only this command even though others may affect the counter (i.e. CT-1) is that there is no way of checking if the other commands (such as CT-1) are affecting that particular counter.
 
-If must be noted that for every "EXM.CT" command for a
-particular counter, there will almost certainly be another
-"EXM.CT" command to switch it back in either the same action
-or in one closely following the first one. This situation
-must also be considered.
+If must be noted that for every "EXM.CT" command for a particular counter, there will almost certainly be another "EXM.CT" command to switch it back in either the same action or in one closely following the first one. This situation must also be considered.
 
-Suppose you wanted to find which actions referenced object
-number 25. The procedure would go as follows (user inputs
-are underlined):
+Suppose you wanted to find which actions referenced object number 25. The procedure would go as follows (user inputs are underlined):
 
 
 
-From the main menu
-sub-menu:
+From the main menu sub-menu:
 
 
 
@@ -981,8 +909,8 @@ key to enter the XREF
 
 
 
-What section of the database do you want an XREF of:
-Verbs, Nouns, Rooms, Messages, Objects, Bit flags
+What section of the database do you want an XREF of: 
+Verbs, Nouns, Rooms, Messages, Objects, Bit flags 
 Counters
 
 Type: V, N, R, M, 0, B, C or - ?
@@ -1016,190 +944,79 @@ CONDITION - ACTION: 123
 
 
 
-The output in this example was contrived, but it indicates
+The output in this example was contrived, but it indicates that object number 25 is referenced in the conditions of actions 6 and 123 and is referenced in the commands of action 45. 
 
-that object number 25 is referenced in the conditions of
+One warning about the XREF command. Most of the code for this command is in the machine language file "XREF/CMD". If this file is not loaded before the ADVEDIT program is run, the XREF command should not be used.
 
-actions 6 and 123 and is referenced in the commands of
-action 45.
-
-One warning about the XREF command. Most of the code for
-this command is in the machine language file "XREF/CMD". If
-this file is not loaded before the ADVEDIT program is run,
-the XREF command should not be used.
-
-If the ENTER key is pressed for the range of actions
-scanned, the upper limit scanned will be the upper limit
-held in the HEADER. If the HEADER value is not high enough
-to encompass all actions, any actions above the HEADER value
-will not be checked.
-
-
+If the ENTER key is pressed for the range of actions scanned, the upper limit scanned will be the upper limit held in the HEADER. If the HEADER value is not high enough to encompass all actions, any actions above the HEADER value will not be checked.
 
 END command:
 
-Pressing the "E" key from the main menu causes the END
-command to be executed. The END command simply returns
-control to BASIC.
+Pressing the "E" key from the main menu causes the END command to be executed. The END command simply returns control to BASIC.
 
+If the BREAK key is depressed at any time and the ADVEDIT program is halted, the instruction "GOTO 4" may be entered to resume operation with all data left intact.
 
+Because of all the string usage in ADVEDIT, string compression may occasionally occur. This will result in pauses up to 30 seconds. In most cases, string compression will never pop up.
 
-If the BREAK key is depressed at any time and the ADVEDIT
-program is halted, the instruction "GOTO 4" may be entered
-to resume operation with all data left intact.
+ADVEDIT has been checked out with NEWDOS/80 version 2.0, TRSDOS 2.2 and 2.3, NEWDOS/21, DOSPLUS , LDOS and NEWDOS/80 version 1.0 with success. The only problem occurred when using NEWDOS/80- version 1.0. If using this DOS, the zaps sent out by Apparat must be installed. Also, when entering
 
-Because of all the string usage in ADVEDIT, string
-compression may occasionally occur. This will result in
-pauses up to 30 seconds. In most cases, string compression
-will never pop up.
+message numbers in the action entries, the values must be two digit numbers. For example, message 5 is entered as "05" or " 5".
 
-ADVEDIT has been checked out with NEWDOS/80 version 2.0,
-TRSDOS 2.2 and 2.3, NEWDOS/21, DOSPLUS , LDOS and NEWDOS/80
-version 1.0 with success. The only problem occurred when
-using NEWDOS/80- version 1.0. If using this DOS, the zaps
-sent out by Apparat must be installed. Also, when entering
-
-
-
-message numbers in the action entries, the values must be
-two digit numbers. For example, message 5 is entered as
-"05" or " 5".
-
-
-
-ADVEDIT LIMITATIONS
+###ADVEDIT LIMITATIONS
 
 The following limitations are imposed on data entered via
 the ADVEDIT program:
 
-1) Maximum number of action entries is 300.
-
-2) Maximum number of vocabulary entries is 150.
-
-3) Maximum number of rooms is 100.
-
-4) Maximum number of messages is 100.
-
-5) Maximum number of objects is 150.
-
-6) Maximum characters in a text description of an object,
+1. Maximum number of action entries is 300.
+2. Maximum number of vocabulary entries is 150.
+3. Maximum number of rooms is 100.
+4. Maximum number of messages is 100.
+5. Maximum number of objects is 150.
+6. Maximum characters in a text description of an object,
 room, message or action title is 255.
 
-These "limitations" are far in excess in most cases of any-
-current Scott Adams' Adventure.
+These "limitations" are far in excess in most cases of any current Scott Adams' Adventure.
 
-The maximum values encountered by any current Scott Adams*
-adventure are:
+The maximum values encountered by any current Scott Adams' adventure are:
+* 270 Action entries
+* 80 Vocabulary words
+* 30 Rooms
+* 99 Messages
+* 100 Objects
 
-270 Action entries
-
-80 Vocabulary words
-
-30 Rooms
-
-99 Messages
-100 Objects
-
-Another limitation of ADVEDIT is that only integer numbers
-may be entered. If a number out of the range of +32767 to
--32768 is entered, an error will occur and an error message
-will be displayed. In fact, if any BASIC error occurs, the
-BASIC error number will be displayed and control will return
-to the main menu.
-
-
+Another limitation of ADVEDIT is that only integer numbers may be entered. If a number out of the range of +32767 to -32768 is entered, an error will occur and an error message will be displayed. In fact, if any BASIC error occurs, the BASIC error number will be displayed and control will return to the main menu.
 
 Suggested entry for ADVEDIT
 
-The first step in using ADVEDIT is writing the adventure on
-paper. It is sort of like writing a story. Just the basic
-idea of the adventure is needed. For example, in Scott
-Adams' Adventure 3 (Mission Impossible), the basic idea is
-to disarm a saboteur's time bomb planted in the core of a
-nuclear reactor.
+The first step in using ADVEDIT is writing the adventure on paper. It is sort of like writing a story. Just the basic idea of the adventure is needed. For example, in Scott Adams' Adventure 3 (Mission Impossible), the basic idea is to disarm a saboteur's time bomb planted in the core of a nuclear reactor.
 
-After the basic idea is down on paper, some of the finer
-details should be considered. For example, in Adventure 3
-there are three doors that require some sort of
-identification to get through them.
+After the basic idea is down on paper, some of the finer details should be considered. For example, in Adventure 3 there are three doors that require some sort of identification to get through them.
 
-After the finer details are done, start writing down the
+After the finer details are done, start writing down the rooms, vocabulary and objects on paper. After most of these are entered, start writing the actions and messages. The reason for writing the actions and messages last is so you know what objects and rooms you have to work with and can add more when needed.
 
-
-
-rooms, vocabulary and objects on paper. After most of these
-are entered, start writing the actions and messages. The
-reason for writing the actions and messages last is so you
-know what objects and rooms you have to work with and can
-add more when needed.
-
-After the adventure is roughly down on paper, start entering
-
-it into the ADVEDIT program. The HEADER should be modified
-
-first. The values input here do not have to be exact, just
+After the adventure is roughly down on paper, start entering it into the ADVEDIT program. The HEADER should be modified first. The values input here do not have to be exact, just
 approximate.
 
-A big decision has to be made at this time. That is the
-word length of the adventure. Scott Adams uses 3 or 4
-letters for the word length on his adventures. The word
-length is significant because the length of the object names
-(identifier between slashes for objects to be picked and
-dropped) must match this value or be shorter.
+A big decision has to be made at this time. That is the word length of the adventure. Scott Adams uses 3 or 4 letters for the word length on his adventures. The word length is significant because the length of the object names (identifier between slashes for objects to be picked and dropped) must match this value or be shorter.
 
-After the HEADER is entered, the order of section entry does
-not matter (except that the actions must be entered after
-the vocabulary).
+After the HEADER is entered, the order of section entry does not matter (except that the actions must be entered after the vocabulary).
 
-After the adventure is typed in, double check that no text
-descriptions contain quote marks. If they do, change them
-to SHIFTed @ signs (ADVEDIT does this in all known cases).
+After the adventure is typed in, double check that no text descriptions contain quote marks. If they do, change them to SHIFTed @ signs (ADVEDIT does this in all known cases).
 
-Next, double check that the header values are high enough to
-contain all of the data (i.e. the number of actions in the
-HEADER is at least as large as the actual number of
-actions) .
+Next, double check that the header values are high enough to contain all of the data (i.e. the number of actions in the HEADER is at least as large as the actual number of actions) .
 
-Lastly, save the adventure out with the WRITE command and
-END the program.
+Lastly, save the adventure out with the WRITE command and END the program.
 
-Now go to DOS and run Scott Adams' ADVENTUR program or Bruce
-Hansen's ADV program. The adventure number to be entered
-must be the same as the one used when writing the adventure
-out. Scott Adams' ADVENTURE program only allows one
-character to be input (0-9, A-Z). If the adventure data
-base was written out with a two-character file name and
-Scott's driver is to be used, it must be RENAMEd from DOS to
-one with a single character name (for example, ADVENT/DA not
-ADVENT /DA A) .
+Now go to DOS and run Scott Adams' ADVENTUR program or Bruce Hansen's ADV program. The adventure number to be entered must be the same as the one used when writing the adventure out. Scott Adams' ADVENTURE program only allows one character to be input (0-9, A-Z). If the adventure data base was written out with a two-character file name and Scott's driver is to be used, it must be RENAMEd from DOS to one with a single character name (for example, ADVENT/DA not ADVENT /DA A) .
 
-Now comes the time consuming part, debugging the adventure.
-The way to do this is check every possible thing you can
-think of to see if the actions are performing the way you
-wanted them to. If they don't, take notes on which ones
-aren't working and continue playing your ADVENTURE. After
-finishing with this procedure, run the ADVEDIT program again
-and fix any errors. This process takes longer than writing
-the adventure in most cases. But after much hard work you
-should have an adventure you could be proud of.
-
-
+Now comes the time consuming part, debugging the adventure. The way to do this is check every possible thing you can think of to see if the actions are performing the way you wanted them to. If they don't, take notes on which ones aren't working and continue playing your ADVENTURE. After finishing with this procedure, run the ADVEDIT program again and fix any errors. This process takes longer than writing the adventure in most cases. But after much hard work you should have an adventure you could be proud of.
 
 ##Chapter 5
 Sample Adventure
 
+This chapter explains, in depth, a short adventure entitled "MINI-VENTURE." This adventure uses most of the conditions and commands available in ADVENTURE. Every significant part of the database is explained. But first here's a listing of the database:
 
-
-This chapter explains, in depth, a short adventure entitled
-"MINI-VENTURE." This adventure uses most of the conditions
-and commands available in ADVENTURE. Every significant part
-of the database is explained. But first here's a listing
-of the database:
-
-Adventure 35 Version 1.01 7837 bytes under 16K (tape) or
-11214
-
-under 32K (disk)
+Adventure 35 Version 1.01 7837 bytes under 16K (tape) or 11214 under 32K (disk)
 
 BYTES #0BJ #ACT #V0C #RM CARRY START #TR WLEN TIME #MSG
 TR-RM
@@ -3071,96 +2888,32 @@ OBJECTS
 
 
 
-The database will be explained one section at a time.
-First the HEADER:
+The database will be explained one section at a time. First the HEADER:
 
-Adventure 35 is the adventure number (Z in this case). The
-version # is 1.01 and the adventure leaves 7837 bytes free
-in a 16K machine (tape version) and 11214 bytes free in a
-32K machine (disk version). These memory values are the
-free bytes when using Scott Adams' ADVENTURE program. Bruce
-Hansen's ADV program uses approximately 600 fewer bytes.
-BYTES=1008 is the number of bytes this adventure uses,
-#0BJ=14 means there are 14 objects, #ACT=41 means there are
-41 actions, #V0C=22 means there are 22 verbs and 22 nouns,
-#RM=8 means there are 8 rooms, CARRY=5 means the adventurer
-can carry a maximum of 5 objects, START=1 means the player
-starts in room 1, #TR=1 means there is only 1 treasure,
-WLEN=4 means the number of significant letters in the nouns
-and verbs is 4, TIME=999 means the light limit is 999 moves,
-#MSG=16 means there are 16 messages and TR-RM=7 means the
-treasure room is room 7.
+Adventure 35 is the adventure number (Z in this case). The version # is 1.01 and the adventure leaves 7837 bytes free in a 16K machine (tape version) and 11214 bytes free in a 32K machine (disk version). These memory values are the free bytes when using Scott Adams' ADVENTURE program. Bruce Hansen's ADV program uses approximately 600 fewer bytes. BYTES=1008 is the number of bytes this adventure uses, #0BJ=14 means there are 14 objects, #ACT=41 means there are 41 actions, #V0C=22 means there are 22 verbs and 22 nouns, #RM=8 means there are 8 rooms, CARRY=5 means the adventurer can carry a maximum of 5 objects, START=1 means the player starts in room 1, #TR=1 means there is only 1 treasure, WLEN=4 means the number of significant letters in the nouns and verbs is 4, TIME=999 means the light limit is 999 moves, #MSG=16 means there are 16 messages and TR-RM=7 means the treasure room is room 7.
 
+###ACTIONS:
 
+The automatic actions must be placed before player input actions. The AUTO verb signifies an auto action. The noun is the probability of this action being considered. ADVENTURE does not scan all player input actions, just until it finds a true one (if one exists). All auto actions are considered even -if a previous one is true.
 
-ACTIONS:
-
-The automatic actions must be placed before player input
-actions. The AUTO verb signifies an auto action. The noun
-is the probability of this action being considered.
-ADVENTURE does not scan all player input actions, just until
-it finds a true one (if one exists). All auto actions are
-considered even -if a previous one is true.
-
-
-
-This description does not tell what the messages, objects
-and rooms are (i.e. their word description) in most cases so
-refer to the above database listing for that information.
+This description does not tell what the messages, objects and rooms are (i.e. their word description) in most cases so refer to the above database listing for that information.
 
 
 
 0: AUTO 100 -BIT 1 PAR 10
 
 MSG 1 SETZ - - INTRO
-The 0: means this is ACTION 0. The AUTO 100 means this auto
-action is considered 100 percent of the time. The -BIT 1
-means if bit flag 1 is cleared, this condition is true.
-When ADVENTURE is started, all bit flags are cleared so on
-the first pass of the auto actions this condition will be
-true. This is useful for printing introductions. The PAR 1
-is a parameter to be passed to the commands if all
-conditions are met. If all conditions are met then the
-commands are executed. In this case message 1 would be
-printed and bit flag 1 would be set (SETZ). Bit flag 1 is
-set since the first parameter in the conditions was a 1.
-The word INTRO is an optional action title. Message 1 is
-the introduction message.
+The 0: means this is ACTION 0. The AUTO 100 means this auto action is considered 100 percent of the time. The -BIT 1 means if bit flag 1 is cleared, this condition is true. When ADVENTURE is started, all bit flags are cleared so on the first pass of the auto actions this condition will be true. This is useful for printing introductions. The PAR 1 is a parameter to be passed to the commands if all conditions are met. If all conditions are met then the commands are executed. In this case message 1 would be printed and bit flag 1 would be set (SETZ). Bit flag 1 is set since the first parameter in the conditions was a 1. The word INTRO is an optional action title. Message 1 is the introduction message.
 
 1: AUTO 100 -IN 2 PAR 1 PAR 4 PAR 1
 
 EXM.CT CT<-N EXM.CT - SET MUG CNTR
-This is an automatic action used to set a counter. In this
-adventure if the player is outside his car and not in the
-apartment building for 4 consecutive moves he is mugged and
-killed (he loses). This action is executed 100 percent of
-the time (AUTO 100). The condition -IN 2 will be true if
-the player is in any room other than room 2. PAR 1, PAR 4
-and PAR 1 are parameters used by the commands if all
-conditions are true. If all conditions are true, the CT
-(counter) value is exchanged (EXM,CT) with alternate counter
-1 since the first parameter in the conditions was a 1. The
-command CT<-N will set the counter to 4 (4 is the next
-parameter). And finally CT is exchanged back with alternate
-counter 1 (EXM.CT). The reason for this switching is that
-ADVENTURE can only operate directly on the CT variable.
-ADVENTURE can operate on a maximum of 9 additional alternate
-counters however. SET MUG CNTR is the optional action
-title.
+This is an automatic action used to set a counter. In this adventure if the player is outside his car and not in the apartment building for 4 consecutive moves he is mugged and killed (he loses). This action is executed 100 percent of the time (AUTO 100). The condition -IN 2 will be true if the player is in any room other than room 2. PAR 1, PAR 4 and PAR 1 are parameters used by the commands if all conditions are true. If all conditions are true, the CT (counter) value is exchanged (EXM,CT) with alternate counter 1 since the first parameter in the conditions was a 1. The command CT<-N will set the counter to 4 (4 is the next parameter). And finally CT is exchanged back with alternate counter 1 (EXM.CT). The reason for this switching is that ADVENTURE can only operate directly on the CT variable. ADVENTURE can operate on a maximum of 9 additional alternate counters however. SET MUG CNTR is the optional action title.
 
 2: AUTO 100 IN 2 PAR 10
 
 EXM,CT CT-1 CONT - MUGGED?
-This condition is considered 100 percent of the time. The
-condition IN 2 passes if the player is in room 2. PAR 1 is
-a parameter used in the commands. If all conditions are
-true the commands are executed. In this case CT is
-exchanged with alternate counter 1 (EXM,CT) since the first
-parameter found was a 1. Then CT is decremented (CT-1).
-CONT means to continue considering all following AUTO 0's
-until an AUTO 1-100 or a player input action is found. In
-this case the next two actions are AUTO 0's. There are as
-follows:
+This condition is considered 100 percent of the time. The condition IN 2 passes if the player is in room 2. PAR 1 is a parameter used in the commands. If all conditions are true the commands are executed. In this case CT is exchanged with alternate counter 1 (EXM,CT) since the first parameter found was a 1. Then CT is decremented (CT-1). CONT means to continue considering all following AUTO 0's until an AUTO 1-100 or a player input action is found. In this case the next two actions are AUTO 0's. There are as follows:
 
 
 
@@ -3170,79 +2923,24 @@ MSG 2 DEAD FINI
 4: AUTO PAR 10
 
 EXM,CT - -
-In action 3, CT is tested to see if it is equal to (CT=
-0) . If it does, then message 2 (MSG 2) is printed, the
-player is killed (DEAD) and the game is finished (FINI). If
-the counter was not equal to zero then action 4 is
-considered. It would normally be considered regardless of
-the pass/no pass status of action 3. But in this case since
-the DEAD command was issued the player was moved to the last
-room and killed. The FINI command then halted the game.
-This halts the auto actions. Since action 4 has no
-conditions it is always true and PAR 1 is passed to the
-commands. In this case, CT is exchanged with counter 1
-again thus putting them back in their starting positions.
-There is a good reason for making these two actions
-separate. Two tasks need to be done, check if the counter
-is equal to zero and switch CT back with alternate counter
-1. If these two were put in the same action and the counter
-(CT) did not equal zero, then the commands would not be
-performed. In this case the EXM.CT command would not be
-done so the counters would not be returned to the right
-place.
+In action 3, CT is tested to see if it is equal to (CT= 0) . If it does, then message 2 (MSG 2) is printed, the player is killed (DEAD) and the game is finished (FINI). If the counter was not equal to zero then action 4 is considered. It would normally be considered regardless of the pass/no pass status of action 3. But in this case since the DEAD command was issued the player was moved to the last room and killed. The FINI command then halted the game. This halts the auto actions. Since action 4 has no conditions it is always true and PAR 1 is passed to the commands. In this case, CT is exchanged with counter 1 again thus putting them back in their starting positions. There is a good reason for making these two actions separate. Two tasks need to be done, check if the counter is equal to zero and switch CT back with alternate counter 1. If these two were put in the same action and the counter (CT) did not equal zero, then the commands would not be performed. In this case the EXM.CT command would not be done so the counters would not be returned to the right place.
 
 5: AUTO 100 -IN 2 BIT 15
 
 DAY DSPRM - IN LIGHT?
 
-This auto action is considered 100 percent of the time. The
-conditions are -IN 2 and BIT 15. -IN 2 is true if the
-player is not in room 2. BIT 15 passes if it is dark (bit
-flag 15 is defined by ADVENTURE for light/dark status). If
-the conditions are true, then the commands DAY and DSPRM are
-executed. The DAY command makes it day and DSPRM displays
-the current room. The reason for this action is to make it
-day after the player is off the curb (where it is dark).
-The BIT 15 condition is included so it is made DAY only when
-it was just NIGHT. The reason for this is that the DSPRM
-command makes the screen "flicker" when it is executed.
+This auto action is considered 100 percent of the time. The conditions are -IN 2 and BIT 15. -IN 2 is true if the player is not in room 2. BIT 15 passes if it is dark (bit flag 15 is defined by ADVENTURE for light/dark status). If the conditions are true, then the commands DAY and DSPRM are executed. The DAY command makes it day and DSPRM displays the current room. The reason for this action is to make it day after the player is off the curb (where it is dark). The BIT 15 condition is included so it is made DAY only when it was just NIGHT. The reason for this is that the DSPRM command makes the screen "flicker" when it is executed.
 
 6: AUTO 100 IN 2 -BIT 15
 NIGHT DSPRM - - IN DARK?
-This action is considered 100 percent of the time. If the
-player is in room 2 (IN 2) and bit flag 15 is cleared (-BIT
-15) then the commands are performed. NIGHT makes it dark
-out (if the player is not holding the artificial light
-source) and DSPRM displays the room. This action makes it
-dark when the player is on the curb (room 2) and only does a
-NIGHT and DSPRM if it was previously DAY. The reason for
-not doing a DSPRM every time is that it causes the screen to
-be redrawn, which makes it look like the screen just
-glitched.
+This action is considered 100 percent of the time. If the player is in room 2 (IN 2) and bit flag 15 is cleared (-BIT 15) then the commands are performed. NIGHT makes it dark out (if the player is not holding the artificial light source) and DSPRM displays the room. This action makes it dark when the player is on the curb (room 2) and only does a NIGHT and DSPRM if it was previously DAY. The reason for not doing a DSPRM every time is that it causes the screen to be redrawn, which makes it look like the screen just glitched.
 
 7: LIGH MATC HAS 13 PAR 9
 
 
 
 AGETX DSPRM MSG3 CONT LIGHT MATCH
-This is the first player input action. If the player types
-in LIGHT MATCH then this action is considered. If even one
-of the conditions of this action are not met, then ADVENTURE
-continues searching the actions for another LIGHT MATCH. If
-it finds another, it considers that one also, and so on
-until it finds a true one. If no other LIGHT MATCH is found
-then the message "I can't do that . . . yet!" is printed and
-the player is asked to respond again. The condition in this
-action is HAS 13. So if the player HAS 13 (has the matches
-- object 13) the commands are performed. AGETX will make
-object 9 (from PAR 9 in the conditions) be carried by the
-player regardless of the carry limit. DSPRM will make it
-day if it is currently light out or object 9 is available
-(the artificial light source). Since an AGET 9 was just
-executed, the DSPRM will make it light if it was dark out or
-leave it light if it was light. Message 3 is then printed
-(MSG 3) and the CONTinue flag is set. All following AUTO
-actions will be considered. These actions are as follows:
+This is the first player input action. If the player types in LIGHT MATCH then this action is considered. If even one of the conditions of this action are not met, then ADVENTURE continues searching the actions for another LIGHT MATCH. If it finds another, it considers that one also, and so on until it finds a true one. If no other LIGHT MATCH is found then the message "I can't do that . . . yet!" is printed and the player is asked to respond again. The condition in this action is HAS 13. So if the player HAS 13 (has the matches - object 13) the commands are performed. AGETX will make object 9 (from PAR 9 in the conditions) be carried by the player regardless of the carry limit. DSPRM will make it day if it is currently light out or object 9 is available (the artificial light source). Since an AGET 9 was just executed, the DSPRM will make it light if it was dark out or leave it light if it was light. Message 3 is then printed (MSG 3) and the CONTinue flag is set. All following AUTO actions will be considered. These actions are as follows:
 
 8: AUTO PAR 9
 
@@ -3250,120 +2948,49 @@ DELAY DELAY X->RM0 DSPRM
 9: AUTO
 
 MSG 4 -
-Action 8 has no conditions so its commands are executed. A
-DELAY command makes the program stall for about 1 second.
-After two such stalls, the PAR 9 object is put back in RM0
-(X->RM0 - PAR 9 is the first parameter from the conditions).
-After the artificial light source is removed from the room
-another DSPRM is executed. This will make it dark again if
-it was dark before the match was lit or light if it was
-light before the match was lit. Action 9 is considered
-next. Since it has no conditions its commands are
-performed. In this case message 4 is printed. Since
-ADVENTURE found a matching player input action it does not
-consider any following player input actions and now checks
-the automatic actions (ones at the beginning of the
-actions) .
+Action 8 has no conditions so its commands are executed. A DELAY command makes the program stall for about 1 second. After two such stalls, the PAR 9 object is put back in RM0 (X->RM0 - PAR 9 is the first parameter from the conditions). After the artificial light source is removed from the room another DSPRM is executed. This will make it dark again if it was dark before the match was lit or light if it was light before the match was lit. Action 9 is considered next. Since it has no conditions its commands are performed. In this case message 4 is printed. Since ADVENTURE found a matching player input action it does not consider any following player input actions and now checks the automatic actions (ones at the beginning of the actions) .
 
 10: GET KEY IN 1 RM0 12 PAR 12
 
 MSG 5 AGETX
-If the player types in GET KEY this action is considered.
-It passes if the player is in room 1 (IN 1) and object 12 is
-in room (RM0 12). If these conditions are true, then
-message 5 is printed (MSG 5) and the player is forced to
-pick up object 12 (AGETX - PAR 12 passed from conditions).
-The logic of this action is simple. The player must be in
-the car (IN 1) and not have already gotten the keys some
-time before (RM0 12) for the player to be able to get the
-keys.
+If the player types in GET KEY this action is considered. It passes if the player is in room 1 (IN 1) and object 12 is in room (RM0 12). If these conditions are true, then message 5 is printed (MSG 5) and the player is forced to pick up object 12 (AGETX - PAR 12 passed from conditions). The logic of this action is simple. The player must be in the car (IN 1) and not have already gotten the keys some time before (RM0 12) for the player to be able to get the keys.
 
 11: GET KEY IN/W 12 PAR 12
 
 GETX MSG 5
-If action 10 failed for any reason then this action is
-
-
-
-considered since they both have the same verb-noun
-combination. In this action the player is allowed to pick
-up object 12 if he is in with, but not carrying, object 12
-(IN/W 12). If true, a GETX command is performed and message
-5 is printed (MSG 5). A GETX checks to see if the carry
-limit is exceeded. If not the player picks up object 12
-(GETX - PAR 12 from the conditions). This action would not
-be needed if action 10 was not included. Objects which are
-named (/name/ at the end of the object description) can
-normally be picked up and dropped without this type of
-action. But by having a GET action for object 12, the
-automatic GET feature for that particular object is
-disabled. In this case, GET has to be included in the
-actions.
+If action 10 failed for any reason then this action is considered since they both have the same verb-noun combination. In this action the player is allowed to pick up object 12 if he is in with, but not carrying, object 12 (IN/W 12). If true, a GETX command is performed and message 5 is printed (MSG 5). A GETX checks to see if the carry limit is exceeded. If not the player picks up object 12 (GETX - PAR 12 from the conditions). This action would not be needed if action 10 was not included. Objects which are named (/name/ at the end of the object description) can normally be picked up and dropped without this type of action. But by having a GET action for object 12, the automatic GET feature for that particular object is disabled. In this case, GET has to be included in the actions.
 
 12: DROP KEY HAS 12 PAR 12
 
 DROPX MSG 5
-If the player is carrying object 12 (HAS 12) then object 12
-is dropped (DROPX - PAR 12 from the conditions).
+If the player is carrying object 12 (HAS 12) then object 12 is dropped (DROPX - PAR 12 from the conditions).
 
 13: EXAM KEY AVL 12
 
 MSG6 - -
-If object 12 is either being carried or is in the same room
-as the player (AVL 12), then message 6 is printed (MSG6).
-This type of action is very common for such things as
-examining, reading, etc.
+If object 12 is either being carried or is in the same room as the player (AVL 12), then message 6 is printed (MSG6). This type of action is very common for such things as examining, reading, etc.
 
 14: GO DOOR IN 2 PAR 3
 
 G0T0Y MSG5
-If the player is in room 2 (IN 2) then the player is sent to
-room 3 (G0T0Y - PAR 3 from the conditions) and message 5 is
-printed (MSG5). This is a common action for GOs without a
-direction. For example, GO CAVE, GO TUNNEL, etc.
+If the player is in room 2 (IN 2) then the player is sent to room 3 (G0T0Y - PAR 3 from the conditions) and message 5 is printed (MSG5). This is a common action for GOs without a direction. For example, GO CAVE, GO TUNNEL, etc.
 
 15: UNLO DOOR HAS 12 IN/W 3
 
 MSG7 - -
 
-If the player types UNLOCK DOOR this action is considered.
-There are three doors in this adventure and the player has a
-key which will open only one of them. If the player has
-object 12 (HAS 12) , and is in the same room as object 3
-(IN/W 3) then message 7 is printed.
+If the player types UNLOCK DOOR this action is considered. There are three doors in this adventure and the player has a key which will open only one of them. If the player has object 12 (HAS 12) , and is in the same room as object 3 (IN/W 3) then message 7 is printed.
 
 16: EXAM DOOR IN/W 3
 
 MSG8 MSG9
-This is a common type of EXAMINE action. A message is
-printed when the object is examined, provided the player is
-by the object. The IN/W condition is usually used for an
-object which cannot be carried. The AVL condition is used
-for an object which can be carried. In this case, if the
-player is in with object 3 (IN/W 3), then messages 8 and 9
-are printed (MSG8 and MSG9). Note that message 8 contains
-only the first half of the EXAM message. The second half is
-message 9 for this door. Message 10 and message 11 are used
-for the second halves of the two doors which cannot be
-
-
-
-opened by the player (all three use the same first half of
-the EXAM message).
+This is a common type of EXAMINE action. A message is printed when the object is examined, provided the player is by the object. The IN/W condition is usually used for an object which cannot be carried. The AVL condition is used for an object which can be carried. In this case, if the player is in with object 3 (IN/W 3), then messages 8 and 9 are printed (MSG8 and MSG9). Note that message 8 contains only the first half of the EXAM message. The second half is message 9 for this door. Message 10 and message 11 are used for the second halves of the two doors which cannot be opened by the player (all three use the same first half of the EXAM message).
 
 17: EXAM WHEE IN 1 RMO 12 '
 
 MSG12 - -
 
-This EXAMINE action has two conditions. If the player is in
-room 1 (IN 1) and object 12 is in room (RMO 12) then
-message 12 is printed (MSG12). The logic for this action is
-as follows: if the player examines the wheel and the keys
-(object 12) are still there (RMO 12) then an appropriate
-message is printed. However, if the keys had been
-previously picked up then this EXAMINE would fail and
-ADVENTURE would search for another matching EXAM WHEE (or
-EXAM ANY) .
+This EXAMINE action has two conditions. If the player is in room 1 (IN 1) and object 12 is in room (RMO 12) then message 12 is printed (MSG12). The logic for this action is as follows: if the player examines the wheel and the keys (object 12) are still there (RMO 12) then an appropriate message is printed. However, if the keys had been previously picked up then this EXAMINE would fail and ADVENTURE would search for another matching EXAM WHEE (or EXAM ANY) .
 
 18: GO ELEV IN/W 4 PAR 4
 
@@ -3371,69 +2998,39 @@ GOTOY MSG 5 - -
 19: GO ELEV IN/W 6 PAR 4
 
 GOTOY MSG 5 - -
-These two actions are described together since they are very
-similar. There are 2 objects called "ELEVATOR" in this
-adventure. One is on the top floor, the other on the bottom
-floor. These actions check if the player is in with an
-elevator (IN/W 4 or IN/W 6) and if so sends the player to
-room 4 (GOTOY - PAR 4 from the conditions).
+These two actions are described together since they are very similar. There are 2 objects called "ELEVATOR" in this adventure. One is on the top floor, the other on the bottom floor. These actions check if the player is in with an elevator (IN/W 4 or IN/W 6) and if so sends the player to room 4 (GOTOY - PAR 4 from the conditions).
 
 20: EXAM PANE IN/W 5
 
 MSG13 - - -
-If the player is in with object 5 (IN/W 5) then message 13
-is printed (MSG13). If the player is not in with object 5
-ADVENTURE searches for another EXAM PANE.
+If the player is in with object 5 (IN/W 5) then message 13 is printed (MSG13). If the player is not in with object 5 ADVENTURE searches for another EXAM PANE.
 
 21: PUSH 1 IN 4 PAR 2
 
 CLRZ MSG5
-This action uses a bit flag. If the player is in the
-elevator (IN 4) +\en bit flag 2 is cleared (CLRZ - PAR 2
-from the conditions). When this adventure was written it
-was decided to use bit flag 2 cleared for floor "1" and bit
-flag 2 set for floor "2." Since the elevator would
-initially be at floor "1" this was logical because all bit
-flags are cleared at the start of ADVENTURE. The status of
-the bit flag is tested so ADVENTURE knows which floor of the
-apartment complex to send the player when he leaves the
-elevator. There are two different rooms adjacent to the
-elevator so this condition must be checked.
+This action uses a bit flag. If the player is in the elevator (IN 4) +\en bit flag 2 is cleared (CLRZ - PAR 2 from the conditions). When this adventure was written it was decided to use bit flag 2 cleared for floor "1" and bit flag 2 set for floor "2." Since the elevator would initially be at floor "1" this was logical because all bit flags are cleared at the start of ADVENTURE. The status of the bit flag is tested so ADVENTURE knows which floor of the apartment complex to send the player when he leaves the elevator. There are two different rooms adjacent to the elevator so this condition must be checked.
 
 22: PUSH 2 IN 4 PAR 2
 
 SETZ MSG5
-This action is very similar to the above action except the
-bit flag is set, not cleared. This tells ADVENTURE to put
-the player on the 2nd floor when he leaves the elevator
-instead of the 1st floor.
+This action is very similar to the above action except the bit flag is set, not cleared. This tells ADVENTURE to put the player on the 2nd floor when he leaves the elevator instead of the 1st floor.
 
 23: GO ROOM IN 4 -BIT 2 PAR 3
 
 
 
 GOTOY MSG5
-If the player is in room 4 (IN 4) and bit flag 2 is cleared
-(-BIT 2), then the player is sent to room 3 (GOTOY - PAR 3
-from the conditions) and message 5 is printed (MSG 5). In
-words, if the player is in the elevator, and he last pushed
-"1", then he is sent to the 1st floor. If bit flag 2 is
-set, however, then this action will fail.
+If the player is in room 4 (IN 4) and bit flag 2 is cleared (-BIT 2), then the player is sent to room 3 (GOTOY - PAR 3 from the conditions) and message 5 is printed (MSG 5). In words, if the player is in the elevator, and he last pushed "1", then he is sent to the 1st floor. If bit flag 2 is set, however, then this action will fail.
 
 24: GO ROOM IN 4 BIT 2 PAR 5
 
 GOTOY MSG5
-If the player is in room 4 (IN 4) and bit flag 2 is set (BIT
-2), then the player is put in room 5 (GOTOY - PAR 5 from the
-conditions) and message 5 is printed (MSG 5). In words, if
-the player is in the elevator, and he last pushed "2", then
-he is sent to the 2nd floor.
+If the player is in room 4 (IN 4) and bit flag 2 is set (BIT 2), then the player is put in room 5 (GOTOY - PAR 5 from the conditions) and message 5 is printed (MSG 5). In words, if the player is in the elevator, and he last pushed "2", then he is sent to the 2nd floor.
 
 25: UNLO DOOR IN/W 7 HAS 12
 
 MSG7 -
-This action is the same as action 15 except this action is
-for a different door (object 7, not object 3).
+This action is the same as action 15 except this action is for a different door (object 7, not object 3).
 
 26: EXAM DOOR IN/W 7
 
@@ -3444,35 +3041,17 @@ MSG8 MSG11
 28: EXAM DOOR IN/W 10
 
 MSG8 MSG 11
-These three actions are included together since they are
-very similar (the only difference is that they refer to
-different objects). Actions 27 and 28 really refer to the
-same thing. In action 27, the examine refers to a closed
-door in room 6. In action 28, the examine refers to the
-same door except it has now been opened so object 10 is in
-the room (open door) instead of object 8 (locked door).
-These actions are very similar to action 16.
+These three actions are included together since they are very similar (the only difference is that they refer to different objects). Actions 27 and 28 really refer to the same thing. In action 27, the examine refers to a closed door in room 6. In action 28, the examine refers to the same door except it has now been opened so object 10 is in the room (open door) instead of object 8 (locked door). These actions are very similar to action 16.
 
 29: UNLO DOOR HAS 12 IN/W 8 PAR 8 PAR 10
 
 EXX,X MSG5
-This is the only door the player can unlock. The door may
-be unlocked if the following conditions are true: the
-player is holding object 12 (HAS 12 - the keys) and he is in
-with object 8 (IN/W 8 - locked door). If these conditions
-are met then the room locations of object 8 and object 10
-are exchanged (EXX,X - PAR 8 and PAR 10 from the conditions)
-and MSG5 is printed.
+This is the only door the player can unlock. The door may be unlocked if the following conditions are true: the player is holding object 12 (HAS 12 - the keys) and he is in with object 8 (IN/W 8 - locked door). If these conditions are met then the room locations of object 8 and object 10 are exchanged (EXX,X - PAR 8 and PAR 10 from the conditions) and MSG5 is printed.
 
 30: LOCK DOOR HAS 12 IN/W 10 PAR 8 PAR 10
 
 EXX.X MSG5
-This action is very similar to the previous one except this
-one locks the door. To lock the door these conditions must
-be met: the player is carrying object 12 (HAS 12 - the
-keys) and he is in with object 10 (IN/W 10 - open door). If
-the conditions are met, then object 8 and object 10 are
-exchanged (EXX,X - PAR 8 and PAR 10 from the conditions) and
+This action is very similar to the previous one except this one locks the door. To lock the door these conditions must be met: the player is carrying object 12 (HAS 12 - the keys) and he is in with object 10 (IN/W 10 - open door). If the conditions are met, then object 8 and object 10 are exchanged (EXX,X - PAR 8 and PAR 10 from the conditions) and
 
 
 
@@ -3481,10 +3060,7 @@ MSG5 is printed.
 31: GO DOOR IN/W 10 PAR 7
 
 GOTOY MSG5
-If the player wants to go through the door, this condition
-must be met: the player is in with object 10 (IN/W 10 - an
-open door). If that condition was met, the player is put in
-room 7 (GOTOY - PAR 7 from the conditions).
+If the player wants to go through the door, this condition must be met: the player is in with object 10 (IN/W 10 - an open door). If that condition was met, the player is put in room 7 (GOTOY - PAR 7 from the conditions).
 
 32: SAVE GAME
 
@@ -3497,19 +3073,12 @@ need be met so the SAVE command is always executed.
 33: QUIT ANY
 
 FINI - -
-This action lets the player stop the game. The ANY noun
-means that the action is considered if the player's input
-noun was any of the nouns in the vocabulary list. This
-action requires no conditions to be met and performs a FINI
-command.
+This action lets the player stop the game. The ANY noun means that the action is considered if the player's input noun was any of the nouns in the vocabulary list. This action requires no conditions to be met and performs a FINI command.
 
 34: SCOR ANY
 
 SCORE - " "
-This action will print the player's score. This message
-gives the number of treasures stored in the treasure room
-and the percent stored. No conditions are needed so the
-SCOR command is always performed.
+This action will print the player's score. This message gives the number of treasures stored in the treasure room and the percent stored. No conditions are needed so the SCOR command is always performed.
 
 35: INVE ANY
 
@@ -3525,44 +3094,30 @@ since no conditions are present.
 
 MSG14 - - - v ^ ,_ . . .
 
-This action will print message 14 (MSG14) if the object
-
-being examined was not referred to in a previous true
-
-examine action. This action is usually present in every
-
-adventure. The message printed is usually something like I
-see nothing special."
+This action will print message 14 (MSG14) if the object being examined was not referred to in a previous true examine action. This action is usually present in every adventure. The message printed is usually something like "I see nothing special."
 
 37: HELP ANY
 
 MSG15 - "
 
-This is another common action. If the player types HELP
-message 15 (MSG15) is printed provided no previous HELP
-action was found to be true.
+This is another common action. If the player types HELP message 15 (MSG15) is printed provided no previous HELP action was found to be true.
 
 38: GO CAR IN 2 PAR 1
 
 GOTOY MSG5
-If the player is in room 2 (IN 2) then he is put in room 1
-(GOTOY - PAR 1 from the conditions) and message 5 is printed
-(MSG5).
+If the player is in room 2 (IN 2) then he is put in room 1 (GOTOY - PAR 1 from the conditions) and message 5 is printed (MSG5).
 
 
 
 39: PUSH BUTT
 
 MSG16 - -
-If the player PUSHes BUTTon then message 16 (MSG16) is
-printed. Since the player is supposed to PUSH 1 or PUSH 2
-this action is used to tell him so.
+If the player PUSHes BUTTon then message 16 (MSG16) is printed. Since the player is supposed to PUSH 1 or PUSH 2 this action is used to tell him so.
 
 40: TURN ANY
 
 MSG5 - -
-If the player tries to TURN any legal object message 5
-(MSG5) is printed.
+If the player tries to TURN any legal object message 5 (MSG5) is printed.
 
 41: AUTO
 
@@ -3570,14 +3125,9 @@ This action is not used.
 
 
 
-VOCABULARY
+###VOCABULARY
 
-The user must refer to the VOCABULARY words in the database
-list for this explanation. Notice that the predefined verbs
-and nouns are in their proper places (AUTO, GO, GET, DROP,
-ANY, NORTH, SOUTH, EAST, WEST, UP and DOWN). The only thing
-special about the vocabulary words is the synonyms. Part of
-the vocabulary appears as follows:
+The user must refer to the VOCABULARY words in the database list for this explanation. Notice that the predefined verbs and nouns are in their proper places (AUTO, GO, GET, DROP, ANY, NORTH, SOUTH, EAST, WEST, UP and DOWN). The only thing special about the vocabulary words is the synonyms. Part of the vocabulary appears as follows:
 
 
 
@@ -3592,17 +3142,11 @@ EXAM
 
 
 
-Synonyms are required to directly follow their primary noun
-or verb in the list and must be preceded by an asterisk. In
-this case *ENTE is a synonym of GO and *L00K is a synonym of
-EXAM. There may be more than one synonym for a certain noun
-or verb (see verb 10 - GET). Any action entries using the
-nouns or verbs must refer to a primary noun or verb, not a
-synonym.
+Synonyms are required to directly follow their primary noun or verb in the list and must be preceded by an asterisk. In this case *ENTE is a synonym of GO and *L00K is a synonym of EXAM. There may be more than one synonym for a certain noun or verb (see verb 10 - GET). Any action entries using the nouns or verbs must refer to a primary noun or verb, not a synonym.
 
 
 
-ROOMS
+###ROOMS
 
 An example of two rooms follows:
 
@@ -3612,91 +3156,40 @@ An example of two rooms follows:
 
 7: 6 *I'm in my apartment
 
-The 6: and 7: are the room number (6 and 7). The next six
-numbers are the rooms which the player will move to if he
-goes in the corresponding direction. For example, if the
-player is in room 6 and he types GO WEST, ADVENTURE will
+The 6: and 7: are the room number (6 and 7). The next six numbers are the rooms which the player will move to if he goes in the corresponding direction. For example, if the player is in room 6 and he types GO WEST, ADVENTURE will send him to room 5. If in room 7, typing GO EAST will put the player in room 6. The zeros mean the player can't go in that direction.
+
+The ROOM DESCRIPTIONS "hallway" and "*I'm in my apartment" are examples of the default room message. For example, if the player is in room 6, the room is described as "I'm in a hallway." If in room 7 the room is described as "I'm in my apartment." Putting an asterisk before the room description disables the automatic prefix message "I'm in a."
 
 
 
-send him to room 5. If in room 7, typing GO EAST will put
-the player in room 6. The zeros mean the player can't go in
-that direction.
+###MESSAGES
 
-The ROOM DESCRIPTIONS "hallway" and "*I'm in my apartment"
-are examples of the default room message. For example, if
-the player is in room 6, the room is described as "I'm in a
-hallway." If in room 7 the room is described as "I'm in my
-apartment." Putting an asterisk before the room description
-disables the automatic prefix message "I'm in a."
+The messages are just text strings. Look at message 1 however. In this listing the quote marks (") appear as quote marks. However, in BASIC these will appear as at signs (@) unless an upper/lower case modification has been installed. If an upper/lower case conversion has been installed, the character may look like a single quote or a British pound sign.
+
+Notice that message is not used. It should be null since it is printed by action entries when no other command is given.
 
 
 
-MESSAGES
+###OBJECTS
 
-The messages are just text strings. Look at message 1
-however. In this listing the quote marks (") appear as
-quote marks. However, in BASIC these will appear as at
-signs (@) unless an upper/lower case modification has been
-installed. If an upper/lower case conversion has been
-installed, the character may look like a single quote or a
-British pound sign.
+Each object has a starting room and a description. Objects which have a name, for example "Keys/KEY/" may be automatically picked up and dropped (The name is KEY in this case). If the starting room is -1 (like it is for *MY WALLET*) then the object is carried by the player when the adventure is started. Any other number is the room number in which that object can be found. A room number of zero means the object has not been found yet and is in the storeroom.
 
-Notice that message is not used. It should be null since
-it is printed by action entries when no other command is
-given.
-
-
-
-OBJECTS
-
-Each object has a starting room and a description. Objects
-which have a name, for example "Keys/KEY/" may be
-automatically picked up and dropped (The name is KEY in this
-case). If the starting room is -1 (like it is for *MY
-WALLET*) then the object is carried by the player when the
-adventure is started. Any other number is the room number
-in which that object can be found. A room number of zero
-means the object has not been found yet and is in the
-storeroom.
-
-Notice that object 9 is titled "Lighted artificial light
-source." Object 9 is predefined by ADVENTURE as the
-artificial light source in its lighted condition. In this
-adventure, object 9 is not used (except for the LIGHT MATC
-action) so no real name is given to it.
+Notice that object 9 is titled "Lighted artificial light source." Object 9 is predefined by ADVENTURE as the artificial light source in its lighted condition. In this adventure, object 9 is not used (except for the LIGHT MATC action) so no real name is given to it.
 
 These are the steps needed to win at this adventure:
 
-1) GET the keys from the car (EXAM WHEE will tell the
-player if they are there).
+1. GET the keys from the car (EXAM WHEE will tell the player if they are there).
+2. Get out of the car by moving EAST.
+3. To see, light a match.
+4. Enter the apartment building by typing GO DOOR.
+5. Type GO ELEV and PUSH 2 to go to the second floor.
+6. GO ROOM to leave the elevator.
+7. GO EAST to the second locked apartment door on the second floor.
+8. UNLO DOOR to open the locked apartment door.
+9. GO DOOR and drop the wallet (the wallet is initially carried by the player).
+10. Type SCOR.
 
-2) Get out of the car by moving EAST.
-
-3) To see, light a match.
-
-
-
-4) Enter the apartment building by typing GO DOOR.
-
-5) Type GO ELEV and PUSH 2 to go to the second floor.
-
-6) GO ROOM to leave the elevator.
-
-7) GO EAST to the second locked apartment door on the
-second floor.
-
-8) UNLO DOOR to open the locked apartment door.
-
-9) GO DOOR and drop the wallet (the wallet is initially
-carried by the player).
-
-10) Type SCOR.
-
-For a more "challenging" adventure try adventures "X" and
-"Y" on THE ADVENTURE SYSTEM master diskette. These
-adventures are considerably longer than this one and will
-pose much more of a challenge.
+For a more "challenging" adventure try adventures "X" and "Y" on THE ADVENTURE SYSTEM master diskette. These adventures are considerably longer than this one and will pose much more of a challenge.
 
 
 
