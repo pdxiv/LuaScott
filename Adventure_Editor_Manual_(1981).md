@@ -308,15 +308,15 @@ There are a few differences in the ADVENTURE drivers "ADV" and "ADVENTUR". The b
 
 "ADVENTUR" limits the name of the adventure database being read in to one character. For example, legal adventure names are:
 
-ADVENT /DA
-ADVENT /D7
+    ADVENT /DA
+    ADVENT /D7
 
 "ADV" limits the name of the adventure database to two characters. For example, legal adventure names are:
 
-ADVENT/DA
-ADVENT/D7
-ADVENT/DAA
-ADVENT/DOA
+    ADVENT/DA
+    ADVENT/D7
+    ADVENT/DAA
+    ADVENT/DOA
 
 The other difference is the file structure of a game saved in progress. These saved games are not compatible with each other (a game saved by "ADV" cannot be read in by "ADVENTUR").
 
@@ -740,7 +740,7 @@ BYX->X | | |
 
 As you can see by the above table, the only command searched for when doing an XREF on a counter is the "EXM,CT" command. The reason for searching for only this command even though others may affect the counter (i.e. CT-1) is that there is no way of checking if the other commands (such as CT-1) are affecting that particular counter.
 
-If must be noted that for every "EXM.CT" command for a particular counter, there will almost certainly be another "EXM.CT" command to switch it back in either the same action or in one closely following the first one. This situation must also be considered.
+If must be noted that for every "EXM,CT" command for a particular counter, there will almost certainly be another "EXM,CT" command to switch it back in either the same action or in one closely following the first one. This situation must also be considered.
 
 Suppose you wanted to find which actions referenced object number 25. The procedure would go as follows (user inputs are underlined):
 
@@ -2095,7 +2095,7 @@ PAR 10
 
 
 
-EXX.X
+EXX,X
 
 
 MSG5
@@ -2134,7 +2134,7 @@ PAR 10
 
 
 
-EXX.X
+EXX,X
 
 
 MSG5
@@ -2567,8 +2567,8 @@ The 0: means this is ACTION 0. The AUTO 100 means this auto action is considered
 
 1: AUTO 100 -IN 2 PAR 1 PAR 4 PAR 1
 
-EXM.CT CT<-N EXM.CT - SET MUG CNTR
-This is an automatic action used to set a counter. In this adventure if the player is outside his car and not in the apartment building for 4 consecutive moves he is mugged and killed (he loses). This action is executed 100 percent of the time (AUTO 100). The condition -IN 2 will be true if the player is in any room other than room 2. PAR 1, PAR 4 and PAR 1 are parameters used by the commands if all conditions are true. If all conditions are true, the CT (counter) value is exchanged (EXM,CT) with alternate counter 1 since the first parameter in the conditions was a 1. The command CT<-N will set the counter to 4 (4 is the next parameter). And finally CT is exchanged back with alternate counter 1 (EXM.CT). The reason for this switching is that ADVENTURE can only operate directly on the CT variable. ADVENTURE can operate on a maximum of 9 additional alternate counters however. SET MUG CNTR is the optional action title.
+EXM,CT CT<-N EXM,CT - SET MUG CNTR
+This is an automatic action used to set a counter. In this adventure if the player is outside his car and not in the apartment building for 4 consecutive moves he is mugged and killed (he loses). This action is executed 100 percent of the time (AUTO 100). The condition -IN 2 will be true if the player is in any room other than room 2. PAR 1, PAR 4 and PAR 1 are parameters used by the commands if all conditions are true. If all conditions are true, the CT (counter) value is exchanged (EXM,CT) with alternate counter 1 since the first parameter in the conditions was a 1. The command CT<-N will set the counter to 4 (4 is the next parameter). And finally CT is exchanged back with alternate counter 1 (EXM,CT). The reason for this switching is that ADVENTURE can only operate directly on the CT variable. ADVENTURE can operate on a maximum of 9 additional alternate counters however. SET MUG CNTR is the optional action title.
 
 2: AUTO 100 IN 2 PAR 10
 
@@ -2583,7 +2583,7 @@ MSG 2 DEAD FINI
 4: AUTO PAR 10
 
 EXM,CT - -
-In action 3, CT is tested to see if it is equal to (CT= 0) . If it does, then message 2 (MSG 2) is printed, the player is killed (DEAD) and the game is finished (FINI). If the counter was not equal to zero then action 4 is considered. It would normally be considered regardless of the pass/no pass status of action 3. But in this case since the DEAD command was issued the player was moved to the last room and killed. The FINI command then halted the game. This halts the auto actions. Since action 4 has no conditions it is always true and PAR 1 is passed to the commands. In this case, CT is exchanged with counter 1 again thus putting them back in their starting positions. There is a good reason for making these two actions separate. Two tasks need to be done, check if the counter is equal to zero and switch CT back with alternate counter 1. If these two were put in the same action and the counter (CT) did not equal zero, then the commands would not be performed. In this case the EXM.CT command would not be done so the counters would not be returned to the right place.
+In action 3, CT is tested to see if it is equal to (CT= 0) . If it does, then message 2 (MSG 2) is printed, the player is killed (DEAD) and the game is finished (FINI). If the counter was not equal to zero then action 4 is considered. It would normally be considered regardless of the pass/no pass status of action 3. But in this case since the DEAD command was issued the player was moved to the last room and killed. The FINI command then halted the game. This halts the auto actions. Since action 4 has no conditions it is always true and PAR 1 is passed to the commands. In this case, CT is exchanged with counter 1 again thus putting them back in their starting positions. There is a good reason for making these two actions separate. Two tasks need to be done, check if the counter is equal to zero and switch CT back with alternate counter 1. If these two were put in the same action and the counter (CT) did not equal zero, then the commands would not be performed. In this case the EXM,CT command would not be done so the counters would not be returned to the right place.
 
 5: AUTO 100 -IN 2 BIT 15
 
@@ -2710,7 +2710,7 @@ This is the only door the player can unlock. The door may be unlocked if the fol
 
 30: LOCK DOOR HAS 12 IN/W 10 PAR 8 PAR 10
 
-EXX.X MSG5
+EXX,X MSG5
 This action is very similar to the previous one except this one locks the door. To lock the door these conditions must be met: the player is carrying object 12 (HAS 12 - the keys) and he is in with object 10 (IN/W 10 - open door). If the conditions are met, then object 8 and object 10 are exchanged (EXX,X - PAR 8 and PAR 10 from the conditions) and
 
 
@@ -2956,7 +2956,7 @@ CT-N | Subtract N from counter.
 SAYW | Say the player's input noun.
 SAYWCR | Say the noun of the player's input noun and a carriage return.
 SAYCR | Start a new line.
-EXC.CR | Exchange current room with room in alternate room register C.
+EXC,CR | Exchange current room with room in alternate room register C.
 DELAY | Pause for about 1 second.
 
 ##Appendix B
