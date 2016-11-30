@@ -785,18 +785,18 @@ When displaying matches, XREF does not pause the output. Therefore, if there are
 
 The following table tells what conditions are searched for when doing an XREF on the appropriate database section:
 
-Objects | Rooms | Bit | Flags
-------- | ----- | --- | -----
+Objects | Rooms | Bit flags
+------- | ----- | ---------
 HAS | IN | BIT
 IN/W | -IN | -BIT
-AVL | | |
--IN/W | | |
--HAVE | | |
--AVL | | |
--RM0 | | |
-RM0 | | |
-ORIG | | |
--ORIG | | |
+AVL | |
+-IN/W | |
+-HAVE | |
+-AVL | |
+-RM0 | |
+RM0 | |
+ORIG | |
+-ORIG | |
 
 The following table tells what commands are checked for when doing an XREF on the appropriate database section:
 
