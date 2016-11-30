@@ -2613,205 +2613,47 @@ AUTO
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-VOCABULARY
-
-# VERBS
-
-
-
-
-
-1
-
-2
-
-3
-
-4
-
-5
-
-6
-
-7
-
-8
-
-9
-
-10
-
-11
-
-12
-
-13
-
-14
-
-15
-
-16
-
-17
-
-18
-
-19
-
-20
-
-21
-
-22
-
-
-
-AUTO
-GO
-
-♦ENTE
-
-♦WALK
-
-EXAM
-
-♦LOOK
-
-LIGH
-
-HELP
-
-UNLO
-
-LOCK
-
-GET
-
-♦TAKE
-
-♦PULL
-
-PUSH
-
-INVE
-
-QUIT
-
-SAVE
-
-TURN
-
-DROP
-
-SCOR
-
-
-
-NOUNS
-
-ANY
-
-NORTH
-
-SOUTH
-
-EAST
-
-WEST
-
-UP
-
-DOWN
-
-DOOR
-
-KEY
-
-♦KEYS
-
-ROOM
-
-BUTT
-
-CAR
-
-1
-
-2
-
-ELEV
-
-PANE
-
-GAME
-
-WALL
-
-WHEE
-
-MATC
-
-
-
-ROOMS
-# —
-
-0:
-
-1
-
-2:
-
-3:
-
-4:
-room
-
-5:
-
-6
-
-7
-
-8
-
-
-
-N S E W U D ROOM DESCRIPTION
-
-Storeroom. Can't get here
-
-2 car with an open door
-
-o 0. ♦I'm on the curb
-
-2 hallway
-
-♦I'm in an elevator next to a
-
-6 hallway
-
-5 hallway
-
-6 ♦I'm in my apartment
-
-hospital
+###Vocabulary
+
+Word id | Verbs | Nouns
+------- | ----- | -----
+0 | AUTO | ANY
+1 | GO | NORTH
+2 | *ENTE | SOUTH
+3 | *WALK | EAST
+4 | EXAM | WEST
+5 | ♦LOOK | UP
+6 | LIGH | DOWN
+7 | HELP | DOOR
+8 | UNLO | KEY
+9 | LOCK | ♦KEYS
+10 | GET | ROOM
+11 | ♦TAKE | BUTT
+12 | ♦PULL | CAR
+13 | PUSH | 1
+14 | INVE | 2
+15 | QUIT | ELEV
+16 | SAVE | PANE
+17 | TURN | GAME
+18 | DROP | WALL
+19 | SCOR | WHEE
+20 |  | MATC
+21 |  | 
+22 |  | 
+
+###Rooms
+
+Room id | N | S | E | W | U | D | Room description
+------- | - | - | - | - | - | - | ----------------
+0 | 0 | 0 | 0 | 0 | 0 | 0 | Storeroom. Can't get here
+1 | 0 | 0 | 2 | 0 | 0 | 0 | car with an open door
+2 | 0 | 0 | 0 | 0 | 0 | 0 | *I'm on the curb
+3 | 0 | 2 | 0 | 0 | 0 | 0 | hallway
+4 | 0 | 0 | 0 | 0 | 0 | 0 | *I'm in an elevator next to a room
+5 | 0 | 0 | 6 | 0 | 0 | 0 | hallway
+6 | 0 | 0 | 0 | 5 | 0 | 0 | hallway
+7 | 0 | 0 | 6 | 0 | 0 | 0 | *I'm in my apartment
+8 | 0 | 0 | 0 | 0 | 0 | 0 | hospital
 
 ###MESSAGES
 Message text
