@@ -177,7 +177,7 @@ Code | Symbol | Description
 70 | CLS | This command did a clear screen in the BASIC version of ADVENTURE and does nothing in the machine language version.
 71 | SAVE | Saves the game to disk or tape depending on which version is being used. It writes some user variables such as the current room, current locations of all objects, status of all bit flags, current values of all alternate room registers and the current values of all counters.
 72 | EXX,X | Exchange the room location of the Par #1 object with the room location of the Par #2 object. A DSPRM is automatically performed if either Par #1 or Par #2 objects were in the current room.
-73 | CONT | This command sets a flag to allow more than four commands to be performed. When all commands in this action entry have been performed, the conditions of all subsequent action entries with a zero verb and noun (up to the first non-zero verb and noun) will be evaluated. The checking procedure continues regardless if the entry being checked is true or false. 
+73 | CONT | This command sets a flag to allow more than four commands to be performed. When all commands in this action entry have been performed, the conditions of all subsequent action entries with a zero verb and noun (up to the first non-zero verb and noun) will be evaluated. The checking procedure continues regardless if the entry being checked is true or false.
 74 | AGETX | Always get Par #1 object even if the carry limit is overflowed.
 75 | BYX->X | Put the Par #1 object in the same room as the Par #2 object. If the Par #2 object is being carried this will pick up the Par #1 object also, regardless of the carry limit. If this command changes any objects in the current room a DSPRM command is automatically executed.
 76 | DSPRM | This is a copy of command 64.
@@ -601,14 +601,14 @@ A couple of applications of INSERT are given below:
 
 At times, the user would like to add a synonym to an existing verb or noun in the vocabulary list. If there is not a blank line for the synonym after the primary verb or noun, the vocabulary has to be moved around. This is a real hassle since the action entries will probably have to be modified also. For example, if verb number 20 is moved to verb number 58, then all occurrences of verb 20 in the actions will have to be changed to verb 58. This is done by modifying the actions and retyping the verb-noun combination. An easy way to find all occurrences of a verb or noun is use the XREF command (discussed below) to find which actions they are used in.
 
-Suppose the word EXAM was in the verb 
-*HIT was put in its place. Every act 
-EXAM would now have *HIT in its place 
-the synonym would be to insert a 
-synonym in. The INSERT command could 
-blank line before EXAM (actually 
-inserted after the verb just before E 
-entered, thus saving a lot of mod 
+Suppose the word EXAM was in the verb
+*HIT was put in its place. Every act
+EXAM would now have *HIT in its place
+the synonym would be to insert a
+synonym in. The INSERT command could
+blank line before EXAM (actually
+inserted after the verb just before E
+entered, thus saving a lot of mod
 nouns is done the same way.
 
 
@@ -909,8 +909,8 @@ key to enter the XREF
 
 
 
-What section of the database do you want an XREF of: 
-Verbs, Nouns, Rooms, Messages, Objects, Bit flags 
+What section of the database do you want an XREF of:
+Verbs, Nouns, Rooms, Messages, Objects, Bit flags
 Counters
 
 Type: V, N, R, M, 0, B, C or - ?
@@ -944,7 +944,7 @@ CONDITION - ACTION: 123
 
 
 
-The output in this example was contrived, but it indicates that object number 25 is referenced in the conditions of actions 6 and 123 and is referenced in the commands of action 45. 
+The output in this example was contrived, but it indicates that object number 25 is referenced in the conditions of actions 6 and 123 and is referenced in the commands of action 45.
 
 One warning about the XREF command. Most of the code for this command is in the machine language file "XREF/CMD". If this file is not loaded before the ADVEDIT program is run, the XREF command should not be used.
 
@@ -2638,8 +2638,8 @@ Word id | Verbs | Nouns
 18 | DROP | WALL
 19 | SCOR | WHEE
 20 |  | MATC
-21 |  | 
-22 |  | 
+21 |  |
+22 |  |
 
 ###Rooms
 
@@ -2655,8 +2655,7 @@ Room id | N | S | E | W | U | D | Room description
 7 | 0 | 0 | 6 | 0 | 0 | 0 | *I'm in my apartment
 8 | 0 | 0 | 0 | 0 | 0 | 0 | hospital
 
-###MESSAGES
-Message text
+###Messages
 
 Message id | Message text
 ---------- | ------------
@@ -2678,8 +2677,7 @@ Message id | Message text
 15 | HOW?
 16 | Say again with which button
 
-###OBJECTS
-Start object description
+###Objects
 
 Object id | Location, description and noun
 --------- | ------------------------------
