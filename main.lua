@@ -146,12 +146,20 @@ condition = {
   [19] = function (condition_parameter)
     -- do things
   end,
-  -- CT=    True if counter equal to number. 
+  -- CT=    True if counter equal to number.
   [20] = function (condition_parameter)
     -- do things
   end,
 }
 
+-- Check if an action with id "action_number" is a word action (or not)
+function is_word_action(action_number)
+  if action[action_number][1] > 0 then
+    return true
+  else
+    return false
+  end
+end
 
 function process_auto_actions()
   for i = 1, #action do
@@ -159,7 +167,7 @@ function process_auto_actions()
     local condition_argument = table.slice(action[i], 4, 12, 2)
     local command = table.slice(action[i], 13,16)
 
-    if action[i][1] == 0 then
+    if not is_word_action(i) then
       print(i - 1 .. ": \"" .. action_comment[i] .. "\"")
       print('Chance to execute: ' .. action[i][2] .. "%")
       for j = 1, #condition_code do
@@ -183,7 +191,7 @@ function process_word_actions()
     local condition_argument = table.slice(action[i], 4, 12, 2)
     local command = table.slice(action[i], 13,16)
 
-    if action[i][1] > 0 then
+    if is_word_action(i) then
       print(i - 1 .. ": \"" .. action_comment[i] .. "\"")
       print('Verb: "' .. verb[action[i][1] + 1] .. '", Noun: "'.. noun[action[i][2] + 1] .. '"')
       for j = 1, #condition_code do
