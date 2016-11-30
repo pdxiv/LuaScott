@@ -2619,17 +2619,17 @@ Word id | Verbs | Nouns
 ------- | ----- | -----
 0 | AUTO | ANY
 1 | GO | NORTH
-2 | *ENTE | SOUTH
-3 | *WALK | EAST
+2 | \*ENTE | SOUTH
+3 | \*WALK | EAST
 4 | EXAM | WEST
-5 | *LOOK | UP
+5 | \*LOOK | UP
 6 | LIGH | DOWN
 7 | HELP | DOOR
 8 | UNLO | KEY
-9 | LOCK | *KEYS
+9 | LOCK | \*KEYS
 10 | GET | ROOM
-11 | *TAKE | BUTT
-12 | *PULL | CAR
+11 | \*TAKE | BUTT
+12 | \*PULL | CAR
 13 | PUSH | 1
 14 | INVE | 2
 15 | QUIT | ELEV
@@ -2647,12 +2647,12 @@ Room id | N  | S  | E  | W  | U  | D  | Room description
 ------- | -- | -- | -- | -- | -- | -- | ----------------
 0 | 0 | 0 | 0 | 0 | 0 | 0 | Storeroom. Can't get here
 1 | 0 | 0 | 2 | 0 | 0 | 0 | car with an open door
-2 | 0 | 0 | 0 | 0 | 0 | 0 | *I'm on the curb
+2 | 0 | 0 | 0 | 0 | 0 | 0 | \*I'm on the curb
 3 | 0 | 2 | 0 | 0 | 0 | 0 | hallway
-4 | 0 | 0 | 0 | 0 | 0 | 0 | *I'm in an elevator next to a room
+4 | 0 | 0 | 0 | 0 | 0 | 0 | \*I'm in an elevator next to a room
 5 | 0 | 0 | 6 | 0 | 0 | 0 | hallway
 6 | 0 | 0 | 0 | 5 | 0 | 0 | hallway
-7 | 0 | 0 | 6 | 0 | 0 | 0 | *I'm in my apartment
+7 | 0 | 0 | 6 | 0 | 0 | 0 | \*I'm in my apartment
 8 | 0 | 0 | 0 | 0 | 0 | 0 | hospital
 
 ###Messages
@@ -2681,7 +2681,7 @@ Message id | Message text
 
 Object id | Location, description and noun
 --------- | ------------------------------
-0 | -1 *MY WALLET*/WALL/
+0 | -1 \*MY WALLET\*/WALL/
 1 | 1 Steering wheel
 2 | 2 Apartment complex main door
 3 | 3 Locked apartment door
@@ -2692,7 +2692,7 @@ Object id | Location, description and noun
 8 | 6 Locked apartment door
 9 | 0 Lighted artificial light source
 10 | 0 Open apartment door
-11 | 7 Sign saying "LEAVE ^TREASURES* HERE"
+11 | 7 Sign saying "LEAVE ^TREASURES\* HERE"
 12 | 0 Keys/KEY/
 13 | -1 Matches/MATC/
 14 | 2 Car
