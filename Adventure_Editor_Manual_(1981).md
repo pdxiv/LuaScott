@@ -2813,86 +2813,56 @@ o 0. ♦I'm on the curb
 
 hospital
 
+###MESSAGES
+Message text
 
+Message id | Message text
+---------- | ------------
+0 |
+1 | Welcome to "MINI-VENTURE" by Bruce Hansen
+2 | I was MUGGED!!
+3 | The match flares up
+4 | and goes out.
+5 | OK
+6 | The number "201" is stamped on one of them
+7 | The key won't fit
+8 | There's a plate with
+9 | 101 on it
+10 | 200 on it
+11 | 201 on it
+12 | There's a set of keys in the ignition
+13 | There are two buttons marked "1" and "2"
+14 | I see nothing special
+15 | HOW?
+16 | Say again with which button
 
-MESSAGES
+###OBJECTS
+Start object description
 
-# MESSAGE TEXT
-
-0:
-
-1: Welcome to "MINI-VENTURE" by Bruce Hansen
-
-2 : I was MUGGED ! !
-
-3: The match flares up
-
-4: and goes out.
-
-5: OK
-
-6: The number "201" is stamped on one of them
-
-7: The key won't fit
-
-8: There's a plate with
-
-9: 101 on it
-10: 200 on it
-11: 201 on it
-12: There's a set of keys in the ignition
-
-
-
-13: There are two buttons marked "1" and "2"
-
-14: I see nothing special
-
-15: HOW?
-
-16: Say again with which button
-
-OBJECTS
-
-# START OBJECT DESCRIPTION
-
-0: -1 *MY WALLET*/WALL/
-
-1: 1 Steering wheel
-
-2: 2 Apartment complex main door
-
-3: 3 Locked apartment door
-
-4: 3 Elevator
-
-5: 4 Elevator panel
-
-6: 5 Elevator
-
-7: 5 Locked apartment door
-
-8: 6 Locked apartment door
-
-9: Lighted artificial light source
-
-10: Open apartment door
-
-11: 7 Sign saying "LEAVE ^TREASURES* HERE"
-
-12: Keys/KEY/
-
-13: -1 Matches/MATC/
-
-14 : 2 Car
-
+Object id | Location, description and noun
+--------- | ------------------------------
+0 | -1 *MY WALLET*/WALL/
+1 | 1 Steering wheel
+2 | 2 Apartment complex main door
+3 | 3 Locked apartment door
+4 | 3 Elevator
+5 | 4 Elevator panel
+6 | 5 Elevator
+7 | 5 Locked apartment door
+8 | 6 Locked apartment door
+9 | 0 Lighted artificial light source
+10 | 0 Open apartment door
+11 | 7 Sign saying "LEAVE ^TREASURES* HERE"
+12 | 0 Keys/KEY/
+13 | -1 Matches/MATC/
+14 | 2 Car
 
 
 The database will be explained one section at a time. First the HEADER:
 
 Adventure 35 is the adventure number (Z in this case). The version # is 1.01 and the adventure leaves 7837 bytes free in a 16K machine (tape version) and 11214 bytes free in a 32K machine (disk version). These memory values are the free bytes when using Scott Adams' ADVENTURE program. Bruce Hansen's ADV program uses approximately 600 fewer bytes. BYTES=1008 is the number of bytes this adventure uses, #0BJ=14 means there are 14 objects, #ACT=41 means there are 41 actions, #V0C=22 means there are 22 verbs and 22 nouns, #RM=8 means there are 8 rooms, CARRY=5 means the adventurer can carry a maximum of 5 objects, START=1 means the player starts in room 1, #TR=1 means there is only 1 treasure, WLEN=4 means the number of significant letters in the nouns and verbs is 4, TIME=999 means the light limit is 999 moves, #MSG=16 means there are 16 messages and TR-RM=7 means the treasure room is room 7.
 
-###ACTIONS:
+###Actions:
 
 The automatic actions must be placed before player input actions. The AUTO verb signifies an auto action. The noun is the probability of this action being considered. ADVENTURE does not scan all player input actions, just until it finds a true one (if one exists). All auto actions are considered even -if a previous one is true.
 
