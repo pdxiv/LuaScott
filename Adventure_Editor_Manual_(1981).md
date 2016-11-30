@@ -785,105 +785,30 @@ When displaying matches, XREF does not pause the output. Therefore, if there are
 
 The following table tells what conditions are searched for when doing an XREF on the appropriate database section:
 
-OBJECTS ROOMS BIT FLAGS
-
-HAS IN BIT
-
-IN/W -IN -BIT
-AVL
--IN/W
-
-
-
--HAVE
--AVL
--RMO
-RMO
-ORIG
--ORIG
-
-
+Objects | Rooms | Bit | Flags
+------- | ----- | --- | -----
+HAS | IN | BIT
+IN/W | -IN | -BIT
+AVL | | |
+-IN/W | | |
+-HAVE | | |
+-AVL | | |
+-RM0 | | |
+RM0 | | |
+ORIG | | |
+-ORIG | | |
 
 The following table tells what commands are checked for when doing an XREF on the appropriate database section:
 
-
-
-OBJECTS
-
-
-ROOMS
-GOTOY
-
-
-BIT FLAGS
-SETZ
-
-
-COUNTERS
-
-
-GETX
-
-
-EXM , CT
-
-
-DROPX
-
-
-X->Y
-
-
-CLRZ
-
-
-
-
-X-RMO
-
-
-
-
-
-
-
-
-X->Y
-
-
-
-
-
-
-
-
-EXX.X
-
-
-
-
-
-
-
-
-AGETX
-
-
-
-
-
-
-
-
-BYX->X
-
-
-
-
-
-
-
-
+Objects | Rooms | Bit flags | Counters
+------- | ----- | --------- | --------
+GETX | GOTOY | SETZ | EXM,CT
+DROPX | X->Y | CLRZ |
+X-RM0 | | |
+X->Y | | |
+EXX,X | | |
+AGETX | | |
+BYX->X | | |
 
 As you can see by the above table, the only command searched for when doing an XREF on a counter is the "EXM,CT" command. The reason for searching for only this command even though others may affect the counter (i.e. CT-1) is that there is no way of checking if the other commands (such as CT-1) are affecting that particular counter.
 
@@ -994,8 +919,7 @@ After the basic idea is down on paper, some of the finer details should be consi
 
 After the finer details are done, start writing down the rooms, vocabulary and objects on paper. After most of these are entered, start writing the actions and messages. The reason for writing the actions and messages last is so you know what objects and rooms you have to work with and can add more when needed.
 
-After the adventure is roughly down on paper, start entering it into the ADVEDIT program. The HEADER should be modified first. The values input here do not have to be exact, just
-approximate.
+After the adventure is roughly down on paper, start entering it into the ADVEDIT program. The HEADER should be modified first. The values input here do not have to be exact, just approximate.
 
 A big decision has to be made at this time. That is the word length of the adventure. Scott Adams uses 3 or 4 letters for the word length on his adventures. The word length is significant because the length of the object names (identifier between slashes for objects to be picked and dropped) must match this value or be shorter.
 
@@ -1504,7 +1428,7 @@ GET KEY
 IN 1
 
 
-RMO 12
+RM0 12
 
 
 PAR 12
@@ -1763,7 +1687,7 @@ EXAM WHEE
 IN 1
 
 
-RMO 12
+RM0 12
 
 
 
@@ -2692,7 +2616,7 @@ Object id | Location, description and noun
 8 | 6 Locked apartment door
 9 | 0 Lighted artificial light source
 10 | 0 Open apartment door
-11 | 7 Sign saying "LEAVE ^TREASURES\* HERE"
+11 | 7 Sign saying "LEAVE \*TREASURES\* HERE"
 12 | 0 Keys/KEY/
 13 | -1 Matches/MATC/
 14 | 2 Car
@@ -2796,11 +2720,11 @@ If the player types UNLOCK DOOR this action is considered. There are three doors
 MSG8 MSG9
 This is a common type of EXAMINE action. A message is printed when the object is examined, provided the player is by the object. The IN/W condition is usually used for an object which cannot be carried. The AVL condition is used for an object which can be carried. In this case, if the player is in with object 3 (IN/W 3), then messages 8 and 9 are printed (MSG8 and MSG9). Note that message 8 contains only the first half of the EXAM message. The second half is message 9 for this door. Message 10 and message 11 are used for the second halves of the two doors which cannot be opened by the player (all three use the same first half of the EXAM message).
 
-17: EXAM WHEE IN 1 RMO 12 '
+17: EXAM WHEE IN 1 RM0 12 '
 
 MSG12 - -
 
-This EXAMINE action has two conditions. If the player is in room 1 (IN 1) and object 12 is in room (RMO 12) then message 12 is printed (MSG12). The logic for this action is as follows: if the player examines the wheel and the keys (object 12) are still there (RMO 12) then an appropriate message is printed. However, if the keys had been previously picked up then this EXAMINE would fail and ADVENTURE would search for another matching EXAM WHEE (or EXAM ANY) .
+This EXAMINE action has two conditions. If the player is in room 1 (IN 1) and object 12 is in room (RM0 12) then message 12 is printed (MSG12). The logic for this action is as follows: if the player examines the wheel and the keys (object 12) are still there (RM0 12) then an appropriate message is printed. However, if the keys had been previously picked up then this EXAMINE would fail and ADVENTURE would search for another matching EXAM WHEE (or EXAM ANY) .
 
 18: GO ELEV IN/W 4 PAR 4
 
