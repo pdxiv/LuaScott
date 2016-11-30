@@ -242,307 +242,130 @@ Code | Symbol | Description
 
 ###ROOM entries
 
-The room entries consist of the number of the adjacent room
-in the six reserved directions N, S, E, W, U and D plus a
-room description string. If the adjacent room number is
-zero, there is "no obvious exit" in that direction. If the
-adjacent room number in the N direction is 5, then going
-NORTH will put the player in room 5.
+The room entries consist of the number of the adjacent room in the six reserved directions N, S, E, W, U and D plus a room description string. If the adjacent room number is zero, there is "no obvious exit" in that direction. If the adjacent room number in the N direction is 5, then going NORTH will put the player in room 5.
 
-If the text description of the room does not begin with an
-asterisk, the ADVENTURE program will precede the string with
-"You're in a"; otherwise, it will just display the
-description minus the asterisk. To get quotes (") within
-the text description type a SHIFTed @ in place of the
-quotes. A SHIFTed @ sign will look like a regular @ sign
-unless an upper/ lower case mod has been installed and some
-video driver program is being used. The ADVENTURE program
-will automatically change these to quotes.
+If the text description of the room does not begin with an asterisk, the ADVENTURE program will precede the string with "You're in a"; otherwise, it will just display the description minus the asterisk. To get quotes (") within the text description type a SHIFTed @ in place of the quotes. A SHIFTed @ sign will look like a regular @ sign unless an upper/ lower case mod has been installed and some video driver program is being used. The ADVENTURE program will automatically change these to quotes.
 
-Room zero is reserved as a storeroom for objects currently
-not in any room. The player cannot get to room zero by
-using one of the reserved directions. Actions usually do
-not permit the player to enter this room.
-The last room is reserved for some sort of limbo state
-should the player die. This is where the player is sent
-with a DEAD command. It may or may not contain exits back
-to the other rooms.
+Room zero is reserved as a storeroom for objects currently not in any room. The player cannot get to room zero by using one of the reserved directions. Actions usually do not permit the player to enter this room. The last room is reserved for some sort of limbo state should the player die. This is where the player is sent with a DEAD command. It may or may not contain exits back to the other rooms.
 
 ###MESSAGE entries
 
-The messages consist of a string of characters for each
-message to be displayed by any of the action entries. Entry
-should always be left as a null string. To get quotes to
-appear within a message simply type a SHIFTed @ in place of
-the quote. ADVENTURE will change this to a quote.
+The messages consist of a string of characters for each message to be displayed by any of the action entries. Entry should always be left as a null string. To get quotes to appear within a message simply type a SHIFTed @ in place of the quote. ADVENTURE will change this to a quote.
 
 ###OBJECT entries
 
-The object entries consist of a text description of the
-object along with its starting room number. Room zero is
-used for objects not found yet. A minus one (-1) is used
-for the starting room when the player is carrying that
-object at the beginning of the game.
+The object entries consist of a text description of the object along with its starting room number. Room zero is used for objects not found yet. A minus one (-1) is used for the starting room when the player is carrying that object at the beginning of the game.
 
-The object descriptions should begin with an asterisk if
-that particular object is a treasure. Also, if the object
-is to be picked up and dropped, the word to use for it is
-enclosed in slashes at the end of the description. The word
-between the slashes must be the same length or smaller than
-the word length of the adventure. If the verb is 10 (GET)
-or 18 (DROP) and no other action applies, the adventure
-program will automatically pick up or drop the object if the
-player's inputted noun is the same as the object name. The
-name of the object must be a noun in the list of vocabulary
-entries for this pick up and drop feature to work. The
-object name must also be a primary noun, not a synonym.
+The object descriptions should begin with an asterisk if that particular object is a treasure. Also, if the object is to be picked up and dropped, the word to use for it is enclosed in slashes at the end of the description. The word between the slashes must be the same length or smaller than the word length of the adventure. If the verb is 10 (GET) or 18 (DROP) and no other action applies, the adventure program will automatically pick up or drop the object if the player's inputted noun is the same as the object name. The name of the object must be a noun in the list of vocabulary entries for this pick up and drop feature to work. The object name must also be a primary noun, not a synonym.
 
-An example of a treasure that can be picked up is:
-`*FIRESTONE* (cold now)/FIR/`
+An example of a treasure that can be picked up is: `*FIRESTONE* (cold now)/FIR/`
 
-which can be picked up by the word "FIR". Before the
-firestone is cooled, the treasure was in the storeroom and
-the following object was in the room:
-`glowing *FIRESTONE*`
+which can be picked up by the word "FIR". Before the firestone is cooled, the treasure was in the storeroom and the following object was in the room: `glowing *FIRESTONE*`
 
-Because this object does not begin with an asterisk it is
-not recognized as a treasure. Also, it cannot be picked up
-since it has no name between slashes. The action that cools
-the firestone exchanges the locations of these two objects.
+Because this object does not begin with an asterisk it is not recognized as a treasure. Also, it cannot be picked up since it has no name between slashes. The action that cools the firestone exchanges the locations of these two objects.
 
-Object number nine (9) is reserved as the artificial light
-source in its lighted state. The ADVENTURE program checks
-to see if object 9 is available when a room is in darkness
-(NIGHT). Also, the FILL command GETs object 9 when the
-light is recharged. Examples of object 9 are a lit
-flashlight and a lit lamp.
+Object number nine (9) is reserved as the artificial light source in its lighted state. The ADVENTURE program checks to see if object 9 is available when a room is in darkness (NIGHT). Also, the FILL command GETs object 9 when the light is recharged. Examples of object 9 are a lit flashlight and a lit lamp.
 
 ###ACTION TITLES
 
-The action titles are labels for the action entries. They
-aid in commenting the actions and ease in editing the
-adventure. The ADVENTURE program discards the titles when
-an adventure is read in because they are only used by an
-adventure editor program. These descriptions SHOULD NOT
-contain quote marks.
+The action titles are labels for the action entries. They aid in commenting the actions and ease in editing the adventure. The ADVENTURE program discards the titles when an adventure is read in because they are only used by an adventure editor program. These descriptions SHOULD NOT contain quote marks.
 
 ###TRAILER
 
-The trailer information contains the version number, the
-adventure number and a security checksum. If the version
-number was 415 it will be displayed as "4.15". The
-adventure number is simply the number identifying the
-adventure (0-9, A-Z). The security checksum is
-`(2 * #actions + #objects + version)`. If the checksum
-computed by the ADVENTURE program does not equal the one in
-the adventure file, the ADVENTURE program will hang up.
+The trailer information contains the version number, the adventure number and a security checksum. If the version number was 415 it will be displayed as "4.15". The adventure number is simply the number identifying the adventure (0-9, A-Z). The security checksum is `(2 * #actions + #objects + version)`. If the checksum computed by the ADVENTURE program does not equal the one in the adventure file, the ADVENTURE program will hang up.
 
 ##Chapter 3
 
 ADVENTURE Instructions
 
-This chapter will give some rules governing the entering of
-a user adventure. These are rules pertaining to Scott
-Adams' ADVENTURE program and Bruce Hansen's ADV program, not
-ADVEDIT. Rules are given in sections such as Action
-entries, etc.
+This chapter will give some rules governing the entering of a user adventure. These are rules pertaining to Scott Adams' ADVENTURE program and Bruce Hansen's ADV program, not ADVEDIT. Rules are given in sections such as Action entries, etc.
 
 Rules for the Action entries are as follows:
 
-1) All of the automatic actions must proceed player input
-actions. If the auto-actions are not placed first they
-will be ignored.
+1) All of the automatic actions must proceed player input actions. If the auto-actions are not placed first they will be ignored.
 
-2) If the action entry uses commands which require
-parameters, there must be parameters in the condition
-line. If not, strange messages and objects will appear.
+2) If the action entry uses commands which require parameters, there must be parameters in the condition line. If not, strange messages and objects will appear.
 
 Rules for the vocabulary:
 
-1) The predefined verbs and nouns (NORTH, GET, etc.) must
-remain in their preset positions. Failure to do so will
-cause difficulty in moving from room to room and/or
-carrying objects.
+1) The predefined verbs and nouns (NORTH, GET, etc.) must remain in their preset positions. Failure to do so will cause difficulty in moving from room to room and/or carrying objects.
 
-2) This is not a rule, but a strong suggestion. When
-keying in verbs and nouns with ADVEDIT, use only the
-word length specified in the header. This will make
-unintentional duplicate words easy to find. Duplicate
-nouns and verbs can be a big problem. For example,
-suppose noun 10 was SHED and noun 11 was SHELF. If the
-word length was three, SHED and SHELF would appear to be
-the same noun, SHE. This is where the problem occurs.
-If an action entry refers to SHELF (i.e. EXAMINE SHELF),
-the ADVENTURE driver program starts scanning the list of
-nouns for a match. The first occurrence of SHE is in
-SHED and since the noun number ADVENTURE is looking for
-(11) is not the same as the one it found (10), the
-action does not work. By limiting the length of
-inputted nouns and verbs to the word length, this
-problem will never crop up.
+2) This is not a rule, but a strong suggestion. When keying in verbs and nouns with ADVEDIT, use only the word length specified in the header. This will make unintentional duplicate words easy to find. Duplicate nouns and verbs can be a big problem. For example, suppose noun 10 was SHED and noun 11 was SHELF. If the word length was three, SHED and SHELF would appear to be the same noun, SHE. This is where the problem occurs. If an action entry refers to SHELF (i.e. EXAMINE SHELF), the ADVENTURE driver program starts scanning the list of nouns for a match. The first occurrence of SHE is in SHED and since the noun number ADVENTURE is looking for (11) is not the same as the one it found (10), the action does not work. By limiting the length of inputted nouns and verbs to the word length, this problem will never crop up.
 
-3) If a word is to be a synonym, it should be preceded by
-an asterisk and placed after the primary noun or verb.
-For example, if GO is the verb and RUN, WALK and ENTER
-are to be synonyms, the list of verbs would read GO,
-*RUN, *WALK and *ENTER.
+3) If a word is to be a synonym, it should be preceded by an asterisk and placed after the primary noun or verb. For example, if GO is the verb and RUN, WALK and ENTER are to be synonyms, the list of verbs would read GO, *RUN, *WALK and *ENTER.
 
 4) Nouns and verbs must not contain embedded quotes.
 
 Room rules are as follows:
 
-1) No quotes can be used in the room description. Quote
-marks are used as delimiters for the room description,
-thus using them within a description will cause problems
-when trying to read the adventure database. If quote
-marks are desired, a SHIFTed @ sign (a character 60 hex)
-should be used in their place. The ADVENTURE program
-will change these to quotes (the SHIFTed @ sign will
-look like a normal @ sign unless a software video driver
-is being used) .
+1) No quotes can be used in the room description. Quote marks are used as delimiters for the room description, thus using them within a description will cause problems when trying to read the adventure database. If quote marks are desired, a SHIFTed @ sign (a character 60 hex) should be used in their place. The ADVENTURE program will change these to quotes (the SHIFTed @ sign will look like a normal @ sign unless a software video driver is being used) .
 
-2) The header contains the number of rooms, the last being
-used to send the player to after a DEAD command. The
-last room should be some sort of limbo state or
-something similar.
+2) The header contains the number of rooms, the last being used to send the player to after a DEAD command. The last room should be some sort of limbo state or something similar.
 
-3) Each room has six values associated with it. These are
-the room numbers which are entered on a direction
-command (i.e. GO NORTH). These values should be legal
-room numbers (ADVEDIT won't let a bad number be
-entered). A zero is used if no exit is possible in that
-direction.
+3) Each room has six values associated with it. These are the room numbers which are entered on a direction command (i.e. GO NORTH). These values should be legal room numbers (ADVEDIT won't let a bad number be entered). A zero is used if no exit is possible in that direction.
 
 The rules for Messages are as follows:
 
-1) No quotes can be embedded in the messages. Quote marks
-are used as delimiters for the messages, thus using
-quotes within a message will cause problems with a disk
-read. To get quote marks within a message, type SHIFTed
-@ signs in their place. The ADVENTURE program will
-change these to quote marks.
-
+1) No quotes can be embedded in the messages. Quote marks are used as delimiters for the messages, thus using quotes within a message will cause problems with a disk read. To get quote marks within a message, type SHIFTed @ signs in their place. The ADVENTURE program will change these to quote marks.
 2) Message 0 should be null.
 
 Object rules:
 
-1) The starting room for an object should be a valid room
-number. Objects not found yet or not used at the
-beginning of the adventure should be in room zero (the
-storeroom). Objects the player is carrying at the start
-of the adventure should have a starting room of minus
-one.
+1) The starting room for an object should be a valid room number. Objects not found yet or not used at the beginning of the adventure should be in room zero (the storeroom). Objects the player is carrying at the start of the adventure should have a starting room of minus one.
 
-2) The object description should not contain any embedded
-quote marks. Quote marks are used as description
-delimiters while stored on disk and embedded quote marks
-will mess up the disk file. Use a SHIFTed @ sign in
-place of quotes. The ADVENTURE program will change
-these to quotes after they are read in.
+2) The object description should not contain any embedded quote marks. Quote marks are used as description delimiters while stored on disk and embedded quote marks will mess up the disk file. Use a SHIFTed @ sign in place of quotes. The ADVENTURE program will change these to quotes after they are read in.
 
-3) An object name is placed between slashes at the end of
-the object description if it is to be carried and
-dropped. The name should be the same length or less than
-the word length of the adventure. The object name must
-be a primary noun in the vocabulary list, not a synonym.
-If it is a synonym the pick up and drop feature will not
-work for that object.
+3) An object name is placed between slashes at the end of the object description if it is to be carried and dropped. The name should be the same length or less than the word length of the adventure. The object name must be a primary noun in the vocabulary list, not a synonym. If it is a synonym the pick up and drop feature will not work for that object.
 
-There are a few differences in the ADVENTURE drivers "ADV"
-and "ADVENTUR". The biggest difference is the disk
-input/output of each.
+There are a few differences in the ADVENTURE drivers "ADV" and "ADVENTUR". The biggest difference is the disk input/output of each.
 
-"ADVENTUR" limits the name of the adventure database being
-read in to one character. For example, legal adventure
-names are:
+"ADVENTUR" limits the name of the adventure database being read in to one character. For example, legal adventure names are:
 
 ADVENT /DA
 ADVENT /D7
 
-"ADV" limits the name of the adventure database to two
-characters. For example, legal adventure names are:
+"ADV" limits the name of the adventure database to two characters. For example, legal adventure names are:
 
 ADVENT/DA
 ADVENT/D7
 ADVENT/DAA
 ADVENT/DOA
 
-The other difference is the file structure of a game saved
-in progress. These saved games are not compatible with each
-other (a game saved by "ADV" cannot be read in by
-"ADVENTUR").
+The other difference is the file structure of a game saved in progress. These saved games are not compatible with each other (a game saved by "ADV" cannot be read in by "ADVENTUR").
 
-The file names written out are also different. The main
-part of the name is the same - the player's name input at
-the beginning of the adventure, but the file name extensions
-are different.
+The file names written out are also different. The main part of the name is the same - the player's name input at the beginning of the adventure, but the file name extensions are different.
 
-With "ADVENTUR", the extension is "/Sx" where "x" is the
-adventure number being played.
+With "ADVENTUR", the extension is "/Sx" where "x" is the adventure number being played.
 
-With "ADV", the extension is "/Sxn" where "x" is the first
-character of the adventure number (the second one is ignored
-if the adventure database had a two letter name like
-ADVENT/DOA) and "n" is the game version written out. "ADV"
-allows up to ten different files to be written from the same
-adventure. This allows the progress of an adventure to be
-saved out at different points.
+With "ADV", the extension is "/Sxn" where "x" is the first character of the adventure number (the second one is ignored if the adventure database had a two letter name like ADVENT/DOA) and "n" is the game version written out. "ADV" allows up to ten different files to be written from the same adventure. This allows the progress of an adventure to be saved out at different points.
 
-Other than these simple differences, the two programs are
-nearly identical.
+Other than these simple differences, the two programs are nearly identical.
 
-Chapter 4
+##Chapter 4
 
 ADVEDIT Instructions
 
-This chapter contains the instructions for the ADVEDIT
-program. Each option will be covered in detail.
+This chapter contains the instructions for the ADVEDIT program. Each option will be covered in detail.
 
 Program start up procedure:
 
-Put the ADVEDIT diskette in drive and turn on the
-computer. From the DOS command mode type:
+Put the ADVEDIT diskette in drive and turn on the computer. From the DOS command mode type:
 
 XREF
 
-Under no condition should you just enter "LOAD XREF/CMD".
-The program contains a relocating loader which moves it up
-to high memory. Just "LOADing" the program will not
-relocate it to high memory. Also, never load the "XREF"
-program twice without resetting the computer. The program
-will still work except the second load will simply set lower
-in memory than the first one thus wasting memory.
+Under no condition should you just enter "LOAD XREF/CMD". The program contains a relocating loader which moves it up to high memory. Just "LOADing" the program will not relocate it to high memory. Also, never load the "XREF" program twice without resetting the computer. The program will still work except the second load will simply set lower in memory than the first one thus wasting memory.
 
-If any high memory drivers are to be used, they must be
-loaded before the "XREF" program. They must also protect
-themselves by setting the high memory pointer (4049H for
-Model I, 4411H for Model III) to some value below them.
-Failure to do this will cause "XREF" to overwrite them!
+If any high memory drivers are to be used, they must be loaded before the "XREF" program. They must also protect themselves by setting the high memory pointer (4049H for Model I, 4411H for Model III) to some value below them. Failure to do this will cause "XREF" to overwrite them!
 
-Also, under no circumstances should the high memory pointer
-be changed once the "XREF" program has been loaded. Failure
-to do this will cause problems with the "XREF" and "INSERT"
-commands.
+Also, under no circumstances should the high memory pointer be changed once the "XREF" program has been loaded. Failure to do this will cause problems with the "XREF" and "INSERT" commands.
 
-After the "XREF" program has been loaded, go to BASIC and
-specify one file. After "XREF" is loaded, it displays the
-memory size which should be set from BASIC. The memory size
-need not be set (unless TRSDOS 2.1 or NEWDOOS 2.1 is used)
-if using NEWDOS/80, TRSDOS 2.3, LDOS or DOSPLUS since the
-XREF machine language program protects itself. If a MEMORY
-SIZE other that the one specified by "XREF" is set, it will
-cause problems when using the "XREF" and "INSERT" commands.
+After the "XREF" program has been loaded, go to BASIC and specify one file. After "XREF" is loaded, it displays the memory size which should be set from BASIC. The memory size need not be set (unless TRSDOS 2.1 or NEWDOOS 2.1 is used) if using NEWDOS/80, TRSDOS 2.3, LDOS or DOSPLUS since the XREF machine language program protects itself. If a MEMORY SIZE other that the one specified by "XREF" is set, it will cause problems when using the "XREF" and "INSERT" commands.
 
-Next, type in:
-RUN "ADVEDIT/BAS"
+Next, type in: `RUN "ADVEDIT/BAS"`
 
-To modify or just peek (that's cheating!) at an existing
-database, READ it into memory and then use the ADVEDIT
-commands to review it. To create a new adventure simply run
-ADVEDIT and start entering data via the MODIFY command.
+To modify or just peek (that's cheating!) at an existing database, READ it into memory and then use the ADVEDIT commands to review it. To create a new adventure simply run ADVEDIT and start entering data via the MODIFY command.
 
-The ADVEDIT commands and corresponding menu keys are listed
-below:
+The ADVEDIT commands and corresponding menu keys are listed below:
 
 R READ an adventure database in.
 W WRITE an adventure database out.
@@ -553,120 +376,59 @@ I INSERT blanks into the database.
 X XREF: reference every occurrence of a database section in the actions.
 E END the ADVEDIT program.
 
-Most of these commands have options within them,
-description of each command is given below.
+Most of these commands have options within them, description of each command is given below.
 
 READ command:
 
-This command will read in an adventure database. Simply
-supply the adventure number and the drive number. If the
-drive number is not entered, the first occurrence of the
-file is used.
+This command will read in an adventure database. Simply supply the adventure number and the drive number. If the drive number is not entered, the first occurrence of the file is used.
 
-The adventure number may be at most two characters from 0-9
-and A-Z. Scott Adams' adventures 0-12 use the characters
-0-9 and A-C (A for 10, B for 11, C for 12). This translates
-into a file name of "ADVENT/Dx" where "x" is the character
-0-9 or A-C. If two characters are entered, such as "00" the
-file name would be "ADVENT/D00". The adventure number
-displayed by the adventure driver program (ADVENTUR/CMD or
-ADV/CMD) will be from 0-35. Only the first character of the
-file name is used in determining this number. A 0-9 are
-displayed as that number, an "A" is displayed as a 10 , a "B"
-as an 11, etc. The TRAILER of the database contains the
-adventure number. Scott Adams' adventure driver program
-requires this value to be a single digit from 0-9.
-Therefore, only the least significant digit of the adventure
-number is written out (0 as 0, 15 as 5, 23 as 3, etc.)
+The adventure number may be at most two characters from 0-9 and A-Z. Scott Adams' adventures 0-12 use the characters 0-9 and A-C (A for 10, B for 11, C for 12). This translates into a file name of "ADVENT/Dx" where "x" is the character 0-9 or A-C. If two characters are entered, such as "00" the file name would be "ADVENT/D00". The adventure number displayed by the adventure driver program (ADVENTUR/CMD or ADV/CMD) will be from 0-35. Only the first character of the file name is used in determining this number. A 0-9 are displayed as that number, an "A" is displayed as a 10 , a "B" as an 11, etc. The TRAILER of the database contains the adventure number. Scott Adams' adventure driver program requires this value to be a single digit from 0-9. Therefore, only the least significant digit of the adventure number is written out (0 as 0, 15 as 5, 23 as 3, etc.)
 
 Examples of good file names are:
 
-Characters   Resulting file name
-A            ADVENT/DA
-0A           ADVENT/D0A
-ZD           ADVENT/DZD
+Characters | Resulting file name
+---------- | -------------------
+A | ADVENT/DA
+0A | ADVENT/D0A
+ZD | ADVENT/DZD
 
+If an error occurs while reading a database, an appropriate error message is displayed and control returns to the main menu.
 
-
-If an error occurs while reading a database, an appropriate
-error message is displayed and control returns to the main
-menu.
-
-If bad data somehow gets into the database, a "*BAD
-SECURITY*" message is displayed. The database will have
-been read in, but the accuracy of the data cannot be
-guaranteed.
+If bad data somehow gets into the database, a "*BAD SECURITY*" message is displayed. The database will have been read in, but the accuracy of the data cannot be guaranteed.
 
 WRITE command:
 
-The WRITE command will store an adventure database on disk.
-The adventure number and drive number are requested. If the
-adventure being written out was previously read in, hitting
-<ENTER> for the adventure number and drive number will write
-the adventure out with the same specifications.
+The WRITE command will store an adventure database on disk. The adventure number and drive number are requested. If the adventure being written out was previously read in, hitting <ENTER> for the adventure number and drive number will write the adventure out with the same specifications.
 
-The adventure number entered must be in the same format as
-in the READ command.
+The adventure number entered must be in the same format as in the READ command.
 
-Before writing the database, ADVEDIT verifies that the
-HEADER is holding the correct limiting values of the number
-of actions, messages, etc. For example, suppose you entered
-50 messages but the HEADER said there were only 40. Writing
-the database out without checking the limits would result
-in some lost data (messages 41-50). ADVEDIT makes a check
-and would write out all 50 messages.
+Before writing the database, ADVEDIT verifies that the HEADER is holding the correct limiting values of the number of actions, messages, etc. For example, suppose you entered 50 messages but the HEADER said there were only 40. Writing the database out without checking the limits would result in some lost data (messages 41-50). ADVEDIT makes a check and would write out all 50 messages.
 
 LIST command:
 
-This command is used to list on the CRT any part of the data
-base. After "L" is entered from the main menu a LIST
-sub-menu is displayed.
+This command is used to list on the CRT any part of the data base. After "L" is entered from the main menu a LIST sub-menu is displayed.
 
-The options of the submenu are: Header, Action entries,
-Vocabulary, Rooms, Messages and Objects.
+The options of the submenu are: Header, Action entries, Vocabulary, Rooms, Messages and Objects.
 
-The section to be listed is selected by typing in the first
-letter of its name. For example, if "A" is pressed, the
-Action entries will be listed. If the "-" key is pressed,
-the LIST sub-menu is exited back to the main menu.
+The section to be listed is selected by typing in the first letter of its name. For example, if "A" is pressed, the Action entries will be listed. If the "-" key is pressed, the LIST sub-menu is exited back to the main menu.
 
-After a section of the database is selected, the lower and
-upper limits to be displayed are input. If the ENTER key is
-depressed for this inquiry, all of that database section
-will be listed. The listing will automatically pause after
-so many lines are displayed. To continue the listing, hit
-any key (except BREAK).
+After a section of the database is selected, the lower and upper limits to be displayed are input. If the ENTER key is depressed for this inquiry, all of that database section will be listed. The listing will automatically pause after so many lines are displayed. To continue the listing, hit any key (except BREAK).
 
-While the section is listing, hitting the SPACE BAR will
-cause the listing to be exited and the LIST sub-menu to be
-reentered. If the listing has paused, then pressing the
-SPACE BAR will not exit back to the LIST sub-menu.
+While the section is listing, hitting the SPACE BAR will cause the listing to be exited and the LIST sub-menu to be reentered. If the listing has paused, then pressing the SPACE BAR will not exit back to the LIST sub-menu.
 
 The number of items in each database section is kept in the
 
-HEADER. This value is the upper limit used by ADVEDIT when
-the ENTER key is depressed on the limit inquiry (lower and
-upper bounds). The MODIFY command will allow input past
-this value without changing the value. As a result, all
-items of a database section may not be reviewed on a LIST,
-PRINT or MODIFY. To fix this, just make sure the HEADER
-points to at least the highest value of the database
-section in question.
+HEADER. This value is the upper limit used by ADVEDIT when the ENTER key is depressed on the limit inquiry (lower and upper bounds). The MODIFY command will allow input past this value without changing the value. As a result, all items of a database section may not be reviewed on a LIST, PRINT or MODIFY. To fix this, just make sure the HEADER points to at least the highest value of the database section in question.
 
-To LIST Action entries 5 through 65, input the following
-(user inputs are underlined):
+To LIST Action entries 5 through 65, input the following (user inputs are underlined):
 
-L (Hit the "L" key from the main menu to enter the
-LIST sub-menu)
+L (Hit the "L" key from the main menu to enter the LIST sub-menu)
 
 The computer will display the following:
 
-Which section of the database do you want to list:
-Header, Actions, Vocab, Rooms, Messages or Objects
-Type: H, A, V, R, M, or - ?
+Which section of the database do you want to list: Header, Actions, Vocab, Rooms, Messages or Objects Type: H, A, V, R, M, or - ?
 
-To select a database section, hit the first letter of that
-section. In our example this would be the "A" key:
+To select a database section, hit the first letter of that section. In our example this would be the "A" key:
 
 A (To select the Action entries)
 
@@ -678,34 +440,21 @@ Now type in the limits (5 and 65) :
 
 5,65
 
-The action entries should be listed starting at entry 5.
-After six have been listed, hit any key to continue listing.
-If the SPACE BAR is pressed while the section is listing,
-the LIST sub-menu will be reentered.
+The action entries should be listed starting at entry 5. After six have been listed, hit any key to continue listing. If the SPACE BAR is pressed while the section is listing, the LIST sub-menu will be reentered.
 
 PRINT command:
 
-The PRINT command will give a hardcopy listing of any one
-section or all of the database. Hitting the "P" key while
-at the main menu will enter the PRINT sub-menu.
+The PRINT command will give a hardcopy listing of any one section or all of the database. Hitting the "P" key while at the main menu will enter the PRINT sub-menu.
 
 The options of the PRINT sub-menu are:
 
-Everything, Header, Actions, Vocab, Messages, Rooms or
-Objects.
+Everything, Header, Actions, Vocab, Messages, Rooms or Objects.
 
-The PRINT sub-menu gives the option of printing any or all
-of the database. Hitting the SPACE BAR while a section is
+The PRINT sub-menu gives the option of printing any or all of the database. Hitting the SPACE BAR while a section is
 
-being printed will return control to the PRINT sub-menu.
-The PRINT command, unlike the LIST command, gives no options
-for upper and lower bounds of printing. Hitting any of the
-PRINT sub-menu options will cause that database section to
-be printed. The section is selected by pressing the first
-character of its name.
+being printed will return control to the PRINT sub-menu. The PRINT command, unlike the LIST command, gives no options for upper and lower bounds of printing. Hitting any of the PRINT sub-menu options will cause that database section to be printed. The section is selected by pressing the first character of its name.
 
-When the "P" key is pressed from the main menu the computer
-will display the following:
+When the "P" key is pressed from the main menu the computer will display the following:
 
 Do you want to print Everything in the database
 
@@ -715,16 +464,11 @@ Type: E, H, A, V, R, M, or - ? _
 
 If the "-" key is pressed, the main menu is reentered.
 
-If any section of the database has been entered past its
-limiting value (the value held in the HEADER) then all of
-the data will not be printed. To fix this, make sure the
-HEADER points to at least the highest value of the database
-section being PRINTed.
+If any section of the database has been entered past its limiting value (the value held in the HEADER) then all of the data will not be printed. To fix this, make sure the HEADER points to at least the highest value of the database section being PRINTed.
 
 MODIFY command:
 
-The MODIFY command is used to edit an adventure. To enter
-the MODIFY sub-menu hit the "M" key while in the main menu.
+The MODIFY command is used to edit an adventure. To enter the MODIFY sub-menu hit the "M" key while in the main menu.
 
 The computer will display the following:
 
@@ -732,51 +476,19 @@ Which section do you want to modify:
 Header, Actions, Vocab, Rooms, Messages or Objects
 Type: H, A, V, R, M, or - ? _
 
-To modify a section of the database, simply key in the
-first letter of its name. If the option selected is
-anything other than the HEADER, an inquiry is made for the
-lower and upper limits of the database section to be
-modified. Hitting ENTER here will let the user modify all
-elements of that section. One note however, the user can
-MODIFY past the limit value held in the HEADER for each data
-base section. If ENTER is hit for the lower and upper
-bounds inquiry, any elements above the upper limit in the
-HEADER will be missed. The fix is to make sure the HEADER
-points to at least the last item in each database section.
+To modify a section of the database, simply key in the first letter of its name. If the option selected is anything other than the HEADER, an inquiry is made for the lower and upper limits of the database section to be modified. Hitting ENTER here will let the user modify all elements of that section. One note however, the user can MODIFY past the limit value held in the HEADER for each data base section. If ENTER is hit for the lower and upper bounds inquiry, any elements above the upper limit in the HEADER will be missed. The fix is to make sure the HEADER points to at least the last item in each database section.
 
-When modifying any section of the database, hitting the
-ENTER key as a response will leave the item the same.
+When modifying any section of the database, hitting the ENTER key as a response will leave the item the same.
 
-When an Action is modified, and all conditions and commands
-have been entered, an inquiry is made for "Y,N,-". The "Y"
-means the modified action is correct, "N" means it is not.
+When an Action is modified, and all conditions and commands have been entered, an inquiry is made for "Y,N,-". The "Y" means the modified action is correct, "N" means it is not.
 
-If "Y" is pressed, any changes to that action are stored and
+If "Y" is pressed, any changes to that action are stored and the next action entry is displayed. If the "N" key was pressed, the action entry will be modified again. If the "-" key is pressed, the action entry is assumed to be correct and the MODIFY sub-menu is reentered.
 
-the next action entry is displayed. If the "N" key was
+Also, when modifying actions, the conditions are entered with a comma between the word and the number. For example, H AVL,50" is a legal input.
 
-pressed, the action entry will be modified again. If the
+Verbs and nouns must be separated by a comma (VERB, NOUN). Verbs and nouns input into actions must match exactly with ones found in the vocabulary or an error message will be printed. For example, if EXAMINE was the entry in the vocabulary list. EXAMINE would have to be the entry in the action (EXAM would not work).
 
-"-'* key is pressed, the action entry is assumed to be
-correct and the MODIFY sub-menu is reentered.
-
-Also, when modifying actions, the conditions are entered
-with a comma between the word and the number. For example,
-H AVL,50" is a legal input.
-
-Verbs and nouns must be separated by a comma (VERB, NOUN).
-Verbs and nouns input into actions must match exactly with
-ones found in the vocabulary or an error message will be
-printed. For example, if EXAMINE was the entry in the
-vocabulary list. EXAMINE would have to be the entry in the
-action (EXAM would not work).
-
-Suppose an action entry was to have "LIGHT TORCH" as its
-verb-noun, the conditions were that object 10 must be being
-carried (object 10 is an unlit torch) and the commands would
-be to switch the location of the lit torch with the unlit
-one. The entry of the action would go as follows
-(underlined entries are input by the player):
+Suppose an action entry was to have "LIGHT TORCH" as its verb-noun, the conditions were that object 10 must be being carried (object 10 is an unlit torch) and the commands would be to switch the location of the lit torch with the unlit one. The entry of the action would go as follows (underlined entries are input by the player):
 
 
 
@@ -892,49 +604,24 @@ previous adjacent room numbers.
 
 INSERT command:
 
-The INSERT command will insert blank lines into certain data
-base sections. Hit the "I" key from the main menu to enter
-the INSERT sub-menu.
+The INSERT command will insert blank lines into certain data base sections. Hit the "I" key from the main menu to enter the INSERT sub-menu.
 
-Insertions can be made into actions, verbs and nouns. To
-select a section, type in its first letter. Next, indicate
-the number of blank lines to be inserted. Lastly, respond
-with the item number the blank lines are to be inserted
-after. Hitting the "-" key returns control to the main
-menu.
+Insertions can be made into actions, verbs and nouns. To select a section, type in its first letter. Next, indicate the number of blank lines to be inserted. Lastly, respond with the item number the blank lines are to be inserted after. Hitting the "-" key returns control to the main menu.
 
-The number of blank lines to be inserted must be a positive
-number. If it is not, an error message is displayed and
-control returns to the INSERT sub-menu.
+The number of blank lines to be inserted must be a positive number. If it is not, an error message is displayed and control returns to the INSERT sub-menu.
 
 A couple of applications of INSERT are given below:
 
-At times, the user would like to add a synonym to an
-existing verb or noun in the vocabulary list. If there is
-not a blank line for the synonym after the primary verb or
-noun, the vocabulary has to be moved around. This is a real
-hassle since the action entries will probably have to be
-modified also. For example, if verb number 20 is moved to
-verb number 58, then all occurrences of verb 20 in the
-actions will have to be changed to verb 58. This is done by
-modifying the actions and retyping the verb-noun
-combination. An easy way to find all occurrences of a verb
+At times, the user would like to add a synonym to an existing verb or noun in the vocabulary list. If there is not a blank line for the synonym after the primary verb or noun, the vocabulary has to be moved around. This is a real hassle since the action entries will probably have to be modified also. For example, if verb number 20 is moved to verb number 58, then all occurrences of verb 20 in the actions will have to be changed to verb 58. This is done by modifying the actions and retyping the verb-noun combination. An easy way to find all occurrences of a verb or noun is use the XREF command (discussed below) to find which actions they are used in.
 
-
-
-or noun is use the XREF command (discussed below) to find
-which actions they are used in.
-
-
-
-Suppose the word EXAM was in the verb
-*HIT was put in its place. Every act
-EXAM would now have *HIT in its place
-the synonym would be to insert a
-synonym in. The INSERT command could
-blank line before EXAM (actually
-inserted after the verb just before E
-entered, thus saving a lot of mod
+Suppose the word EXAM was in the verb 
+*HIT was put in its place. Every act 
+EXAM would now have *HIT in its place 
+the synonym would be to insert a 
+synonym in. The INSERT command could 
+blank line before EXAM (actually 
+inserted after the verb just before E 
+entered, thus saving a lot of mod 
 nouns is done the same way.
 
 
@@ -954,37 +641,21 @@ ifying. Inserting into
 
 
 
-There are some rules which must be followed however. No
-insertions may be made before verb 18 (DROP). Since an
+There are some rules which must be followed however. No insertions may be made before verb 18 (DROP). Since an
 
 insertion before the DROP verb would move it from its
 
 predefined position, an insertion before it is not allowed.
 
-No insertions are allowed before noun 6. Nouns 1-6 are the
-predefined room directions and they cannot have any
-synonyms so no insertions may be done in them.
+No insertions are allowed before noun 6. Nouns 1-6 are the predefined room directions and they cannot have any synonyms so no insertions may be done in them.
 
-Also, at times a few blank lines may be needed between two
-action entries. For example, maybe an entry has to be
-lengthened to the point that a CONT command in the action
-entry must be added. If another action entry directly
-follows the entry to be CONTinued, at least one of them will
-have to be moved and retyped. The INSERT command will allow
-one or more blank lines to be inserted so the CONTinued
-action entry may be entered with no retyping.
+Also, at times a few blank lines may be needed between two action entries. For example, maybe an entry has to be lengthened to the point that a CONT command in the action entry must be added. If another action entry directly follows the entry to be CONTinued, at least one of them will have to be moved and retyped. The INSERT command will allow one or more blank lines to be inserted so the CONTinued action entry may be entered with no retyping.
 
-Another use for the INSERT command on actions is for making
-more space for the automatic actions. The automatic action
-entries must precede all player input actions. If there is
-no more room for auto-actions, the INSERT command can make
-room by inserting some blank lines before the player input
-actions.
+Another use for the INSERT command on actions is for making more space for the automatic actions. The automatic action entries must precede all player input actions. If there is no more room for auto-actions, the INSERT command can make room by inserting some blank lines before the player input actions.
 
 
 
-An example of INSERTing follows,
-following partial noun list:
+An example of INSERTing follows, following partial noun list:
 
 
 
