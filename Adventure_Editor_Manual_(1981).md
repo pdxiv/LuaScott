@@ -811,9 +811,7 @@ If the BREAK key is depressed at any time and the ADVEDIT program is halted, the
 
 Because of all the string usage in ADVEDIT, string compression may occasionally occur. This will result in pauses up to 30 seconds. In most cases, string compression will never pop up.
 
-ADVEDIT has been checked out with NEWDOS/80 version 2.0, TRSDOS 2.2 and 2.3, NEWDOS/21, DOSPLUS , LDOS and NEWDOS/80 version 1.0 with success. The only problem occurred when using NEWDOS/80- version 1.0. If using this DOS, the zaps sent out by Apparat must be installed. Also, when entering
-
-message numbers in the action entries, the values must be two digit numbers. For example, message 5 is entered as "05" or " 5".
+ADVEDIT has been checked out with NEWDOS/80 version 2.0, TRSDOS 2.2 and 2.3, NEWDOS/21, DOSPLUS , LDOS and NEWDOS/80 version 1.0 with success. The only problem occurred when using NEWDOS/80- version 1.0. If using this DOS, the zaps sent out by Apparat must be installed. Also, when entering message numbers in the action entries, the values must be two digit numbers. For example, message 5 is entered as "05" or " 5".
 
 ###ADVEDIT LIMITATIONS
 
