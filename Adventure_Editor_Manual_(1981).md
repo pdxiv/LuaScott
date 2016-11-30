@@ -704,54 +704,28 @@ Type: A, V, N or - ? N
 
 The computer will respond with:
 
-How many blank lines ? 1_
+``
+How many blank lines ? _1_
+``
 
 (We need to insert only one blank line)
 
 The computer will inquire:
 
-After what noun # ? 2_5
+``
+After what noun # ? _25_
+``
 
-After a few seconds the insertion will be completed. After
-the task is finished the nouns will be listed as follows:
+After a few seconds the insertion will be completed. After the task is finished the nouns will be listed as follows:
 
-
-
-23
-
-
-SHELF
-
-
-24
-
-
-*BOOK
-
-
-25
-
-
-CASSETTE
-
-
-26
-
-
-
-
-27
-
-
-DISKETTE
-
-
-28
-
-
-DOG
-
-
+``
+23:   SHELF
+24:   \*BOOK
+25:   CASSETTE
+26:
+27:   DISKETTE
+28:   DOG
+``
 
 Now the MODIFY command could be used to place the noun synonym "*TAPE" at noun 26.
 
@@ -783,7 +757,7 @@ The second one is "COMMAND - ACTION: n". This message is displayed if the item f
 
 When displaying matches, XREF does not pause the output. Therefore, if there are more than 15 or so matches, the first ones may be hard to read. In this case, select a smaller range of actions to be scanned and do the XREF in more than one part. Another solution is to send the output to the printer.
 
-The following table tells what conditions are searched for when doing an XREF on the appropriate database section:
+The following table tells what *conditions* are searched for when doing an XREF on the appropriate database section:
 
 Objects | Rooms | Bit flags
 ------- | ----- | ---------
@@ -798,7 +772,7 @@ RM0 | |
 ORIG | |
 -ORIG | |
 
-The following table tells what commands are checked for when doing an XREF on the appropriate database section:
+The following table tells what *commands* are checked for when doing an XREF on the appropriate database section:
 
 Objects | Rooms | Bit flags | Counters
 ------- | ----- | --------- | --------
