@@ -2643,8 +2643,8 @@ Word id | Verbs | Nouns
 
 ###Rooms
 
-Room id | N | S | E | W | U | D | Room description
-------- | - | - | - | - | - | - | ----------------
+Room id | N  | S  | E  | W  | U  | D  | Room description
+------- | -- | -- | -- | -- | -- | -- | ----------------
 0 | 0 | 0 | 0 | 0 | 0 | 0 | Storeroom. Can't get here
 1 | 0 | 0 | 2 | 0 | 0 | 0 | car with an open door
 2 | 0 | 0 | 0 | 0 | 0 | 0 | *I'm on the curb
