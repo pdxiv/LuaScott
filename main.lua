@@ -221,11 +221,7 @@ condition = {
 
 -- Check if an action with id "action_number" is a word action (or not)
 function is_word_action(action_number)
-  if action[action_number][1] > 0 then
-    return true
-  else
-    return false
-  end
+  return action[action_number][1] > 0
 end
 
 function process_auto_actions()
