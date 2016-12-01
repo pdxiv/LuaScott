@@ -118,26 +118,26 @@ condition = {
   -- Passes if the player is not carrying the numbered object. Fails if the
   -- player is carrying the object.
   [7] = function (condition_parameter)
-    return not condition[2](condition_parameter)    
+    return not condition[2](condition_parameter)
   end,
 
   -- -IN
   -- Passes if the player is not in the numbered room. The condition fails if
   -- the player is in any other room.
   [8] = function (condition_parameter)
-    return not condition[5](condition_parameter)    
+    return not condition[5](condition_parameter)
   end,
 
   -- BIT
   -- Passes if the numbered bit flag is set. Fails if the flag is cleared.
   [9] = function (condition_parameter)
-    return bit_flag[condition_parameter + 1]    
+    return bit_flag[condition_parameter + 1]
   end,
 
   -- -BIT
   -- Passes if the numbered bit flag is cleared. Fails if the flag is set.
   [10] = function (condition_parameter)
-    return not condition[9](condition_parameter)   
+    return not condition[9](condition_parameter)
   end,
 
   -- ANY
@@ -151,18 +151,18 @@ condition = {
         carried_counter = carried_counter + 1
       end
     end
-    return carried_counter > 0    
+    return carried_counter > 0
   end,
 
   -- -ANY
   -- Passes if the player is not carrying any objects. Fails if the player is
   -- carrying any objects at all.
   [12] = function (condition_parameter)
-    return not condition[11](condition_parameter)        
+    return not condition[11](condition_parameter)
   end,
 
   -- -AVL
-  -- Passes if the numbered object is in any other room. Fails if the object is 
+  -- Passes if the numbered object is in any other room. Fails if the object is
   -- available either because it is being carried or it is in the same room as
   -- the player.
   [13] = function (condition_parameter)
@@ -173,49 +173,49 @@ condition = {
   -- Passes if the numbered object is not in room zero. Room zero is reserved as
   -- a storeroom. The condition fails if the object is in room zero.
   [14] = function (condition_parameter)
-    return not (item_location[condition_parameter + 1] == 0)    
+    return not (item_location[condition_parameter + 1] == 0)
   end,
 
   -- RM0
   -- Passes if the numbered object is in room zero. The condition fails if the
   -- object is in any room other than room zero.
   [15] = function (condition_parameter)
-    return not condition[14](condition_parameter)    
+    return not condition[14](condition_parameter)
   end,
 
   -- CT<=
   -- Passes if the counter is less than or equal to the number. Fails if the
   -- counter is greater than the number.
   [16] = function (condition_parameter)
-    -- do things
+    return counter <= condition_parameter
   end,
 
   -- CT>
   -- Passes if the counter is greater than the number. Fails if the counter is
   -- less than or equal to the number.
   [17] = function (condition_parameter)
-    -- do things
+    return counter > condition_parameter
   end,
 
   -- ORIG
   -- Passes if the numbered object is in the same room it started in. Fails if
   -- the object is in any other room or is being carried.
   [18] = function (condition_parameter)
-    -- do things
+    return item_location[condition_parameter + 1] == item_start_location[condition_parameter + 1]
   end,
 
   -- -ORIG
   -- Passes if the numbered object is in any room other than its starting room
   -- or is being carried. Fails if the object is in the same room it started in.
   [19] = function (condition_parameter)
-    -- do things
+    return not condition[18](condition_parameter)
   end,
 
   -- CT=
   -- Passes if the counter is equal to the number. Fails if the counter is not
   -- equal to the number.
   [20] = function (condition_parameter)
-    -- do things
+    return counter == condition_parameter
   end,
 }
 
