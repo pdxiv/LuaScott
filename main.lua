@@ -68,85 +68,152 @@ function table.slice(table_to_slice, first, last, step)
   return sliced
 end
 
-
 condition = {
-  -- PAR    Passes a number to the commands.
+  -- PAR
+  -- Condition always passes. The number included with PAR (i.e. PAR 20) may be
+  -- used by the commands in this entry.
   [1] = function (condition_parameter)
      table.insert(command_argument, condition_parameter)
+     return true
   end,
-  -- HAS    True if holding the object.
+
+  -- HAS
+  -- Passes if the player is carrying the numbered object (i.e. HAS 15). Fails
+  -- if the object is either in the same room as the player or in any other
+  -- room.
   [2] = function (condition_parameter)
-    -- do things
+    return item_location[condition_parameter + 1] == -1
   end,
-  -- IN/W   True if in same room as object (not holding it).
+
+  -- IN/W
+  -- Passes if the player is in the same room as the numbered object. Fails if
+  -- the player is either holding the object or the object is in any other room.
   [3] = function (condition_parameter)
-    -- do things
+    return item_location[condition_parameter + 1] == current_room
   end,
-  -- AVL    True if in same room or holding object.
+
+  -- AVL
+  -- Passes if the numbered object is available because the player is either
+  -- carrying the object or in the same room as the object. Fails if the object
+  -- is in any other room.
   [4] = function (condition_parameter)
-    -- do things
+    return condition[2](condition_parameter) or condition[3](condition_parameter)
   end,
-  -- IN     True if in room.
+
+  -- IN
+  -- Passes if the player is in the numbered room (i.e. IN 5). Fails if the
+  -- player is in any other room.
   [5] = function (condition_parameter)
-    -- do things
+    return current_room == condition_parameter
   end,
-  -- -IN/W  True if holding object or if object is in another room.
+
+  -- -IN/W
+  -- Passes if the numbered object is held by the player or if the object is in
+  -- any other room. Fails if the object is in the same room as the player.
   [6] = function (condition_parameter)
-    -- do things
+    return condition[2](condition_parameter) or not condition[3](condition_parameter)
   end,
-  -- -HAVE  True if not holding object.
+
+  -- -HAVE
+  -- Passes if the player is not carrying the numbered object. Fails if the
+  -- player is carrying the object.
   [7] = function (condition_parameter)
-    -- do things
+    return not condition[2](condition_parameter)    
   end,
-  -- -IN    True if not in room.
+
+  -- -IN
+  -- Passes if the player is not in the numbered room. The condition fails if
+  -- the player is in any other room.
   [8] = function (condition_parameter)
-    -- do things
+    return not condition[5](condition_parameter)    
   end,
-  -- BIT    True if bit flag set.
+
+  -- BIT
+  -- Passes if the numbered bit flag is set. Fails if the flag is cleared.
   [9] = function (condition_parameter)
-    -- do things
+    return bit_flag[condition_parameter + 1]    
   end,
-  -- -BIT   True if bit flag cleared.
+
+  -- -BIT
+  -- Passes if the numbered bit flag is cleared. Fails if the flag is set.
   [10] = function (condition_parameter)
-    -- do things
+    return not condition[9](condition_parameter)   
   end,
-  -- ANY    True if holding any objects.
+
+  -- ANY
+  -- Passes if the player is carrying any objects at all. Fails if the player is
+  -- not carrying any objects. The parameter entered (i.e. ANY 50) has no effect
+  -- on this Condition.
   [11] = function (condition_parameter)
-    -- do things
+    local carried_counter = 0
+    for i = 1, #item_location  do
+      if item_location[i] == -1 then
+        carried_counter = carried_counter + 1
+      end
+    end
+    return carried_counter > 0    
   end,
-  -- -ANY   True if not holding any objects.
+
+  -- -ANY
+  -- Passes if the player is not carrying any objects. Fails if the player is
+  -- carrying any objects at all.
   [12] = function (condition_parameter)
-    -- do things
+    return not condition[11](condition_parameter)        
   end,
-  -- -AVL   True if object in another room.
+
+  -- -AVL
+  -- Passes if the numbered object is in any other room. Fails if the object is 
+  -- available either because it is being carried or it is in the same room as
+  -- the player.
   [13] = function (condition_parameter)
-    -- do things
+    return not condition[4](condition_parameter)
   end,
-  -- -RMO   True if object not in room zero.
+
+  -- -RM0
+  -- Passes if the numbered object is not in room zero. Room zero is reserved as
+  -- a storeroom. The condition fails if the object is in room zero.
   [14] = function (condition_parameter)
-    -- do things
+    return not (item_location[condition_parameter + 1] == 0)    
   end,
-  -- RMO    True if object in room zero.
+
+  -- RM0
+  -- Passes if the numbered object is in room zero. The condition fails if the
+  -- object is in any room other than room zero.
   [15] = function (condition_parameter)
-    -- do things
+    return not condition[14](condition_parameter)    
   end,
-  -- CT<=   True if counter less than or equal to number.
+
+  -- CT<=
+  -- Passes if the counter is less than or equal to the number. Fails if the
+  -- counter is greater than the number.
   [16] = function (condition_parameter)
     -- do things
   end,
-  -- CT>    True if counter greater than number.
+
+  -- CT>
+  -- Passes if the counter is greater than the number. Fails if the counter is
+  -- less than or equal to the number.
   [17] = function (condition_parameter)
     -- do things
   end,
-  -- ORIG   True if object in original starting room.
+
+  -- ORIG
+  -- Passes if the numbered object is in the same room it started in. Fails if
+  -- the object is in any other room or is being carried.
   [18] = function (condition_parameter)
     -- do things
   end,
-  -- -ORIG  True if object not in original starting room.
+
+  -- -ORIG
+  -- Passes if the numbered object is in any room other than its starting room
+  -- or is being carried. Fails if the object is in the same room it started in.
   [19] = function (condition_parameter)
     -- do things
   end,
-  -- CT=    True if counter equal to number.
+
+  -- CT=
+  -- Passes if the counter is equal to the number. Fails if the counter is not
+  -- equal to the number.
   [20] = function (condition_parameter)
     -- do things
   end,

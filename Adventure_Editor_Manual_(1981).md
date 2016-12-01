@@ -587,8 +587,6 @@ Description ? Cloak room
 The numbers preceding the letters (N, S, E, etc.) are the
 previous adjacent room numbers.
 
-
-
 ###INSERT command:
 
 The INSERT command will insert blank lines into certain data base sections. Hit the "I" key from the main menu to enter the INSERT sub-menu.
@@ -601,32 +599,7 @@ A couple of applications of INSERT are given below:
 
 At times, the user would like to add a synonym to an existing verb or noun in the vocabulary list. If there is not a blank line for the synonym after the primary verb or noun, the vocabulary has to be moved around. This is a real hassle since the action entries will probably have to be modified also. For example, if verb number 20 is moved to verb number 58, then all occurrences of verb 20 in the actions will have to be changed to verb 58. This is done by modifying the actions and retyping the verb-noun combination. An easy way to find all occurrences of a verb or noun is use the XREF command (discussed below) to find which actions they are used in.
 
-Suppose the word EXAM was in the verb
-*HIT was put in its place. Every act
-EXAM would now have *HIT in its place
-the synonym would be to insert a
-synonym in. The INSERT command could
-blank line before EXAM (actually
-inserted after the verb just before E
-entered, thus saving a lot of mod
-nouns is done the same way.
-
-
-
-list and the synonym
-
-ion entry with the verb
-
-The easy way to add
-
-blank line and type the
-
-be used to put one
-the blank line would be
-XAM) so *HIT could be
-ifying. Inserting into
-
-
+Suppose the word EXAM was in the verb list and the synonym \*HIT was put in its place. Every action entry with the verb EXAM would now have \*HIT in its place. The easy way to add the synonym would be to insert a blank line and type the synonym in. The INSERT command could be used to put one blank line before EXAM (actually the blank line would be inserted after the verb just before EXAM) so \*HIT could be entered, thus saving a lot of modifying. Inserting into nouns is done the same way.
 
 There are some rules which must be followed however. No insertions may be made before verb 18 (DROP). Since an
 
