@@ -199,7 +199,7 @@ condition = {
   -- CT<=
   -- Passes if the counter is less than or equal to the number. Fails if the
   -- counter is greater than the number.
-  [16] = function (condition_parameter)    
+  [16] = function (condition_parameter)
     return counter <= condition_parameter
   end,
 
@@ -373,7 +373,7 @@ command = {
   end,
 
   -- CLS
-  -- This command did a clear screen in the BASIC version of ADVENTURE and does 
+  -- This command did a clear screen in the BASIC version of ADVENTURE and does
   -- nothing in the machine language version.
   [20] = function ()
     -- do stuff
@@ -382,7 +382,7 @@ command = {
   -- SAVE
   -- Saves the game to disk or tape depending on which version is being used. It
   -- writes some user variables such as the current room, current locations of
-  -- all objects, status of all bit flags, current values of all alternate room 
+  -- all objects, status of all bit flags, current values of all alternate room
   -- registers and the current values of all counters.
   [21] = function ()
     -- do stuff
