@@ -232,6 +232,285 @@ condition = {
   end,
 }
 
+
+command = {
+  -- NOOP
+  -- No command or message.
+  [1] = function ()
+    -- do stuff
+  end,
+
+  -- GETX
+  -- Pick up Par #1 object unless the player is already carrying the maximum
+  -- number or limit. The object may be in the current room or in any other
+  -- room.
+  [2] = function ()
+    -- do stuff
+  end,
+
+  -- DROPX
+  -- Drop the Par #1 object in the same room as the player. The object may be
+  -- carried or in another room.
+  [3] = function ()
+    -- do stuff
+  end,
+
+  -- GOTOY
+  -- Move the player to the Par #1 room. This command should be followed by a
+  -- DSPRM command. Also, this may need to be followed by a DAY/NIGHT command
+  -- depending on the light status of the room.
+  [4] = function ()
+    -- do stuff
+  end,
+
+  -- X-RM0
+  -- This command moves the Par #1 object to room zero.
+  [5] = function ()
+    -- do stuff
+  end,
+
+  -- NIGHT
+  -- This command sets the light/darkness bit flag (15). The room will be dark
+  -- if the artificial light source is not available. This command should be
+  -- followed by a DSPRM command.
+  [6] = function ()
+    -- do stuff
+  end,
+
+  -- DAY
+  -- Clear the light/darkness bit flag (15). This should also be followed by a
+  -- DSPRM command.
+  [7] = function ()
+    -- do stuff
+  end,
+
+  -- SETZ
+  -- Set the Par #1 bit flag.
+  [8] = function ()
+    -- do stuff
+  end,
+
+  -- X->RM0
+  -- This command is a repeat of command 55.
+  [9] = function ()
+    -- do stuff
+  end,
+
+  -- CLRZ
+  -- This clears the Par #1 bit flag.
+  [10] = function ()
+    -- do stuff
+  end,
+
+  -- DEAD
+  -- This clears the light/darkness flag (makes it light) , moves the player to
+  -- the last room and tells him he is dead.
+  [11] = function ()
+    -- do stuff
+  end,
+
+  -- X->Y
+  -- Move the Par #1 object to Par #2 room. This command will automatically
+  -- display the room if the Par #1 object either entered or exited the current
+  -- room.
+  [12] = function ()
+    -- do stuff
+  end,
+
+  -- FINI
+  -- Indicate to the player that the game is over and inquire if he wants to
+  -- play again.
+  [13] = function ()
+    -- do stuff
+  end,
+
+  -- DSPRM
+  -- Display the current room. This checks the light/darkness flag and if the
+  -- artificial light source is present. If it is light, the room description,
+  -- visible objects and obvious exits are displayed. If it is dark, nothing is
+  -- displayed (it is too dark to see) unless the artificial light source is
+  -- present.
+  [14] = function ()
+    -- do stuff
+  end,
+
+  -- SCORE
+  -- Tells the player how many treasures are in the treasure room and what
+  -- percentage the total is. If one hundred percent is stored, then the winning
+  -- message is displayed and the player is given the option of playing again.
+  [15] = function ()
+    -- do stuff
+  end,
+
+  -- INV
+  -- Tells the player what objects are being carried.
+  [16] = function ()
+    -- do stuff
+  end,
+
+  -- SET0
+  -- This sets the zero-bit flag. It may be useful since no parameter from the
+  -- conditions is necessary.
+  [17] = function ()
+    -- do stuff
+  end,
+
+  -- CLR0
+  -- Clears the zero-bit flag. It may be useful since no parameter from the
+  -- conditions is necessary.
+  [18] = function ()
+    -- do stuff
+  end,
+
+  -- FILL
+  -- Re-fills the artificial light source and clears the bit flag 16 (indicator
+  -- of light source status). This also picks up the artificial light source.
+  -- This command should immediately be followed by a X->RM0 command where
+  -- Par #1 is the unlighted artificial light source (they are two different
+  -- objects).
+  [19] = function ()
+    -- do stuff
+  end,
+
+  -- CLS
+  -- This command did a clear screen in the BASIC version of ADVENTURE and does 
+  -- nothing in the machine language version.
+  [20] = function ()
+    -- do stuff
+  end,
+
+  -- SAVE
+  -- Saves the game to disk or tape depending on which version is being used. It
+  -- writes some user variables such as the current room, current locations of
+  -- all objects, status of all bit flags, current values of all alternate room 
+  -- registers and the current values of all counters.
+  [21] = function ()
+    -- do stuff
+  end,
+
+  -- EXX,X
+  -- Exchange the room location of the Par #1 object with the room location of
+  -- the Par #2 object. A DSPRM is automatically performed if either Par #1 or
+  -- Par #2 objects were in the current room.
+  [22] = function ()
+    -- do stuff
+  end,
+
+  -- CONT
+  -- This command sets a flag to allow more than four commands to be performed.
+  -- When all commands in this action entry have been performed, the conditions
+  -- of all subsequent action entries with a zero verb and noun (up to the first
+  -- non-zero verb and noun) will be evaluated. The checking procedure continues
+  -- regardless if the entry being checked is true or false.
+  [23] = function ()
+    -- do stuff
+  end,
+
+  -- AGETX
+  -- Always get Par #1 object even if the carry limit is overflowed.
+  [24] = function ()
+    -- do stuff
+  end,
+
+  -- BYX->X
+  -- Put the Par #1 object in the same room as the Par #2 object. If the Par #2
+  -- object is being carried this will pick up the Par #1 object also,
+  -- regardless of the carry limit. If this command changes any objects in the
+  -- current room a DSPRM command is automatically executed.
+  [25] = function ()
+    -- do stuff
+  end,
+
+  -- DSPRM
+  -- This is a copy of command 64.
+  [26] = function ()
+    -- do stuff
+  end,
+
+  -- CT-1
+  -- Subtract one from the counter value.
+  [27] = function ()
+    -- do stuff
+  end,
+
+  -- DSPCT
+  -- This displays the value of the counter. No carriage return is printed after
+  -- the value.
+  [28] = function ()
+    -- do stuff
+  end,
+
+  -- CT<-N
+  -- The sets the counter equal to the Par #1 value.
+  [29] = function ()
+    -- do stuff
+  end,
+
+  -- EXRM0
+  -- This exchanges the current room with the room number held in alternate room
+  --  register zero. This may be used to save a player's current room for return
+  -- to it later on. This command should be followed by a GOTOY command if the
+  -- alternate room register zero had not been set.
+  [30] = function ()
+    -- do stuff
+  end,
+
+  -- EXM,CT
+  -- Exchange the value of the counter and the value of the Par #1 alternate
+  -- counter. There are eight counters numbered to 7 . When the adventure starts
+  -- these are not set to any particular value so initialization automatic
+  -- action entries should set them. Also, the time limit may be accessed by
+  -- exchanging with alternate counter eight (8).
+  [31] = function ()
+    -- do stuff
+  end,
+
+  -- CT+N
+  -- Add the Par #1 value to the counter.
+  [32] = function ()
+    -- do stuff
+  end,
+
+  -- CT-N
+  -- Subtract the Par #1 value from the counter.
+  [33] = function ()
+    -- do stuff
+  end,
+
+  -- SAYW
+  -- This displays the noun (second word) input by the player.
+  [34] = function ()
+    -- do stuff
+  end,
+
+  -- SAYWCR
+  -- This displays the noun (second word) input by the player followed by a
+  -- carriage return.
+  [35] = function ()
+    -- do stuff
+  end,
+
+  -- SAYCR
+  -- Starts a new line on the display.
+  [36] = function ()
+    -- do stuff
+  end,
+
+  -- EXC,CR
+  -- Exchange the value of the current room with the Par #1 alternate room
+  -- register. This may be used to remember more than one room. There are six
+  -- alternate room registers numbered to 5.
+  [37] = function ()
+    -- do stuff
+  end,
+
+  -- DELAY
+  -- This command pauses for about 1 second before going on to the next command.
+  [38] = function ()
+    -- do stuff
+  end,
+}
+
 -- Check if an action with id "action_number" is a word action (or not)
 function is_word_action(action_number)
   return action[action_number][1] > 0
