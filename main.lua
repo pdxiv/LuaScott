@@ -5,7 +5,7 @@ command_argument = {}
 -- Game state arrays
 item_location = {}
 bit_flag = {} -- 32 flags
-counter = {} -- 8 counters
+alternate_counter = {} -- 8 counters
 alternate_room = {} -- 6 alternate rooms
 
 -- Game engine constants (with array index starting at 1)
@@ -29,13 +29,14 @@ ALTERNATE_ROOMS = 6
 -- Functions below
 function initialize_game()
   flag = {}
-  counter = {}
+  alternate_counter = {}
   current_room = starting_room
   for i = 1, #item_start_location do
     table.insert(item_location, item_start_location[i])
   end
+  counter = 0
   for i = 1, COUNTERS do
-    counter[i] = 0
+    alternate_counter[i] = 0
   end
   for i = 1, FLAGS do
     bit_flag[i] = 0
@@ -198,7 +199,7 @@ condition = {
   -- CT<=
   -- Passes if the counter is less than or equal to the number. Fails if the
   -- counter is greater than the number.
-  [16] = function (condition_parameter)
+  [16] = function (condition_parameter)    
     return counter <= condition_parameter
   end,
 
