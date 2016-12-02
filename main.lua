@@ -22,6 +22,9 @@ NOUN_UP         = 6
 NOUN_DOWN       = 7
 FLAG_DARK       = 16
 FLAG_LAMP_EMPTY = 17
+COUNTERS        = 8
+FLAGS           = 32
+ALTERNATE_ROOMS = 6
 
 -- Functions below
 function initialize_game()
@@ -30,6 +33,15 @@ function initialize_game()
   current_room = starting_room
   for i = 1, #item_start_location do
     table.insert(item_location, item_start_location[i])
+  end
+  for i = 1, COUNTERS do
+    counter[i] = 0
+  end
+  for i = 1, FLAGS do
+    bit_flag[i] = 0
+  end
+  for i = 1, ALTERNATE_ROOMS do
+    alternate_room[i] = 0
   end
 end
 
@@ -73,8 +85,8 @@ condition = {
   -- Condition always passes. The number included with PAR (i.e. PAR 20) may be
   -- used by the commands in this entry.
   [1] = function (condition_parameter)
-     table.insert(command_argument, condition_parameter)
-     return true
+    table.insert(command_argument, condition_parameter)
+    return true
   end,
 
   -- HAS
@@ -259,6 +271,11 @@ function process_word_actions()
       print('Verb: "' .. verb[action[i][1] + 1] .. '", Noun: "'.. noun[action[i][2] + 1] .. '"')
       for j = 1, #condition_code do
         print('Condition ' .. j - 1 .. ': ' .. condition_code[j] .. " " .. condition_argument[j] .. " - " .. load_game_data.condition_description(condition_code[j]))
+        if condition[condition_code[j] + 1](condition_argument[j]) then
+          print('Pass')
+        else
+          print('Fail')
+        end
       end
 
       for j = 1, #command do
@@ -285,7 +302,7 @@ load_game_data.load_data_file(arg[1])
 initialize_game()
 show_room()
 
-process_auto_actions()
+-- process_auto_actions()
 process_word_actions()
 
 -- Example datastructure for communication with user interface in JSON format
