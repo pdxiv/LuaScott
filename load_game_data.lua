@@ -205,7 +205,7 @@ local function read_all_rooms()
     table.insert(room_direction, temporary_array)
 
     local description = read_multiline_string()
-    if string.match(description, '^[^\*]') then
+    if string.match(description, '^[^*]') then
       description = "I'm in a " .. description
     else
       description = string.sub(description, 2)
