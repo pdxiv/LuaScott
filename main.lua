@@ -541,32 +541,38 @@ function process_auto_actions()
 end
 
 function process_word_actions()
+  
   for i = 1, #action do
-    local condition_code = table.slice(action[i], 3, 11, 2)
-    local condition_argument = table.slice(action[i], 4, 12, 2)
-    local command = table.slice(action[i], 13,16)
 
     if is_word_action(i) then
-      print(i - 1 .. ": \"" .. action_comment[i] .. "\"")
-      print('Verb: "' .. verb[action[i][1] + 1] .. '", Noun: "'.. noun[action[i][2] + 1] .. '"')
-      for j = 1, #condition_code do
-        print('Condition ' .. j - 1 .. ': ' .. condition_code[j] .. " " .. condition_argument[j] .. " - " .. load_game_data.condition_description(condition_code[j]))
-        if condition[condition_code[j] + 1](condition_argument[j]) then
-          print('Pass')
-        else
-          print('Fail')
-        end
-      end
-
-      for j = 1, #command do
-        if command[j] < 51 then
-          print('Command ' .. j - 1 .. ': ' .. command[j] .. " - " .. load_game_data.command_description(command[j]))
-        else
-          print('Command ' .. j - 1 .. ': ' .. command[j] .. " - \"" .. message[command[j] - 49] .. "\"")
+      if evaluate_action_conditions(i) then
+        print(i - 1 .. ": \"" .. action_comment[i] .. "\"")
+        print('Verb: "' .. verb[action[i][1] + 1] .. '", Noun: "'.. noun[action[i][2] + 1] .. '"')
+  
+  
+          local command = table.slice(action[i], 13,16)
+          for j = 1, #command do
+            if command[j] < 51 then
+              print('Command ' .. j - 1 .. ': ' .. command[j] .. " - " .. load_game_data.command_description(command[j]))
+            else
+              print('Command ' .. j - 1 .. ': ' .. command[j] .. " - \"" .. message[command[j] - 49] .. "\"")
+            end
         end
       end
     end
   end
+end
+
+function evaluate_action_conditions(action_id)
+  local condition_code = table.slice(action[action_id], 3, 11, 2)
+  local condition_argument = table.slice(action[action_id], 4, 12, 2)
+  local conditions_passed = true
+  for j = 1, #condition_code do    
+    if not condition[condition_code[j] + 1](condition_argument[j]) then          
+      conditions_passed = false
+    end
+  end
+  return conditions_passed
 end
 
 -- Include game data file load library
