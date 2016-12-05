@@ -110,6 +110,47 @@ command_argument_type = {
   [38] = {},                       -- DELAY
 }
 
+command_short_name = {
+  [1] = 'NOOP',
+  [2] = 'GETX',
+  [3] = 'DROPX',
+  [4] = 'GOTOY',
+  [5] = 'X-RM0',
+  [6] = 'NIGHT',
+  [7] = 'DAY',
+  [8] = 'SETZ',
+  [9] = 'X->RM0',
+  [10] = 'CLRZ',
+  [11] = 'DEAD',
+  [12] = 'X->Y',
+  [13] = 'FINI',
+  [14] = 'DSPRM',
+  [15] = 'SCORE',
+  [16] = 'INV',
+  [17] = 'SET0',
+  [18] = 'CLR0',
+  [19] = 'FILL',
+  [20] = 'CLS',
+  [21] = 'SAVE',
+  [22] = 'EXX,X',
+  [23] = 'CONT',
+  [24] = 'AGETX',
+  [25] = 'BYX->X',
+  [26] = 'DSPRM',
+  [27] = 'CT-1',
+  [28] = 'DSPCT',
+  [29] = 'CT<-N',
+  [30] = 'EXRM0',
+  [31] = 'EXM,CT',
+  [32] = 'CT+N',
+  [33] = 'CT-N',
+  [34] = 'SAYW',
+  [35] = 'SAYWCR',
+  [36] = 'SAYCR',
+  [37] = 'EXC,CR',
+  [38] = 'DELAY',
+}
+
 command_parameter_resolution = {
   ['bit_flag'] = function (value_to_resolve)
     return value_to_resolve
