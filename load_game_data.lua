@@ -69,6 +69,29 @@ local function unshuffle_command(action_value)
   return action_value
 end
 
+condition_argument_type = {
+  [1] = {},                 -- PAR
+  [2] = {'object'},         -- HAS
+  [3] = {'object'},         -- IN/W
+  [4] = {'object'},         -- AVL
+  [5] = {'room'},           -- IN
+  [6] = {'object'},         -- -IN/W
+  [7] = {'object'},         -- -HAVE
+  [8] = {'room'},           -- -IN
+  [9] = {'bit_flag'},       -- BIT
+  [10] = {'bit_flag'},      -- -BIT
+  [11] = {},                -- ANY
+  [12] = {},                -- -ANY
+  [13] = {'object'},        -- -AVL
+  [14] = {'object'},        -- -RM0
+  [15] = {'object'},        -- RM0
+  [16] = {'counter_value'}, -- CT<=
+  [17] = {'counter_value'}, -- CT>
+  [18] = {'object'},        -- ORIG
+  [19] = {'object'},        -- -ORIG
+  [20] = {'counter_value'}, -- CT=
+}
+
 command_argument_type = {
   [1] = {},                        -- NOOP
   [2] = {'object'},                -- GETX
