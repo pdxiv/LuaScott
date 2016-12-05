@@ -110,6 +110,27 @@ command_argument_type = {
   [38] = {},                       -- DELAY
 }
 
+command_parameter_resolution = {
+  ['bit_flag'] = function (value_to_resolve)
+    -- code here    
+  end,
+  ['counter_register'] = function (value_to_resolve)
+    -- code here    
+  end,
+  ['counter_value'] = function (value_to_resolve)
+    -- code here    
+  end,
+  ['object'] = function (value_to_resolve)
+    -- code here    
+  end,
+  ['room_register'] = function (value_to_resolve)
+    -- code here    
+  end,
+  ['room_value'] = function (value_to_resolve)
+    -- code here    
+  end,
+}
+
 function load_game_data.condition_description(condition_code)
   condition_code_description = {
     "Pass a number to the commands",
