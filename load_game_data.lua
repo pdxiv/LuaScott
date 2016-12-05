@@ -69,6 +69,47 @@ local function unshuffle_command(action_value)
   return action_value
 end
 
+command_argument_type = {
+  [1] = {},                        -- NOOP
+  [2] = {'object'},                -- GETX
+  [3] = {'object'},                -- DROPX
+  [4] = {'room_value'},            -- GOTOY
+  [5] = {'object'},                -- X-RM0
+  [6] = {},                        -- NIGHT
+  [7] = {},                        -- DAY
+  [8] = {},                        -- SETZ
+  [9] = {'object'},                -- X->RM0
+  [10] = {'bit_flag'},             -- CLRZ
+  [11] = {},                       -- DEAD
+  [12] = {'object', 'room_value'}, -- X->Y
+  [13] = {},                       -- FINI
+  [14] = {},                       -- DSPRM
+  [15] = {},                       -- SCORE
+  [16] = {},                       -- INV
+  [17] = {},                       -- SET0
+  [18] = {},                       -- CLR0
+  [19] = {},                       -- FILL
+  [20] = {},                       -- CLS
+  [21] = {},                       -- SAVE
+  [22] = {'object', 'object'},     -- EXX,X
+  [23] = {},                       -- CONT
+  [24] = {'object'},               -- AGETX
+  [25] = {'object', 'object'},     -- BYX->X
+  [26] = {},                       -- DSPRM
+  [27] = {},                       -- CT-1
+  [28] = {},                       -- DSPCT
+  [29] = {'counter_value'},        -- CT<-N
+  [30] = {},                       -- EXRM0
+  [31] = {'counter_register'},     -- EXM,CT
+  [32] = {'counter_value'},        -- CT+N
+  [33] = {'counter_value'},        -- CT-N
+  [34] = {},                       -- SAYW
+  [35] = {},                       -- SAYWCR
+  [36] = {},                       -- SAYCR
+  [37] = {'room_register'},        -- EXC,CR
+  [38] = {},                       -- DELAY
+}
+
 function load_game_data.condition_description(condition_code)
   condition_code_description = {
     "Pass a number to the commands",
