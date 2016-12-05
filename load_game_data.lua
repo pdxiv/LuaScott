@@ -12,6 +12,7 @@ local game_raw_data
 
 -- Global game data file arrays
 action = {}
+action_new = {}
 verb = {}
 noun = {}
 room_direction = {}
@@ -290,35 +291,35 @@ end
 
 local function read_all_actions()
   for i = 0, number_of_actions do
-    local temporary_array = {}
+    local flat_action_array = {}
     local multiplexed_word = read_data_in_line()
 
     -- Decode verb and noun
-    temporary_array[#temporary_array + 1] = math.floor(multiplexed_word / 150)
-    temporary_array[#temporary_array + 1] = math.fmod(multiplexed_word, 150)
+    flat_action_array[#flat_action_array + 1] = math.floor(multiplexed_word / 150)
+    flat_action_array[#flat_action_array + 1] = math.fmod(multiplexed_word, 150)
 
     -- Decode conditions and arguments
     for i = 1, 5 do
       local multiplexed_condition = read_data_in_line()
-      temporary_array[#temporary_array + 1] = math.fmod(multiplexed_condition, 20)
-      temporary_array[#temporary_array + 1] = math.floor(multiplexed_condition / 20)
+      flat_action_array[#flat_action_array + 1] = math.fmod(multiplexed_condition, 20)
+      flat_action_array[#flat_action_array + 1] = math.floor(multiplexed_condition / 20)
     end
 
     -- Decode commands and message prints (and reshuffle message and command code)
     for i = 1, 2 do
       local multiplexed_command = read_data_in_line()
-      temporary_array[#temporary_array + 1] = math.floor(multiplexed_command / 150)
-      temporary_array[#temporary_array] = unshuffle_command(temporary_array[#temporary_array])
-      temporary_array[#temporary_array + 1] = math.fmod(multiplexed_command, 150)
-      temporary_array[#temporary_array] = unshuffle_command(temporary_array[#temporary_array])
+      flat_action_array[#flat_action_array + 1] = math.floor(multiplexed_command / 150)
+      flat_action_array[#flat_action_array] = unshuffle_command(flat_action_array[#flat_action_array])
+      flat_action_array[#flat_action_array + 1] = math.fmod(multiplexed_command, 150)
+      flat_action_array[#flat_action_array] = unshuffle_command(flat_action_array[#flat_action_array])
     end
 
     -- Convert to integers
-    for i = 1, #temporary_array do
-      temporary_array[i] = tonumber(temporary_array[i])
+    for i = 1, #flat_action_array do
+      flat_action_array[i] = tonumber(flat_action_array[i])
     end
 
-    table.insert(action, temporary_array)
+    table.insert(action, flat_action_array)    
   end
 end
 
@@ -346,12 +347,12 @@ end
 
 local function read_all_rooms()
   for i = 0, number_of_rooms do
-    local temporary_array = {}
+    local flat_action_array = {}
     for j = 0, 5 do
-      table.insert(temporary_array, tonumber(read_data_in_line()))
+      table.insert(flat_action_array, tonumber(read_data_in_line()))
     end
 
-    table.insert(room_direction, temporary_array)
+    table.insert(room_direction, flat_action_array)
 
     local description = read_multiline_string()
     if string.match(description, '^[^*]') then
