@@ -112,22 +112,22 @@ command_argument_type = {
 
 command_parameter_resolution = {
   ['bit_flag'] = function (value_to_resolve)
-    -- code here    
+    return value_to_resolve
   end,
   ['counter_register'] = function (value_to_resolve)
-    -- code here    
+    return value_to_resolve
   end,
   ['counter_value'] = function (value_to_resolve)
-    -- code here    
+    return value_to_resolve
   end,
   ['object'] = function (value_to_resolve)
-    -- code here    
+    return item_description[value_to_resolve]
   end,
   ['room_register'] = function (value_to_resolve)
-    -- code here    
+    return value_to_resolve
   end,
   ['room_value'] = function (value_to_resolve)
-    -- code here    
+    return room_description[value_to_resolve]
   end,
 }
 
@@ -153,7 +153,7 @@ function load_game_data.condition_description(condition_code)
     "Object still in initial room",
     "Object not in initial room",
     "CurrentCounter = <arg>",
-  }  
+  }
   return condition_code_description[condition_code + 1]
 end
 
@@ -336,7 +336,7 @@ end
 
 return load_game_data
 
--- CONDITIONS: 
+-- CONDITIONS:
 -- PAR    Passes a number to the commands.
 -- HAS    True if holding the object.
 -- IN/W   True if in same room as object (not holding it).
@@ -356,7 +356,7 @@ return load_game_data
 -- CT>    True if counter greater than number.
 -- ORIG   True if object in original starting room.
 -- -ORIG  True if object not in original starting room.
--- CT=    True if counter equal to number. 
+-- CT=    True if counter equal to number.
 
 -- COMMANDS:
 -- GETX   Pick up object X.
