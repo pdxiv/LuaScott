@@ -237,6 +237,7 @@ command = {
   -- NOOP
   -- No command or message.
   [1] = function ()
+    print("DEBUG: executing NOOP command. ie - doing nothing!")
     -- do stuff
   end,
 
@@ -245,6 +246,7 @@ command = {
   -- number or limit. The object may be in the current room or in any other
   -- room.
   [2] = function ()
+    print("DEBUG: executing GETX command")
     -- do stuff
   end,
 
@@ -345,6 +347,7 @@ command = {
   -- INV
   -- Tells the player what objects are being carried.
   [16] = function ()
+    print("DEBUG: here we should print the player inventory, but not yet!")
     -- do stuff
   end,
 
@@ -520,7 +523,7 @@ function process_auto_actions()
   for i = 1, #action do
     local condition_code = table.slice(action[i], 3, 11, 2)
     local condition_argument = table.slice(action[i], 4, 12, 2)
-    local command = table.slice(action[i], 13,16)
+    local command_in_action = table.slice(action[i], 13,16)
 
     if not is_word_action(i) then
       print(i - 1 .. ": \"" .. action_comment[i] .. "\"")
@@ -529,11 +532,11 @@ function process_auto_actions()
         print('Condition ' .. j - 1 .. ': ' .. condition_code[j] .. " " .. condition_argument[j] .. " - " .. load_game_data.condition_description(condition_code[j]))
       end
 
-      for j = 1, #command do
-        if command[j] < 51 then
-          print('Command ' .. j - 1 .. ': ' .. command[j] .. " - " .. load_game_data.command_description(command[j]))
+      for j = 1, #command_in_action do
+        if command_in_action[j] < 51 then
+          print('Command ' .. j - 1 .. ': ' .. command_in_action[j] .. " - " .. load_game_data.command_description(command_in_action[j]))
         else
-          print('Command ' .. j - 1 .. ': ' .. command[j] .. " - \"" .. message[command[j] - 49] .. "\"")
+          print('Command ' .. j - 1 .. ': ' .. command_in_action[j] .. " - \"" .. message[command_in_action[j] - 49] .. "\"")
         end
       end
     end
@@ -550,12 +553,13 @@ function process_word_actions()
         print('Verb: "' .. verb[action[i][1] + 1] .. '", Noun: "'.. noun[action[i][2] + 1] .. '"')
   
   
-          local command = table.slice(action[i], 13,16)
-          for j = 1, #command do
-            if command[j] < 51 then
-              print('Command ' .. j - 1 .. ': ' .. command[j] .. " - " .. load_game_data.command_description(command[j]))
+          local command_in_action = table.slice(action[i], 13,16)
+          for j = 1, #command_in_action do
+            if command_in_action[j] < 51 then
+              print('Command ' .. j - 1 .. ': ' .. command_in_action[j] .. " - " .. load_game_data.command_description(command_in_action[j]))
+              command[command_in_action[j] + 1]()
             else
-              print('Command ' .. j - 1 .. ': ' .. command[j] .. " - \"" .. message[command[j] - 49] .. "\"")
+              print('Command ' .. j - 1 .. ': ' .. command_in_action[j] .. " - \"" .. message[command_in_action[j] - 49] .. "\"")
             end
         end
       end
