@@ -237,7 +237,6 @@ command = {
   -- NOOP
   -- No command or message.
   [1] = function ()
-    print("DEBUG: executing NOOP command. ie - doing nothing!")
     -- do stuff
   end,
 
@@ -246,7 +245,8 @@ command = {
   -- number or limit. The object may be in the current room or in any other
   -- room.
   [2] = function ()
-    print("DEBUG: executing GETX command")
+    local parameter = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    print("DEBUG: supposed to be executing GETX command with parameter " .. parameter)
     -- do stuff
   end,
 
@@ -262,6 +262,11 @@ command = {
   -- DSPRM command. Also, this may need to be followed by a DAY/NIGHT command
   -- depending on the light status of the room.
   [4] = function ()
+    for t = 1, #command_argument do
+      print("DEBUG: argument stack: " .. t .. " " .. command_argument[t])
+    end
+    local parameter = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    print("DEBUG: supposed to be executing GOTOY command with parameter " .. parameter)
     -- do stuff
   end,
 
@@ -545,6 +550,7 @@ end
 
 function process_word_actions()
   for i = 1, #action do
+    command_argument = {}
     if is_word_action(i) then
       if evaluate_action_conditions(i) then
         print(i - 1 .. ": \"" .. action_comment[i] .. "\"")
