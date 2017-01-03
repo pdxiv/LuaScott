@@ -411,7 +411,7 @@ command = {
     if #item_in_inventory > 0 then
       print(table.concat(item_in_inventory, "\n"))
     end
-    
+
     print("DEBUG: here we should print the player inventory")
     -- do stuff
   end,
@@ -420,6 +420,7 @@ command = {
   -- This sets the zero-bit flag. It may be useful since no parameter from the
   -- conditions is necessary.
   [17] = function ()
+    bit_flag[1] = true
     -- do stuff
   end,
 
@@ -427,6 +428,7 @@ command = {
   -- Clears the zero-bit flag. It may be useful since no parameter from the
   -- conditions is necessary.
   [18] = function ()
+    bit_flag[1] = false
     -- do stuff
   end,
 
@@ -437,6 +439,8 @@ command = {
   -- Par #1 is the unlighted artificial light source (they are two different
   -- objects).
   [19] = function ()
+    bit_flag[FLAG_LAMP_EMPTY] = false
+    item_location[ITEM_LIGHT] = ROOM_INVENTORY
     -- do stuff
   end,
 
