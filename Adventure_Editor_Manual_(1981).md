@@ -128,7 +128,7 @@ Code | Symbol | Description
 
 ###BIT FLAGS
 
-There are thirty-two bit flags available to the user. They are numbered to 31. When the adventure is started, they are all cleared. There are commands to set and clear them as well as conditions to test their values. Two bit flags are reserved by ADVENTURE 8.2 and ADV:
+There are thirty-two bit flags available to the user. They are numbered from 0 to 31. When the adventure is started, they are all cleared. There are commands to set and clear them as well as conditions to test their values. Two bit flags are reserved by ADVENTURE 8.2 and ADV:
 
 * 15) If this bit flag is set it is dark outside. The room will be in darkness unless the artificial light source is available. The artificial light source is discussed in the OBJECT section of this chapter. There are two commands (DAY and NIGHT) to clear and set this bit flag.
 

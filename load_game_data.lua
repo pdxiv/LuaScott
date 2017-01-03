@@ -22,6 +22,7 @@ item_description = {}
 item_noun = {}
 item_start_location = {}
 action_comment = {}
+treasure_item = {}
 
 -- Functions below
 local function file_exists(filename)
@@ -299,14 +300,14 @@ local function read_all_actions()
     flat_action_array[#flat_action_array + 1] = math.fmod(multiplexed_word, 150)
 
     -- Decode conditions and arguments
-    for i = 1, 5 do
+    for j = 1, 5 do
       local multiplexed_condition = read_data_in_line()
       flat_action_array[#flat_action_array + 1] = math.fmod(multiplexed_condition, 20)
       flat_action_array[#flat_action_array + 1] = math.floor(multiplexed_condition / 20)
     end
 
     -- Decode commands and message prints (and reshuffle message and command code)
-    for i = 1, 2 do
+    for j = 1, 2 do
       local multiplexed_command = read_data_in_line()
       flat_action_array[#flat_action_array + 1] = math.floor(multiplexed_command / 150)
       flat_action_array[#flat_action_array] = unshuffle_command(flat_action_array[#flat_action_array])
@@ -315,8 +316,8 @@ local function read_all_actions()
     end
 
     -- Convert to integers
-    for i = 1, #flat_action_array do
-      flat_action_array[i] = tonumber(flat_action_array[i])
+    for j = 1, #flat_action_array do
+      flat_action_array[j] = tonumber(flat_action_array[j])
     end
 
     table.insert(action, flat_action_array)    
@@ -391,6 +392,10 @@ local function read_all_items()
     else
       description = temp_variable
     end
+    if string.match(description, "^\*") then      
+      table.insert(treasure_item, i + 1)
+    end
+
     table.insert(item_description, description)
     table.insert(item_noun, noun)
     table.insert(item_start_location, tonumber(room))

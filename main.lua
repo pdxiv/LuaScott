@@ -9,6 +9,8 @@ alternate_counter = {} -- 8 counters
 alternate_room = {} -- 6 alternate rooms
 
 -- Game engine constants (with array index starting at 1)
+ROOM_ZERO       = 0
+ROOM_INVENTORY  = -1
 VERB_AUTO       = 1
 VERB_GO         = 2
 VERB_GET        = 11
@@ -25,12 +27,14 @@ FLAG_LAMP_EMPTY = 17
 COUNTERS        = 8
 FLAGS           = 32
 ALTERNATE_ROOMS = 6
+ITEM_LIGHT      = 10
 
 -- Functions below
 function initialize_game()
   flag = {}
   alternate_counter = {}
   current_room = starting_room
+  last_room = #item_description
   for i = 1, #item_start_location do
     table.insert(item_location, item_start_location[i])
   end
@@ -79,6 +83,16 @@ function table.slice(table_to_slice, first, last, step)
     sliced[#sliced+1] = table_to_slice[i]
   end
   return sliced
+end
+
+function items_in_room(room_number)
+  local item_count = 0
+  for i = 1, #item_location do
+    if item_location[i] == room_number then
+      item_count = item_count + 1
+    end
+  end
+  return item_count
 end
 
 condition = {
@@ -233,6 +247,8 @@ condition = {
 }
 
 
+
+
 command = {
   -- NOOP
   -- No command or message.
@@ -246,6 +262,9 @@ command = {
   -- room.
   [2] = function ()
     local parameter = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    if items_in_room(-1) < max_items_carried then
+      item_location[parameter] = -1
+    end
     print("DEBUG: supposed to be executing GETX command with parameter " .. parameter)
     -- do stuff
   end,
@@ -254,6 +273,8 @@ command = {
   -- Drop the Par #1 object in the same room as the player. The object may be
   -- carried or in another room.
   [3] = function ()
+    local parameter = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    item_location[parameter] = current_room
     -- do stuff
   end,
 
@@ -273,6 +294,8 @@ command = {
   -- X-RM0
   -- This command moves the Par #1 object to room zero.
   [5] = function ()
+    local parameter = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    item_location[parameter] = ROOM_ZERO
     -- do stuff
   end,
 
@@ -281,6 +304,7 @@ command = {
   -- if the artificial light source is not available. This command should be
   -- followed by a DSPRM command.
   [6] = function ()
+    bit_flag[FLAG_DARK] = true
     -- do stuff
   end,
 
@@ -288,31 +312,41 @@ command = {
   -- Clear the light/darkness bit flag (15). This should also be followed by a
   -- DSPRM command.
   [7] = function ()
+    bit_flag[FLAG_DARK] = false
     -- do stuff
   end,
 
   -- SETZ
   -- Set the Par #1 bit flag.
   [8] = function ()
+    local parameter = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    bit_flag[parameter] = true
     -- do stuff
   end,
 
   -- X->RM0
   -- This command is a repeat of command 55.
   [9] = function ()
+    local parameter = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    item_location[parameter] = ROOM_ZERO
     -- do stuff
   end,
 
   -- CLRZ
   -- This clears the Par #1 bit flag.
   [10] = function ()
+    local parameter = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    bit_flag[parameter] = false
     -- do stuff
   end,
 
   -- DEAD
-  -- This clears the light/darkness flag (makes it light) , moves the player to
+  -- This clears the light/darkness flag (makes it light), moves the player to
   -- the last room and tells him he is dead.
   [11] = function ()
+    bit_flag[FLAG_DARK] = false
+    current_room = last_room
+    print("I'm dead!")
     -- do stuff
   end,
 
@@ -321,6 +355,9 @@ command = {
   -- display the room if the Par #1 object either entered or exited the current
   -- room.
   [12] = function ()
+    local parameter_1 = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    local parameter_2 = table.remove(command_argument, 1) -- containing shifted value from the stack/queue "command_argument"
+    item_location[parameter_1] = item_location[parameter_2]
     -- do stuff
   end,
 
@@ -338,6 +375,9 @@ command = {
   -- displayed (it is too dark to see) unless the artificial light source is
   -- present.
   [14] = function ()
+    if (not bit_flag[FLAG_DARK]) or (item_location[ITEM_LIGHT] == current_room ) then
+      show_room()
+    end
     -- do stuff
   end,
 
@@ -346,13 +386,33 @@ command = {
   -- percentage the total is. If one hundred percent is stored, then the winning
   -- message is displayed and the player is given the option of playing again.
   [15] = function ()
+    local collected_treasures = 0
+    for t = 1, #treasure_item do
+      if item_location[treasure_item[t]] == treasure_room then
+        collected_treasures = collected_treasures + 1
+      end
+    end
+    local treasure_percentage = 100 * collected_treasures / total_treasures
+    treasure_percentage = math.floor(treasure_percentage + 0.5)
+    print("I've collected " .. collected_treasures .. " treasures, " .. treasure_percentage .. "%")
     -- do stuff
   end,
 
   -- INV
   -- Tells the player what objects are being carried.
   [16] = function ()
-    print("DEBUG: here we should print the player inventory, but not yet!")
+    -- Print items in room
+    local item_in_inventory = {}
+    for i = 1, #item_location do
+      if item_location[i] == ROOM_INVENTORY then
+        table.insert(item_in_inventory, item_description[i])
+      end
+    end
+    if #item_in_inventory > 0 then
+      print(table.concat(item_in_inventory, "\n"))
+    end
+    
+    print("DEBUG: here we should print the player inventory")
     -- do stuff
   end,
 
