@@ -2484,10 +2484,14 @@ Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | C
 0 | AUTO | 100 | -BIT 1 | PAR 10 | - | - | - | MSG 1 | SETZ | - | - | INTRO
 The 0: means this is ACTION 0. The AUTO 100 means this auto action is considered 100 percent of the time. The -BIT 1 means if bit flag 1 is cleared, this condition is true. When ADVENTURE is started, all bit flags are cleared so on the first pass of the auto actions this condition will be true. This is useful for printing introductions. The PAR 1 is a parameter to be passed to the commands if all conditions are met. If all conditions are met then the commands are executed. In this case message 1 would be printed and bit flag 1 would be set (SETZ). Bit flag 1 is set since the first parameter in the conditions was a 1. The word INTRO is an optional action title. Message 1 is the introduction message.
 
-1: AUTO 100 -IN 2 PAR 1 PAR 4 PAR 1 EXM,CT CT<-N EXM,CT - SET MUG CNTR
+Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
+------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
+1 | AUTO | 100 | -IN 2 | PAR 1 | PAR 4 | PAR 1 | - | EXM,CT | CT<-N | EXM,CT | - | SET MUG CNTR
 This is an automatic action used to set a counter. In this adventure if the player is outside his car and not in the apartment building for 4 consecutive moves he is mugged and killed (he loses). This action is executed 100 percent of the time (AUTO 100). The condition -IN 2 will be true if the player is in any room other than room 2. PAR 1, PAR 4 and PAR 1 are parameters used by the commands if all conditions are true. If all conditions are true, the CT (counter) value is exchanged (EXM,CT) with alternate counter 1 since the first parameter in the conditions was a 1. The command CT<-N will set the counter to 4 (4 is the next parameter). And finally CT is exchanged back with alternate counter 1 (EXM,CT). The reason for this switching is that ADVENTURE can only operate directly on the CT variable. ADVENTURE can operate on a maximum of 9 additional alternate counters however. SET MUG CNTR is the optional action title.
 
-2: AUTO 100 IN 2 PAR 10 EXM,CT CT-1 CONT - MUGGED?
+Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
+------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
+2 | AUTO | 100 | IN 2 | PAR 10 | - | - | - | EXM,CT | CT-1 | CONT | - | MUGGED?
 This condition is considered 100 percent of the time. The condition IN 2 passes if the player is in room 2. PAR 1 is a parameter used in the commands. If all conditions are true the commands are executed. In this case CT is exchanged with alternate counter 1 (EXM,CT) since the first parameter found was a 1. Then CT is decremented (CT-1). CONT means to continue considering all following AUTO 0's until an AUTO 1-100 or a player input action is found. In this case the next two actions are AUTO 0's. There are as follows:
 
 3: AUTO CT= MSG 2 DEAD FINI
