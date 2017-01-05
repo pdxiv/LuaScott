@@ -2494,8 +2494,10 @@ Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | C
 2 | AUTO | 100 | IN 2 | PAR 10 | - | - | - | EXM,CT | CT-1 | CONT | - | MUGGED?
 This condition is considered 100 percent of the time. The condition IN 2 passes if the player is in room 2. PAR 1 is a parameter used in the commands. If all conditions are true the commands are executed. In this case CT is exchanged with alternate counter 1 (EXM,CT) since the first parameter found was a 1. Then CT is decremented (CT-1). CONT means to continue considering all following AUTO 0's until an AUTO 1-100 or a player input action is found. In this case the next two actions are AUTO 0's. There are as follows:
 
-3: AUTO CT= MSG 2 DEAD FINI
-4: AUTO PAR 10 EXM,CT - -
+Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
+------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
+3 | AUTO | 0 | CT= 0 | -  | -  | -  | - | MSG 2 | DEAD | FINI | - | 
+4 | AUTO | 0 | PAR 10 | -  | -  | -  | - | EXM,CT | - | - | - |
 In action 3, CT is tested to see if it is equal to (CT= 0) . If it does, then message 2 (MSG 2) is printed, the player is killed (DEAD) and the game is finished (FINI). If the counter was not equal to zero then action 4 is considered. It would normally be considered regardless of the pass/no pass status of action 3. But in this case since the DEAD command was issued the player was moved to the last room and killed. The FINI command then halted the game. This halts the auto actions. Since action 4 has no conditions it is always true and PAR 1 is passed to the commands. In this case, CT is exchanged with counter 1 again thus putting them back in their starting positions. There is a good reason for making these two actions separate. Two tasks need to be done, check if the counter is equal to zero and switch CT back with alternate counter 1. If these two were put in the same action and the counter (CT) did not equal zero, then the commands would not be performed. In this case the EXM,CT command would not be done so the counters would not be returned to the right place.
 
 5: AUTO 100 -IN 2 BIT 15 DAY DSPRM - IN LIGHT?
