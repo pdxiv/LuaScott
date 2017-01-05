@@ -27,8 +27,6 @@ Any adventures you write are your property. You may market them on your own if y
     THE ALTERNATE SOURCE
     1806 Ada Street
     Lansing, MI 48910
-
-
 ##Introduction
 ADVEDIT is an editing program for adventures. With it, most adventure databases can be read in and viewed or modified. Even a Scott Adams' ADVENTURE can be read in and solved. This manual is divided into chapters, each containing a different section of ADVENTURE and using the ADVEDIT program. A summary of the chapters and appendices is given below:
 
