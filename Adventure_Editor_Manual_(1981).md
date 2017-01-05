@@ -2759,16 +2759,13 @@ This action is not used.
 ###VOCABULARY
 
 The user must refer to the VOCABULARY words in the database list for this explanation. Notice that the predefined verbs and nouns are in their proper places (AUTO, GO, GET, DROP, ANY, NORTH, SOUTH, EAST, WEST, UP and DOWN). The only thing special about the vocabulary words is the synonyms. Part of the vocabulary appears as follows:
-
     AUTO
     GO
     \*ENTE
     EXAM
     \*LOOK
-    ``
 
-
-Synonyms are required to directly follow their primary noun or verb in the list and must be preceded by an asterisk. In this case *ENTE is a synonym of GO and *L00K is a synonym of EXAM. There may be more than one synonym for a certain noun or verb (see verb 10 - GET). Any action entries using the nouns or verbs must refer to a primary noun or verb, not a synonym.
+Synonyms are required to directly follow their primary noun or verb in the list and must be preceded by an asterisk. In this case *ENTE is a synonym of GO and *LOOK is a synonym of EXAM. There may be more than one synonym for a certain noun or verb (see verb 10 - GET). Any action entries using the nouns or verbs must refer to a primary noun or verb, not a synonym.
 
 
 
