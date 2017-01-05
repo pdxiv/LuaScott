@@ -38,7 +38,6 @@ ADVEDIT is an editing program for adventures. With it, most adventure databases 
 * **Chapter 6** ADVENTURE solving techniques. This chapter will describe how to solve any adventure readable by the ADVEDIT program.
 * **Appendix A** contains an abbreviated ADVEDIT command summary. This will be highly useful when writing adventures once you are familiar with the commands and conditions.
 * **Appendix B** tells how to submit your adventures to THE ALTERNATE SOURCE for marketing purposes.
-
 ##Chapter 1
 Overview of ADVEDIT and Adventures in general
 
@@ -49,7 +48,6 @@ Recently Scott Adams started selling all of his adventures on "protected" disket
 ADVENTURE 8.2 (by Adams') has recently been superseded by version 8.3. The newest version is included on all Adventure 0-12 diskettes. ADVEDIT supports all commands of Adventure 8.2 and 8.3, however, as new versions are released, new commands may be added. This may make ADVEDIT and ADV/CMD incompatible with the adventure databases used by this new version. ADVEDIT and ADV/CMD will be maintained so they work with new versions of ADVENTURE. At this time, ADVEDIT and ADV/CMD will work with Scott Adams' Adventures 0-12.
 
 The concept of adventure is very simple. The basic idea is that certain commands are executed when certain conditions are met. The only problem, as all adventurers have found, is getting the conditions to be met. The trick to writing good adventures (like Scott's) is making the conditions subtle, but logical. The purchase of Scott's adventures is highly recommended. The techniques in his databases are excellent teaching tools along with being fun to play.
-
 ##Chapter 2
 Adventure database format
 
@@ -65,7 +63,6 @@ The database consists of the following sections:
 6. OBJECT description and starting locations. The description of the object determines if it is a treasure, an object which may be carried and dropped or something else. The starting location tells in which room the object starts in, if it is being carried at the start of the adventure or if it starts in the storeroom.
 7. ACTION TITLES. These are optional text descriptions of the actions. They are ignored by the ADVENTURE driver program but serve as remarks to the actions when using the ADVEDIT program.
 8. TRAILER information. This contains the version number, adventure number and a checksum.
-
 ###HEADER information
 The header contains the following information:
 
@@ -81,7 +78,6 @@ The header contains the following information:
 10. The time limit. This may be used in some games to control how long the artificial light will last. If there is no artificial light, it may control the number of turns in this adventure. If the artificial light is re-filled, this value is put back in the time limit. The limit is 32767.
 11. The highest numbered message. Messages are numbered from zero so this value is the number of messages plus one.
 12. The treasure room number. When treasures are in this room they are considered collected. When the SCORE command is issued they are summed and divided into the number of treasures for the percentage score.
-
 ###ACTION entries
 These are the heart of the adventure. Some are player input and others are automatic operation actions. The entries are stored as eight numbers. The first determines when the action is to be evaluated. The next five are conditions to be met or parameters for the commands. The last two bytes specify what commands are to be performed if all of the conditions were met.
 
@@ -90,7 +86,6 @@ The first number is `(150*verb + noun)`. If the verb is zero, this is an automat
 When player input actions are being evaluated, the action entries are scanned in numeric order. When the verb and noun of an action entry match the player's input, the conditions are evaluated. If all of the conditions were true, then the commands of this entry are performed. When a "true" match is made, no further player input actions are evaluated on this pass. However, if a match is made and all of the conditions were not true, then the scanning procedure continues until either a "true" match is made or all of the actions are evaluated. If a match was found but the conditions were not true, then the message "I can't do that . . . yet!" is displayed. If no match was found, then the message "I must be stupid but I don't understand what you mean" is display.
 
 However, when automatic actions are being evaluated, they are all scanned regardless of how many are true or false.
-
 ###CONDITIONS
 If the action is to be considered, the five conditions are evaluated. If any conditions fail, the commands in the action are not performed. The conditions are `(20 * number + condition)`. The condition codes and their meanings are as follows:
 
@@ -116,20 +111,16 @@ Code | Symbol | Description
 17 | ORIG | The condition passes if the numbered object is in the same room it started in. It fails if the object is in any other room or is being carried.
 18 | -ORIG | The condition passes if the numbered object is in any room other than its starting room or is being carried. It fails if the object is in the same room it started in.
 19 | CT= | The condition passes if the counter is equal to the number. It fails if the counter is not equal to the number.
-
 ###BIT FLAGS
 There are thirty-two bit flags available to the user. They are numbered from 0 to 31. When the adventure is started, they are all cleared. There are commands to set and clear them as well as conditions to test their values. Two bit flags are reserved by ADVENTURE 8.2 and ADV:
 
 * 15) If this bit flag is set it is dark outside. The room will be in darkness unless the artificial light source is available. The artificial light source is discussed in the OBJECT section of this chapter. There are two commands (DAY and NIGHT) to clear and set this bit flag.
 
 * 16) When this flag is set the artificial light source has run out. The "FILL" command will clear this flag and set the time limit to its original value.
-
 ###COUNTERS
 The counters are values which may be incremented, decremented, assigned values by commands as well as be tested against a number for numeric conditions. There are alternate counters which may be switched with the CT counter in order to operate on other numbers. When the adventure is started, CT is not assigned any particular value. See Chapter 5 for more details on how counters may be used in adventures.
-
 ###ALTERNATE ROOM REGISTERS
 The value of the current room may be saved and restored by exchanging it with an alternate room register. The saved room value may be restored by performing another exchange with the same alternate room register.
-
 ###COMMANDS
 The seventh and eighth bytes of the action entry are the four command codes. The seventh number is `(150*command 1 + command 2)` and the eighth number is `(150*command 3 + command 4)`.
 
@@ -199,7 +190,6 @@ SHOOT | GUN | HAS 23 | IN/W 2 | PAR 2 | PAR 4 | PAR 0 | EXX,X | MSG8 | - | -
 
 
 If the conditions of the action with the verb-noun of "LIGHT TORCH" are found to be true, then its commands are executed. One of the commands is a "CONT". This means that all "AUTO 0" verb-noun actions following "LIGHT TORCH" will be considered. In this case there are three of them. All three are considered even if none of them are true or false. For example, the third one is considered even if the second one was true.
-
 ###VOCABULARY entries
 Each vocabulary entry consists of a verb string and a noun string. Synonyms are handled by beginning the word with an asterisk, which are then treated the same as the first previous word without an asterisk. Some of the vocabulary entries are predefined by ADVENTURE and SHOULD NOT be changed. These predefined verbs and nouns are listed below:
 
@@ -223,17 +213,14 @@ Code | Symbol | Description
 4 | WEST | This is reserved for the fourth room direction entry with verb 1.
 5 | UP | This is reserved for the fifth room direction entry with verb 1.
 6 | DOWN | This is reserved for the sixth room direction entry with verb 1.
-
 ###ROOM entries
 The room entries consist of the number of the adjacent room in the six reserved directions N, S, E, W, U and D plus a room description string. If the adjacent room number is zero, there is "no obvious exit" in that direction. If the adjacent room number in the N direction is 5, then going NORTH will put the player in room 5.
 
 If the text description of the room does not begin with an asterisk, the ADVENTURE program will precede the string with "You're in a"; otherwise, it will just display the description minus the asterisk. To get quotes (") within the text description type a SHIFTed @ in place of the quotes. A SHIFTed @ sign will look like a regular @ sign unless an upper/ lower case mod has been installed and some video driver program is being used. The ADVENTURE program will automatically change these to quotes.
 
 Room zero is reserved as a storeroom for objects currently not in any room. The player cannot get to room zero by using one of the reserved directions. Actions usually do not permit the player to enter this room. The last room is reserved for some sort of limbo state should the player die. This is where the player is sent with a DEAD command. It may or may not contain exits back to the other rooms.
-
 ###MESSAGE entries
 The messages consist of a string of characters for each message to be displayed by any of the action entries. Entry should always be left as a null string. To get quotes to appear within a message simply type a SHIFTed @ in place of the quote. ADVENTURE will change this to a quote.
-
 ###OBJECT entries
 The object entries consist of a text description of the object along with its starting room number. Room zero is used for objects not found yet. A minus one (-1) is used for the starting room when the player is carrying that object at the beginning of the game.
 
@@ -246,13 +233,10 @@ which can be picked up by the word "FIR". Before the firestone is cooled, the tr
 Because this object does not begin with an asterisk it is not recognized as a treasure. Also, it cannot be picked up since it has no name between slashes. The action that cools the firestone exchanges the locations of these two objects.
 
 Object number nine (9) is reserved as the artificial light source in its lighted state. The ADVENTURE program checks to see if object 9 is available when a room is in darkness (NIGHT). Also, the FILL command GETs object 9 when the light is recharged. Examples of object 9 are a lit flashlight and a lit lamp.
-
 ###ACTION TITLES
 The action titles are labels for the action entries. They aid in commenting the actions and ease in editing the adventure. The ADVENTURE program discards the titles when an adventure is read in because they are only used by an adventure editor program. These descriptions SHOULD NOT contain quote marks.
-
 ###TRAILER
 The trailer information contains the version number, the adventure number and a security checksum. If the version number was 415 it will be displayed as "4.15". The adventure number is simply the number identifying the adventure (0-9, A-Z). The security checksum is `(2 * #actions + #objects + version)`. If the checksum computed by the ADVENTURE program does not equal the one in the adventure file, the ADVENTURE program will hang up.
-
 ##Chapter 3
 ADVENTURE Instructions
 
@@ -305,7 +289,6 @@ With "ADVENTUR", the extension is "/Sx" where "x" is the adventure number being 
 With "ADV", the extension is "/Sxn" where "x" is the first character of the adventure number (the second one is ignored if the adventure database had a two letter name like ADVENT/DOA) and "n" is the game version written out. "ADV" allows up to ten different files to be written from the same adventure. This allows the progress of an adventure to be saved out at different points.
 
 Other than these simple differences, the two programs are nearly identical.
-
 ##Chapter 4
 ###ADVEDIT Instructions
 This chapter contains the instructions for the ADVEDIT program. Each option will be covered in detail.
@@ -340,7 +323,6 @@ X XREF: reference every occurrence of a database section in the actions.
 E END the ADVEDIT program.
 
 Most of these commands have options within them, description of each command is given below.
-
 ###READ command:
 This command will read in an adventure database. Simply supply the adventure number and the drive number. If the drive number is not entered, the first occurrence of the file is used.
 
@@ -357,14 +339,12 @@ ZD | ADVENT/DZD
 If an error occurs while reading a database, an appropriate error message is displayed and control returns to the main menu.
 
 If bad data somehow gets into the database, a "*BAD SECURITY*" message is displayed. The database will have been read in, but the accuracy of the data cannot be guaranteed.
-
 ###WRITE command:
 The WRITE command will store an adventure database on disk. The adventure number and drive number are requested. If the adventure being written out was previously read in, hitting <ENTER> for the adventure number and drive number will write the adventure out with the same specifications.
 
 The adventure number entered must be in the same format as in the READ command.
 
 Before writing the database, ADVEDIT verifies that the HEADER is holding the correct limiting values of the number of actions, messages, etc. For example, suppose you entered 50 messages but the HEADER said there were only 40. Writing the database out without checking the limits would result in some lost data (messages 41-50). ADVEDIT makes a check and would write out all 50 messages.
-
 ###LIST command:
 This command is used to list on the CRT any part of the data base. After "L" is entered from the main menu a LIST sub-menu is displayed.
 
@@ -401,7 +381,6 @@ Now type in the limits (5 and 65) :
 5,65
 
 The action entries should be listed starting at entry 5. After six have been listed, hit any key to continue listing. If the SPACE BAR is pressed while the section is listing, the LIST sub-menu will be reentered.
-
 ###PRINT command:
 The PRINT command will give a hardcopy listing of any one section or all of the database. Hitting the "P" key while at the main menu will enter the PRINT sub-menu.
 
@@ -424,7 +403,6 @@ Type: E, H, A, V, R, M, or - ? _
 If the "-" key is pressed, the main menu is reentered.
 
 If any section of the database has been entered past its limiting value (the value held in the HEADER) then all of the data will not be printed. To fix this, make sure the HEADER points to at least the highest value of the database section being PRINTed.
-
 ###MODIFY command:
 The MODIFY command is used to edit an adventure. To enter the MODIFY sub-menu hit the "M" key while in the main menu.
 
@@ -557,7 +535,6 @@ Description ? Cloak room
 
 The numbers preceding the letters (N, S, E, etc.) are the
 previous adjacent room numbers.
-
 ###INSERT command:
 The INSERT command will insert blank lines into certain data base sections. Hit the "I" key from the main menu to enter the INSERT sub-menu.
 
@@ -631,7 +608,6 @@ As you can see, noun 26 (DISKETTE) was moved to noun 27 (all nouns following the
 One warning about INSERT. When an insertion is made, the highest item in the database section selected will be moved up in the list. The limiting value in the HEADER is not updated however. A check should be made to determine if this is the case.
 
 Most of the code of the INSERT command is contained in the machine language file "XREF/CMD". If this file is not loaded before ADVEDIT is run do not use the INSERT command.
-
 ###XREF command:
 The XREF command returns the number of every action entry a noun, verb, room, message, object, bit flag or counter appears in. To use this command type "X" from the main menu.
 
@@ -744,7 +720,6 @@ The output in this example was contrived, but it indicates that object number 25
 One warning about the XREF command. Most of the code for this command is in the machine language file "XREF/CMD". If this file is not loaded before the ADVEDIT program is run, the XREF command should not be used.
 
 If the ENTER key is pressed for the range of actions scanned, the upper limit scanned will be the upper limit held in the HEADER. If the HEADER value is not high enough to encompass all actions, any actions above the HEADER value will not be checked.
-
 ###END command:
 Pressing the "E" key from the main menu causes the END command to be executed. The END command simply returns control to BASIC.
 
@@ -753,7 +728,6 @@ If the BREAK key is depressed at any time and the ADVEDIT program is halted, the
 Because of all the string usage in ADVEDIT, string compression may occasionally occur. This will result in pauses up to 30 seconds. In most cases, string compression will never pop up.
 
 ADVEDIT has been checked out with NEWDOS/80 version 2.0, TRSDOS 2.2 and 2.3, NEWDOS/21, DOSPLUS , LDOS and NEWDOS/80 version 1.0 with success. The only problem occurred when using NEWDOS/80- version 1.0. If using this DOS, the zaps sent out by Apparat must be installed. Also, when entering message numbers in the action entries, the values must be two digit numbers. For example, message 5 is entered as "05" or " 5".
-
 ###ADVEDIT LIMITATIONS
 The following limitations are imposed on data entered via
 the ADVEDIT program:
@@ -800,7 +774,6 @@ Lastly, save the adventure out with the WRITE command and END the program.
 Now go to DOS and run Scott Adams' ADVENTUR program or Bruce Hansen's ADV program. The adventure number to be entered must be the same as the one used when writing the adventure out. Scott Adams' ADVENTURE program only allows one character to be input (0-9, A-Z). If the adventure data base was written out with a two-character file name and Scott's driver is to be used, it must be RENAMEd from DOS to one with a single character name (for example, ADVENT/DA not ADVENT /DA A) .
 
 Now comes the time consuming part, debugging the adventure. The way to do this is check every possible thing you can think of to see if the actions are performing the way you wanted them to. If they don't, take notes on which ones aren't working and continue playing your ADVENTURE. After finishing with this procedure, run the ADVEDIT program again and fix any errors. This process takes longer than writing the adventure in most cases. But after much hard work you should have an adventure you could be proud of.
-
 ##Chapter 5
 Sample Adventure
 
@@ -817,20 +790,6 @@ TR-RM
 
 
 ACTIONS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # —
 
 - V N
@@ -2399,9 +2358,6 @@ MSG5
 
 
 AUTO
-
-
-
 ###Vocabulary
 Word id | Verbs | Nouns
 ------- | ----- | -----
@@ -2428,7 +2384,6 @@ Word id | Verbs | Nouns
 20 |  | MATC
 21 |  |
 22 |  |
-
 ###Rooms
 Room id | N  | S  | E  | W  | U  | D  | Room description
 ------- | --- | --- | --- | --- | --- | --- | ----------------
@@ -2441,7 +2396,6 @@ Room id | N  | S  | E  | W  | U  | D  | Room description
 6 | 0 | 0 | 0 | 5 | 0 | 0 | hallway
 7 | 0 | 0 | 6 | 0 | 0 | 0 | \*I'm in my apartment
 8 | 0 | 0 | 0 | 0 | 0 | 0 | hospital
-
 ###Messages
 Message id | Message text
 ---------- | ------------
@@ -2462,7 +2416,6 @@ Message id | Message text
 14 | I see nothing special
 15 | HOW?
 16 | Say again with which button
-
 ###Objects
 Object id | Location, description and noun
 --------- | ------------------------------
@@ -2486,7 +2439,6 @@ Object id | Location, description and noun
 The database will be explained one section at a time. First the HEADER:
 
 Adventure 35 is the adventure number (Z in this case). The version # is 1.01 and the adventure leaves 7837 bytes free in a 16K machine (tape version) and 11214 bytes free in a 32K machine (disk version). These memory values are the free bytes when using Scott Adams' ADVENTURE program. Bruce Hansen's ADV program uses approximately 600 fewer bytes. BYTES=1008 is the number of bytes this adventure uses, #0BJ=14 means there are 14 objects, #ACT=41 means there are 41 actions, #V0C=22 means there are 22 verbs and 22 nouns, #RM=8 means there are 8 rooms, CARRY=5 means the adventurer can carry a maximum of 5 objects, START=1 means the player starts in room 1, #TR=1 means there is only 1 treasure, WLEN=4 means the number of significant letters in the nouns and verbs is 4, TIME=999 means the light limit is 999 moves, #MSG=16 means there are 16 messages and TR-RM=7 means the treasure room is room 7.
-
 ###Actions:
 The automatic actions must be placed before player input actions. The AUTO verb signifies an auto action. The noun is the probability of this action being considered. ADVENTURE does not scan all player input actions, just until it finds a true one (if one exists). All auto actions are considered even -if a previous one is true.
 
@@ -2716,9 +2668,6 @@ If the player tries to TURN any legal object message 5 (MSG5) is printed.
 41: AUTO
 
 This action is not used.
-
-
-
 ###VOCABULARY
 The user must refer to the VOCABULARY words in the database list for this explanation. Notice that the predefined verbs and nouns are in their proper places (AUTO, GO, GET, DROP, ANY, NORTH, SOUTH, EAST, WEST, UP and DOWN). The only thing special about the vocabulary words is the synonyms. Part of the vocabulary appears as follows:
     AUTO
@@ -2728,12 +2677,8 @@ The user must refer to the VOCABULARY words in the database list for this explan
     \*LOOK
 
 Synonyms are required to directly follow their primary noun or verb in the list and must be preceded by an asterisk. In this case *ENTE is a synonym of GO and *LOOK is a synonym of EXAM. There may be more than one synonym for a certain noun or verb (see verb 10 - GET). Any action entries using the nouns or verbs must refer to a primary noun or verb, not a synonym.
-
-
-
 ###ROOMS
 An example of two rooms follows:
-
 #-- N S E W U D ROOM DESCRIPTION
 6: 5 hallway
 
@@ -2742,16 +2687,10 @@ An example of two rooms follows:
 The 6: and 7: are the room number (6 and 7). The next six numbers are the rooms which the player will move to if he goes in the corresponding direction. For example, if the player is in room 6 and he types GO WEST, ADVENTURE will send him to room 5. If in room 7, typing GO EAST will put the player in room 6. The zeros mean the player can't go in that direction.
 
 The ROOM DESCRIPTIONS "hallway" and "*I'm in my apartment" are examples of the default room message. For example, if the player is in room 6, the room is described as "I'm in a hallway." If in room 7 the room is described as "I'm in my apartment." Putting an asterisk before the room description disables the automatic prefix message "I'm in a."
-
-
-
 ###MESSAGES
 The messages are just text strings. Look at message 1 however. In this listing the quote marks (") appear as quote marks. However, in BASIC these will appear as at signs (@) unless an upper/lower case modification has been installed. If an upper/lower case conversion has been installed, the character may look like a single quote or a British pound sign.
 
 Notice that message is not used. It should be null since it is printed by action entries when no other command is given.
-
-
-
 ###OBJECTS
 Each object has a starting room and a description. Objects which have a name, for example "Keys/KEY/" may be automatically picked up and dropped (The name is KEY in this case). If the starting room is -1 (like it is for *MY WALLET*) then the object is carried by the player when the adventure is started. Any other number is the room number in which that object can be found. A room number of zero means the object has not been found yet and is in the storeroom.
 
@@ -2771,9 +2710,6 @@ These are the steps needed to win at this adventure:
 10. Type SCOR.
 
 For a more "challenging" adventure try adventures "X" and "Y" on THE ADVENTURE SYSTEM master diskette. These adventures are considerably longer than this one and will pose much more of a challenge.
-
-
-
 ##Chapter 6
 ###Solving an ADVENTURE
 This chapter will briefly describe a method for solving adventures using the ADVEDIT program.
@@ -2783,7 +2719,6 @@ There are two basic types of adventures: mission and treasure.
 In mission adventures, the object of the game is to accomplish a task. In adventure 3, the task is to disarm a saboteur's time bomb. In adventure 4, the mission is to save Count Cristo.
 
 In treasure adventures, the object of the game is to collect treasures and store them in the treasure room.
-
 ###Solving "MISSION" type adventures
 Mission type adventures end with a winning message. The first step to solving these types of adventures is to list the messages and find the message number. This should be an obvious message. The message number should be noted.
 
@@ -2794,7 +2729,6 @@ Now, list the action(s) containing the winning message. Note what the conditions
 The XREF command can be used to find where the objects needed in the winning action are referenced. This will tell you how to get them if they are not simply laying in a room (where they could be picked up). If a bit flag needs to be set before the winning message is displayed, an XREF can be done on that particular bit flag to find out what must be done to set it.
 
 The procedure continues in this fashion. It may take a while to get it down pat, but it is basically a simple procedure.
-
 ###Solving "TREASURE" type adventures
 These types of adventures are very similar to mission types adventures when solving them.
 
@@ -2809,10 +2743,8 @@ The procedure continues for all of the treasures.
 It may take some time to solve an adventure by this method, but it is possible. In fact, the author solved Scott Adams' adventure 9 using this method.
 
 However, the best way to solve an adventure is to play it through. If you get stuck, look at the database as little as possible unless you're fed up with the adventure. Remember, adventures are meant to be brain-teasers.
-
 ##Appendix A
 ADVENTURE Command summary
-
 ###Conditions:
 Symbol | Description
 ------ | -----------
@@ -2836,7 +2768,6 @@ CT> | True if counter greater than number.
 ORIG | True if object in original starting room.
 -ORIG | True if object not in original starting room.
 CT= | True if counter equal to number.
-
 ###Commands:
 Symbol | Description
 ------ | -----------
@@ -2874,7 +2805,6 @@ SAYWCR | Say the noun of the player's input noun and a carriage return.
 SAYCR | Start a new line.
 EXC,CR | Exchange current room with room in alternate room register C.
 DELAY | Pause for about 1 second.
-
 ##Appendix B
 Submitting your adventures for marketing considerations
 
