@@ -2684,7 +2684,7 @@ An example of two rooms follows:
 
 ROOM NUMBER | NORTH | SOUTH | EAST | WEST | UP | DOWN | ROOM DESCRIPTION
 ----------- | ----- | ----- | ---- | ---- | -- | ---- | ----------------
-6 | 0 | 0 | 0 | 5 | 0 | 0 | hallway                     
+6 | 0 | 0 | 0 | 5 | 0 | 0 | hallway
 7 | 0 | 0 | 6 | 0 | 0 | 0 | *I'm in my apartment
 
 The 6: and 7: are the room number (6 and 7). The next six numbers are the rooms which the player will move to if he goes in the corresponding direction. For example, if the player is in room 6 and he types GO WEST, ADVENTURE will send him to room 5. If in room 7, typing GO EAST will put the player in room 6. The zeros mean the player can't go in that direction.
