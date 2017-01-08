@@ -2683,7 +2683,7 @@ Synonyms are required to directly follow their primary noun or verb in the list 
 An example of two rooms follows:
 
 Room number | North | South | East | West | Up | Down | Room description
------------ | ----- | ----- | ---- | ---- | -- | ---- | ----------------
+----------- | ----- | ----- | ---- | ---- | --- | ---- | ----------------
 6 | 0 | 0 | 0 | 5 | 0 | 0 | hallway
 7 | 0 | 0 | 6 | 0 | 0 | 0 | \*I'm in my apartment
 
