@@ -198,7 +198,6 @@ AUTO | 0 | CT= 0 | PAR 9 | PAR 12 | PAR 0 | PAR 0 | EXX,X | MSG6 | - | -
 AUTO | 0 | PAR 1 | PAR 0 | PAR 0 | PAR 0 | PAR 0 | EXM,CT | - | - | -
 SHOOT | GUN | HAS 23 | IN/W 2 | PAR 2 | PAR 4 | PAR 0 | EXX,X | MSG8 | - | -
 
-
 If the conditions of the action with the verb-noun of "LIGHT TORCH" are found to be true, then its commands are executed. One of the commands is a "CONT". This means that all "AUTO 0" verb-noun actions following "LIGHT TORCH" will be considered. In this case there are three of them. All three are considered even if none of them are true or false. For example, the third one is considered even if the second one was true.
 
 ###VOCABULARY entries
