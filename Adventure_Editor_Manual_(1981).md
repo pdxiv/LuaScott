@@ -825,8 +825,8 @@ Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | C
 5 | AUTO | 100 | -IN 2 | BIT 15 | - | - | - | DAY | DSPRM | - | - | IN LIGHT?
 6 | AUTO | 100 | IN 2 | -BIT 15 | - | - | - | NIGHT | DSPRM | - | - | IN DARK?
 7 | LIGH | MATC | HAS 13 | PAR 9 | - | - | - | AGETX | DSPRM | MSG3 | CONT | LIGHT MATCH
-8 | AUTO | PAR 9 | - | - | - | - | DELAY | DELAY | X->RM0 | DSPRM |
-9 | AUTO | - | - | - | - | - | MSG4 | - | - | - |
+8 | AUTO | 0 | PAR 9 | - | - | - | - | DELAY | DELAY | X->RM0 | DSPRM |
+9 | AUTO | 0 | - | - | - | - | - | MSG4 | - | - | - |
 10 | GET | KEY | IN 1 | RM0 12 | PAR 12 | - | - | MSG5 | AGETX | - | - |
 11 | GET | KEY | IN/W 12 | PAR 12 | - | - | - | GETX | MSG5 | - | - |
 12 | DROP | KEY | HAS 12 | PAR 12 | - | - | - | DROPX | MSG5 | - | - |
@@ -988,8 +988,8 @@ This is the first player input action. If the player types in LIGHT MATCH then t
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
-8 | AUTO | PAR 9 | - | - | - | - | DELAY | DELAY | X->RM0 | DSPRM |
-9 | AUTO | - | - | - | - | - | MSG4 | - | - | - |
+8 | AUTO | 0 | PAR 9 | - | - | - | - | DELAY | DELAY | X->RM0 | DSPRM |
+9 | AUTO | 0 | - | - | - | - | - | MSG4 | - | - | - |
 Action 8 has no conditions so its commands are executed. A DELAY command makes the program stall for about 1 second. After two such stalls, the PAR 9 object is put back in RM0 (X->RM0 - PAR 9 is the first parameter from the conditions). After the artificial light source is removed from the room another DSPRM is executed. This will make it dark again if it was dark before the match was lit or light if it was light before the match was lit. Action 9 is considered next. Since it has no conditions its commands are performed. In this case message 4 is printed. Since ADVENTURE found a matching player input action it does not consider any following player input actions and now checks the automatic actions (ones at the beginning of the actions) .
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
