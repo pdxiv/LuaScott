@@ -922,23 +922,23 @@ Message id | Message text
 16 | Say again with which button
 
 ###Objects
-Object id | Location, description and noun
---------- | ------------------------------
-0 | -1 \*MY WALLET\*/WALL/
-1 | 1 Steering wheel
-2 | 2 Apartment complex main door
-3 | 3 Locked apartment door
-4 | 3 Elevator
-5 | 4 Elevator panel
-6 | 5 Elevator
-7 | 5 Locked apartment door
-8 | 6 Locked apartment door
-9 | 0 Lighted artificial light source
-10 | 0 Open apartment door
-11 | 7 Sign saying "LEAVE \*TREASURES\* HERE"
-12 | 0 Keys/KEY/
-13 | -1 Matches/MATC/
-14 | 2 Car
+Object id | Location | Description | Noun
+--------- | -------- | ----------- | ----
+0 | -1 | \*MY WALLET\* | WALL
+1 | 1 | Steering wheel | -
+2 | 2 | Apartment complex main door | -
+3 | 3 | Locked apartment door | -
+4 | 3 | Elevator | -
+5 | 4 | Elevator panel | -
+6 | 5 | Elevator | -
+7 | 5 | Locked apartment door | -
+8 | 6 | Locked apartment door | -
+9 | 0 | Lighted artificial light source | -
+10 | 0 | Open apartment door | -
+11 | 7 | Sign saying "LEAVE \*TREASURES\* HERE" | -
+12 | 0 | Keys | KEY
+13 | -1 | Matches | MATC
+14 | 2 | Car | -
 
 The database will be explained one section at a time.
 
