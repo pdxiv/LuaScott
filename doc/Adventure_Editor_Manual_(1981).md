@@ -253,7 +253,7 @@ The action titles are labels for the action entries. They aid in commenting the 
 ### TRAILER
 The trailer information contains the version number, the adventure number and a security checksum. If the version number was 415 it will be displayed as "4.15". The adventure number is simply the number identifying the adventure (0-9, A-Z). The security checksum is `(2 * #actions + #objects + version)`. If the checksum computed by the ADVENTURE program does not equal the one in the adventure file, the ADVENTURE program will hang up.
 
-##Chapter 3
+## Chapter 3
 ADVENTURE Instructions
 
 This chapter will give some rules governing the entering of a user adventure. These are rules pertaining to Scott Adams' ADVENTURE program and Bruce Hansen's ADV program, not ADVEDIT. Rules are given in sections such as Action entries, etc.
@@ -306,7 +306,7 @@ With "ADV", the extension is "/Sxn" where "x" is the first character of the adve
 
 Other than these simple differences, the two programs are nearly identical.
 
-##Chapter 4
+## Chapter 4
 
 ### ADVEDIT Instructions
 This chapter contains the instructions for the ADVEDIT program. Each option will be covered in detail.
@@ -802,7 +802,7 @@ Now go to DOS and run Scott Adams' ADVENTUR program or Bruce Hansen's ADV progra
 
 Now comes the time consuming part, debugging the adventure. The way to do this is check every possible thing you can think of to see if the actions are performing the way you wanted them to. If they don't, take notes on which ones aren't working and continue playing your ADVENTURE. After finishing with this procedure, run the ADVEDIT program again and fix any errors. This process takes longer than writing the adventure in most cases. But after much hard work you should have an adventure you could be proud of.
 
-##Chapter 5
+## Chapter 5
 Sample Adventure
 
 This chapter explains, in depth, a short adventure entitled "MINI-VENTURE." This adventure uses most of the conditions and commands available in ADVENTURE. Every significant part of the database is explained. But first here's a listing of the database:
@@ -1188,7 +1188,7 @@ These are the steps needed to win at this adventure:
 
 For a more "challenging" adventure try adventures "X" and "Y" on THE ADVENTURE SYSTEM master diskette. These adventures are considerably longer than this one and will pose much more of a challenge.
 
-##Chapter 6
+## Chapter 6
 
 ### Solving an ADVENTURE
 This chapter will briefly describe a method for solving adventures using the ADVEDIT program.
@@ -1225,7 +1225,7 @@ It may take some time to solve an adventure by this method, but it is possible. 
 
 However, the best way to solve an adventure is to play it through. If you get stuck, look at the database as little as possible unless you're fed up with the adventure. Remember, adventures are meant to be brain-teasers.
 
-##Appendix A
+## Appendix A
 ADVENTURE Command summary
 
 ### Conditions:
@@ -1290,7 +1290,7 @@ SAYCR | Start a new line.
 EXC,CR | Exchange current room with room in alternate room register C.
 DELAY | Pause for about 1 second.
 
-##Appendix B
+## Appendix B
 Submitting your adventures for marketing considerations
 
 All you need to do is send a diskette with the database(s) on it to:
