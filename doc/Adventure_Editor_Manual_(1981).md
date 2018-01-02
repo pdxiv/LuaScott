@@ -953,120 +953,143 @@ This description does not tell what the messages, objects and rooms are (i.e. th
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 0 | AUTO | 100 | -BIT 1 | PAR 10 | - | - | - | MSG1 | SETZ | - | - | INTRO
+
 The 0: means this is ACTION 0. The AUTO 100 means this auto action is considered 100 percent of the time. The -BIT 1 means if bit flag 1 is cleared, this condition is true. When ADVENTURE is started, all bit flags are cleared so on the first pass of the auto actions this condition will be true. This is useful for printing introductions. The PAR 1 is a parameter to be passed to the commands if all conditions are met. If all conditions are met then the commands are executed. In this case message 1 would be printed and bit flag 1 would be set (SETZ). Bit flag 1 is set since the first parameter in the conditions was a 1. The word INTRO is an optional action title. Message 1 is the introduction message.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 1 | AUTO | 100 | -IN 2 | PAR 1 | PAR 4 | PAR 1 | - | EXM,CT | CT<-N | EXM,CT | - | SET MUG CNTR
+
 This is an automatic action used to set a counter. In this adventure if the player is outside his car and not in the apartment building for 4 consecutive moves he is mugged and killed (he loses). This action is executed 100 percent of the time (AUTO 100). The condition -IN 2 will be true if the player is in any room other than room 2. PAR 1, PAR 4 and PAR 1 are parameters used by the commands if all conditions are true. If all conditions are true, the CT (counter) value is exchanged (EXM,CT) with alternate counter 1 since the first parameter in the conditions was a 1. The command CT<-N will set the counter to 4 (4 is the next parameter). And finally CT is exchanged back with alternate counter 1 (EXM,CT). The reason for this switching is that ADVENTURE can only operate directly on the CT variable. ADVENTURE can operate on a maximum of 9 additional alternate counters however. SET MUG CNTR is the optional action title.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 2 | AUTO | 100 | IN 2 | PAR 10 | - | - | - | EXM,CT | CT-1 | CONT | - | MUGGED?
+
 This condition is considered 100 percent of the time. The condition IN 2 passes if the player is in room 2. PAR 1 is a parameter used in the commands. If all conditions are true the commands are executed. In this case CT is exchanged with alternate counter 1 (EXM,CT) since the first parameter found was a 1. Then CT is decremented (CT-1). CONT means to continue considering all following AUTO 0's until an AUTO 1-100 or a player input action is found. In this case the next two actions are AUTO 0's. There are as follows:
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 3 | AUTO | 0 | CT= 0 | -  | -  | -  | - | MSG2 | DEAD | FINI | - |
 4 | AUTO | 0 | PAR 10 | -  | -  | -  | - | EXM,CT | - | - | - |
+
 In action 3, CT is tested to see if it is equal to (CT= 0) . If it does, then message 2 (MSG2) is printed, the player is killed (DEAD) and the game is finished (FINI). If the counter was not equal to zero then action 4 is considered. It would normally be considered regardless of the pass/no pass status of action 3. But in this case since the DEAD command was issued the player was moved to the last room and killed. The FINI command then halted the game. This halts the auto actions. Since action 4 has no conditions it is always true and PAR 1 is passed to the commands. In this case, CT is exchanged with counter 1 again thus putting them back in their starting positions. There is a good reason for making these two actions separate. Two tasks need to be done, check if the counter is equal to zero and switch CT back with alternate counter 1. If these two were put in the same action and the counter (CT) did not equal zero, then the commands would not be performed. In this case the EXM,CT command would not be done so the counters would not be returned to the right place.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 5 | AUTO | 100 | -IN 2 | BIT 15 | - | - | - | DAY | DSPRM | - | - | IN LIGHT?
+
 This auto action is considered 100 percent of the time. The conditions are -IN 2 and BIT 15. -IN 2 is true if the player is not in room 2. BIT 15 passes if it is dark (bit flag 15 is defined by ADVENTURE for light/dark status). If the conditions are true, then the commands DAY and DSPRM are executed. The DAY command makes it day and DSPRM displays the current room. The reason for this action is to make it day after the player is off the curb (where it is dark). The BIT 15 condition is included so it is made DAY only when it was just NIGHT. The reason for this is that the DSPRM command makes the screen "flicker" when it is executed.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 6 | AUTO | 100 | IN 2 | -BIT 15 | - | - | - | NIGHT | DSPRM | - | - | IN DARK?
+
 This action is considered 100 percent of the time. If the player is in room 2 (IN 2) and bit flag 15 is cleared (-BIT 15) then the commands are performed. NIGHT makes it dark out (if the player is not holding the artificial light source) and DSPRM displays the room. This action makes it dark when the player is on the curb (room 2) and only does a NIGHT and DSPRM if it was previously DAY. The reason for not doing a DSPRM every time is that it causes the screen to be redrawn, which makes it look like the screen just glitched.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 7 | LIGH | MATC | HAS 13 | PAR 9 | - | - | - | AGETX | DSPRM | MSG3 | CONT | LIGHT MATCH
+
 This is the first player input action. If the player types in LIGHT MATCH then this action is considered. If even one of the conditions of this action are not met, then ADVENTURE continues searching the actions for another LIGHT MATCH. If it finds another, it considers that one also, and so on until it finds a true one. If no other LIGHT MATCH is found then the message "I can't do that . . . yet!" is printed and the player is asked to respond again. The condition in this action is HAS 13. So if the player HAS 13 (has the matches - object 13) the commands are performed. AGETX will make object 9 (from PAR 9 in the conditions) be carried by the player regardless of the carry limit. DSPRM will make it day if it is currently light out or object 9 is available (the artificial light source). Since an AGET 9 was just executed, the DSPRM will make it light if it was dark out or leave it light if it was light. Message 3 is then printed (MSG3) and the CONTinue flag is set. All following AUTO actions will be considered. These actions are as follows:
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 8 | AUTO | 0 | PAR 9 | - | - | - | - | DELAY | DELAY | X->RM0 | DSPRM |
 9 | AUTO | 0 | - | - | - | - | - | MSG4 | - | - | - |
+
 Action 8 has no conditions so its commands are executed. A DELAY command makes the program stall for about 1 second. After two such stalls, the PAR 9 object is put back in RM0 (X->RM0 - PAR 9 is the first parameter from the conditions). After the artificial light source is removed from the room another DSPRM is executed. This will make it dark again if it was dark before the match was lit or light if it was light before the match was lit. Action 9 is considered next. Since it has no conditions its commands are performed. In this case message 4 is printed. Since ADVENTURE found a matching player input action it does not consider any following player input actions and now checks the automatic actions (ones at the beginning of the actions) .
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 10 | GET | KEY | IN 1 | RM0 12 | PAR 12 | - | - | MSG5 | AGETX | - | - |
+
 If the player types in GET KEY this action is considered. It passes if the player is in room 1 (IN 1) and object 12 is in room (RM0 12). If these conditions are true, then message 5 is printed (MSG5) and the player is forced to pick up object 12 (AGETX - PAR 12 passed from conditions). The logic of this action is simple. The player must be in the car (IN 1) and not have already gotten the keys some time before (RM0 12) for the player to be able to get the keys.
 
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 11 | GET | KEY | IN/W 12 | PAR 12 | - | - | - | GETX | MSG5 | - | - |
+
 If action 10 failed for any reason then this action is considered since they both have the same verb-noun combination. In this action the player is allowed to pick up object 12 if he is in with, but not carrying, object 12 (IN/W 12). If true, a GETX command is performed and message 5 is printed (MSG5). A GETX checks to see if the carry limit is exceeded. If not the player picks up object 12 (GETX - PAR 12 from the conditions). This action would not be needed if action 10 was not included. Objects which are named (/name/ at the end of the object description) can normally be picked up and dropped without this type of action. But by having a GET action for object 12, the automatic GET feature for that particular object is disabled. In this case, GET has to be included in the actions.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 12 | DROP | KEY | HAS 12 | PAR 12 | - | - | - | DROPX | MSG5 | - | - |
+
 If the player is carrying object 12 (HAS 12) then object 12 is dropped (DROPX - PAR 12 from the conditions).
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 13 | EXAM | KEY | AVL 12 | - | - | - | - | MSG6 | - | - | - |
+
 If object 12 is either being carried or is in the same room as the player (AVL 12), then message 6 is printed (MSG6). This type of action is very common for such things as examining, reading, etc.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 14 | GO | DOOR | IN 2 | PAR 3 | - | - | - | GOTOY | MSG5 | - | - |
+
 If the player is in room 2 (IN 2) then the player is sent to room 3 (GOTOY - PAR 3 from the conditions) and message 5 is printed (MSG5). This is a common action for GOs without a direction. For example, GO CAVE, GO TUNNEL, etc.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 15 | UNLO | DOOR | HAS 12 | IN/W 3 | - | - | - | MSG7 | - | - | - |
+
 If the player types UNLOCK DOOR this action is considered. There are three doors in this adventure and the player has a key which will open only one of them. If the player has object 12 (HAS 12) , and is in the same room as object 3 (IN/W 3) then message 7 is printed.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 16 | EXAM | DOOR | IN/W 3 | - | - | - | - | MSG8 | MSG9 | - | - |
+
 This is a common type of EXAMINE action. A message is printed when the object is examined, provided the player is by the object. The IN/W condition is usually used for an object which cannot be carried. The AVL condition is used for an object which can be carried. In this case, if the player is in with object 3 (IN/W 3), then messages 8 and 9 are printed (MSG8 and MSG9). Note that message 8 contains only the first half of the EXAM message. The second half is message 9 for this door. Message 10 and message 11 are used for the second halves of the two doors which cannot be opened by the player (all three use the same first half of the EXAM message).
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 17 | EXAM | WHEE | IN 1 | RM0 12 | - | - | - | MSG12 | - | - | - |
+
 This EXAMINE action has two conditions. If the player is in room 1 (IN 1) and object 12 is in room (RM0 12) then message 12 is printed (MSG12). The logic for this action is as follows: if the player examines the wheel and the keys (object 12) are still there (RM0 12) then an appropriate message is printed. However, if the keys had been previously picked up then this EXAMINE would fail and ADVENTURE would search for another matching EXAM WHEE (or EXAM ANY) .
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 18 | GO | ELEV | IN/W 4 | PAR 4 | - | - | GOTOY | MSG5 | - | - |
 19 | GO | ELEV | IN/W 6 | PAR 4 | - | - | GOTOY | MSG5 | - | - |
+
 These two actions are described together since they are very similar. There are 2 objects called "ELEVATOR" in this adventure. One is on the top floor, the other on the bottom floor. These actions check if the player is in with an elevator (IN/W 4 or IN/W 6) and if so sends the player to room 4 (GOTOY - PAR 4 from the conditions).
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 20 | EXAM | PANE | IN/W 5 | - | - | - | - | MSG13 | - | - | - |
+
 If the player is in with object 5 (IN/W 5) then message 13 is printed (MSG13). If the player is not in with object 5 ADVENTURE searches for another EXAM PANE.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 21 | PUSH | 1 | IN 4 | PAR 2 | - | - | - | CLRZ | MSG5 | - | - |
+
 This action uses a bit flag. If the player is in the elevator (IN 4) +\en bit flag 2 is cleared (CLRZ - PAR 2 from the conditions). When this adventure was written it was decided to use bit flag 2 cleared for floor "1" and bit flag 2 set for floor "2." Since the elevator would initially be at floor "1" this was logical because all bit flags are cleared at the start of ADVENTURE. The status of the bit flag is tested so ADVENTURE knows which floor of the apartment complex to send the player when he leaves the elevator. There are two different rooms adjacent to the elevator so this condition must be checked.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 22 | PUSH | 2 | IN 4 | PAR 2 | - | - | - | SETZ | MSG5 | - | - |
+
 This action is very similar to the above action except the bit flag is set, not cleared. This tells ADVENTURE to put the player on the 2nd floor when he leaves the elevator instead of the 1st floor.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 23 | GO | ROOM | IN 4 | -BIT 2 | PAR 3 | - | - | GOTOY | MSG5 | - | - |
+
 If the player is in room 4 (IN 4) and bit flag 2 is cleared (-BIT 2), then the player is sent to room 3 (GOTOY - PAR 3 from the conditions) and message 5 is printed (MSG5). In words, if the player is in the elevator, and he last pushed "1", then he is sent to the 1st floor. If bit flag 2 is set, however, then this action will fail.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 24 | GO | ROOM | IN 4 | BIT 2 | PAR 5 | - | - | - | GOTOY | MSG5 | - | - |
+
 If the player is in room 4 (IN 4) and bit flag 2 is set (BIT 2), then the player is put in room 5 (GOTOY - PAR 5 from the conditions) and message 5 is printed (MSG5). In words, if the player is in the elevator, and he last pushed "2", then he is sent to the 2nd floor.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 25 | UNLO | DOOR | IN/W 7 | HAS 12 | - | - | - | MSG7 | - | - | - |
+
 This action is the same as action 15 except this action is for a different door (object 7, not object 3).
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
@@ -1074,71 +1097,85 @@ Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | C
 26 | EXAM | DOOR | IN/W 7 | - | - | - | - | MSG8 | MSG10 | - | - |
 27 | EXAM | DOOR | IN/W 8 | - | - | - | - | MSG8 | MSG11 | - | - |
 28 | EXAM | DOOR | IN/W 10 | - | - | - | - | MSG8 | MSG11 | - | - |
+
 These three actions are included together since they are very similar (the only difference is that they refer to different objects). Actions 27 and 28 really refer to the same thing. In action 27, the examine refers to a closed door in room 6. In action 28, the examine refers to the same door except it has now been opened so object 10 is in the room (open door) instead of object 8 (locked door). These actions are very similar to action 16.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 29 | UNLO | DOOR | HAS 12 | IN/W 8 | PAR 8 | PAR 10 | - | EXX,X | MSG5 | - | - |
+
 This is the only door the player can unlock. The door may be unlocked if the following conditions are true: the player is holding object 12 (HAS 12 - the keys) and he is in with object 8 (IN/W 8 - locked door). If these conditions are met then the room locations of object 8 and object 10 are exchanged (EXX,X - PAR 8 and PAR 10 from the conditions) and MSG5 is printed.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 30 | LOCK | DOOR | HAS 12 | IN/W 10 | PAR 8 | PAR 10 | - | EXX,X | MSG5 | - | - |
+
 This action is very similar to the previous one except this one locks the door. To lock the door these conditions must be met: the player is carrying object 12 (HAS 12 - the keys) and he is in with object 10 (IN/W 10 - open door). If the conditions are met, then object 8 and object 10 are exchanged (EXX,X - PAR 8 and PAR 10 from the conditions) and MSG5 is printed.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 31 | GO | DOOR | IN/W 10 | PAR 7 | - | - | - | GOTOY | MSG5 | - | - |
+
 If the player wants to go through the door, this condition must be met: the player is in with object 10 (IN/W 10 - an open door). If that condition was met, the player is put in room 7 (GOTOY - PAR 7 from the conditions).
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 32 | SAVE | GAME | - | - | - | - | - | SAVE | - | - | - |
+
 This action lets the player save the game. No conditions need be met so the SAVE command is always executed.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 33 | QUIT | ANY | - | - | - | - | - | FINI | - | - | -  |
+
 This action lets the player stop the game. The ANY noun means that the action is considered if the player's input noun was any of the nouns in the vocabulary list. This action requires no conditions to be met and performs a FINI command.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 34 | SCOR | ANY | - | - | - | - | - | SCORE | - | - | - |
+
 This action will print the player's score. This message gives the number of treasures stored in the treasure room and the percent stored. No conditions are needed so the SCOR command is always performed.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 35 | INVE | ANY | - | - | - | - | - | INV | - | - | - |
+
 This command tells the player the name of every object he is currently carrying. The INV command is directly executed since no conditions are present.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 36 | EXAM | ANY | - | - | - | - | - | MSG14 | - | - | - |
+
 This action will print message 14 (MSG14) if the object being examined was not referred to in a previous true examine action. This action is usually present in every adventure. The message printed is usually something like "I see nothing special."
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 37 | HELP | ANY | - | - | - | - | - | MSG15 | - | - | - |
+
 This is another common action. If the player types HELP message 15 (MSG15) is printed provided no previous HELP action was found to be true.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 38 | GO | CAR | IN 2 | PAR 1 | - | - | - | GOTOY | MSG5 | - | - |
+
 If the player is in room 2 (IN 2) then he is put in room 1 (GOTOY - PAR 1 from the conditions) and message 5 is printed (MSG5).
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 39 | PUSH | BUTT | - | - | - | - | - | MSG16 | - | - | - |
+
 If the player PUSHes BUTTon then message 16 (MSG16) is printed. Since the player is supposed to PUSH 1 or PUSH 2 this action is used to tell him so.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 40 | TURN | ANY | - | - | - | - | - | MSG5 | - | - | - |
+
 If the player tries to TURN any legal object message 5 (MSG5) is printed.
 
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 41 | AUTO | 0 | - | - | - | - | - | - | - | - | - |
+
 This action is not used.
 
 ### VOCABULARY
