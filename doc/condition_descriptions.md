@@ -1,5 +1,5 @@
-Opcode | Old name | Scottkit name | | Description
------- | -------- | ------------- | | -----------
+Opcode | Old name | Scottkit name | Description
+------ | -------- | ------------- | -----------
 0 | Par | | Always passes. The number may be used as a parameter for the commands in this action entry. See the commands for the uses of parameters.
 1 | HAS | carried | Passes is the player is carry the numbered object. It fails if the numbered object is in this room or any other room.
 2 | IN/W | here | Passes if the player is in the room with the numbered object. It fails if the numbered object is in any other room or is being carried.
