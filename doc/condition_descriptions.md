@@ -1,3 +1,5 @@
+# Condition descriptions
+
 Opcode | Old name | Scottkit name | Description
 ------ | -------- | ------------- | -----------
 0 | Par | | Always passes. The number may be used as a parameter for the commands in this action entry. See the commands for the uses of parameters.

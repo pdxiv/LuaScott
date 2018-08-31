@@ -60,6 +60,7 @@ Code | Symbol | Description
 19 | CT= | The condition passes if the counter is equal to the number. It fails if the counter is not equal to the number.
 
 There are thirty-two possible flag-bits numbered from 0 to 31. They are all initially cleared. There are commands to set and clear them as well as the conditions to test their values. Two of the flags have assigned meanings:
+
 * 15: Means it is dark out when the flag is set. The room will be in darkness if the artificial light source is not in the room or being carried.  (Object 9 is the lighted artificial light source.) There are two special commands (NIGHT and DAY) to set and clear this flag-bit.
 * 16: Means the artificial light has run out when it is set. The FILL command clears this flag-bit when it resets the time limit to the original maximum.
 
