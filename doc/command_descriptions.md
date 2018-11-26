@@ -37,7 +37,7 @@ Opcode | Old name | Scottkit name | Description
 84 | SAYw | print_noun | This says the noun (second word) input by the player.
 85 | SAYwCR | println_noun | This says the noun (second word) input by the player and starts a new line.
 86 | SAYCR | println | This just starts a new line on the display.
-87 | EXc,CT | swap_specific_room | This exchanges the values of the current room register with the Par #1 alternate room register. This may be used to remember more than one room. There are six alternate room registers numbered from 0 to 5.
+87 | EXc,CR | swap_specific_room | This exchanges the values of the current room register with the Par #1 alternate room register. This may be used to remember more than one room. There are six alternate room registers numbered from 0 to 5.
 88 | DELAY | pause | This command delays about 1 second before going on to the next command.
 ?? | | print | Alias for printing op-code message 1-51 or 102-149
 ?? | | draw | Performs a "special action" that is dependent on the driver. Not implemented in generic drivers.
