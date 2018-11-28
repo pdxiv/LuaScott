@@ -8,7 +8,7 @@ bit_flag = {} -- 32 flags
 alternate_counter = {} -- 8 counters
 alternate_room = {} -- 6 alternate rooms
 
--- Game engine constants (with array index starting at 1)
+-- Game interpreter constants (with array index starting at 1)
 ROOM_ZERO       = 0
 ROOM_INVENTORY  = -1
 VERB_AUTO       = 1

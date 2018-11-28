@@ -4,7 +4,7 @@ local load_game_data = {}
 -- Global game data file variables from header and footer:
 --   size_of_text, number_of_items, number_of_actions, number_of_words,
 --   number_of_rooms, max_items_carried, starting_room, total_treasures,
---   word_length, time_limit, number_of_messages, treasure_room, engine_version,
+--   word_length, time_limit, number_of_messages, treasure_room, interpreter_version,
 --   adventure_number, game_checksum
 
 local raw_data_index
@@ -409,7 +409,7 @@ local function read_all_action_comments()
 end
 
 local function read_footer()
-  engine_version = tonumber(read_data_in_line())
+  interpreter_version = tonumber(read_data_in_line())
   adventure_number = tonumber(read_data_in_line())
   game_checksum = tonumber(read_data_in_line())
 end

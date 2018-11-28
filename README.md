@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a project, to produce an interpreter for the Scott Adams Adventure International text adventure game engine. It's using Lua for easy portability and integration.
+This is a project, to produce an interpreter for the Scott Adams Adventure International text adventure game interpreter. It's using Lua for easy portability and integration.
 
 ## Current state
 
