@@ -31,6 +31,7 @@
   * [XREF command](#xref-command)
   * [END command](#end-command)
   * [ADVEDIT LIMITATIONS](#advedit-limitations)
+  * [Suggested entry for ADVEDIT](#suggested-entry-for-advedit)
 * [Chapter 5: Sample Adventure](#chapter-5)
   * [ACTIONS](#actions)
   * [Vocabulary](#vocabulary)
@@ -824,7 +825,7 @@ The maximum values encountered by any current Scott Adams' adventure are:
 
 Another limitation of ADVEDIT is that only integer numbers may be entered. If a number out of the range of +32767 to -32768 is entered, an error will occur and an error message will be displayed. In fact, if any BASIC error occurs, the BASIC error number will be displayed and control will return to the main menu.
 
-Suggested entry for ADVEDIT
+### Suggested entry for ADVEDIT
 
 The first step in using ADVEDIT is writing the adventure on paper. It is sort of like writing a story. Just the basic idea of the adventure is needed. For example, in Scott Adams' Adventure 3 (Mission Impossible), the basic idea is to disarm a saboteur's time bomb planted in the core of a nuclear reactor.
 
