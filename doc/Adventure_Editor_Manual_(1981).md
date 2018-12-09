@@ -1058,6 +1058,7 @@ Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | C
 10 | GET | KEY | IN 1 | RM0 12 | PAR 12 | - | - | MSG5 | AGETX | - | - |
 
 If the player types in GET KEY this action is considered. It passes if the player is in room 1 (IN 1) and object 12 is in room (RM0 12). If these conditions are true, then message 5 is printed (MSG5) and the player is forced to pick up object 12 (AGETX - PAR 12 passed from conditions). The logic of this action is simple. The player must be in the car (IN 1) and not have already gotten the keys some time before (RM0 12) for the player to be able to get the keys.
+
 Number | Verb | Noun | Cond1 | Cond2 | Cond3 | Cond4 | Cond5 | Comm1 | Comm2 | Comm3 | Comm4 | Comment
 ------ | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -------
 11 | GET | KEY | IN/W 12 | PAR 12 | - | - | - | GETX | MSG5 | - | - |
