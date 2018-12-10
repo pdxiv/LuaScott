@@ -393,7 +393,7 @@ Program start up procedure:
 
 Put the ADVEDIT diskette in drive and turn on the computer. From the DOS command mode type:
 
-XREF
+`XREF`
 
 Under no condition should you just enter "LOAD XREF/CMD". The program contains a relocating loader which moves it up to high memory. Just "LOADing" the program will not relocate it to high memory. Also, never load the "XREF" program twice without resetting the computer. The program will still work except the second load will simply set lower in memory than the first one thus wasting memory.
 
@@ -409,14 +409,16 @@ To modify or just peek (that's cheating!) at an existing database, READ it into 
 
 The ADVEDIT commands and corresponding menu keys are listed below:
 
-R READ an adventure database in.
-W WRITE an adventure database out.
-L LIST the database.
-P PRINT (hardcopy) the database.
-M MODIFY a database section.
-I INSERT blanks into the database.
-X XREF: reference every occurrence of a database section in the actions.
-E END the ADVEDIT program.
+Key | Command
+--- | -------
+R | READ an adventure database in.
+W | WRITE an adventure database out.
+L | LIST the database.
+P | PRINT (hardcopy) the database.
+M | MODIFY a database section.
+I | INSERT blanks into the database.
+X | XREF: reference every occurrence of a database section in the actions.
+E | END the ADVEDIT program.
 
 Most of these commands have options within them, description of each command is given below.
 
