@@ -22,14 +22,14 @@
 * [Chapter 3: ADVENTURE Instructions](#chapter-3)
 * [Chapter 4: Operating Instructions](#chapter-4)
   * [ADVEDIT Instructions](#advedit-instructions)
-  * [READ command](#read-command)
-  * [WRITE command](#write-command)
-  * [LIST command](#list-command)
-  * [PRINT command](#print-command)
-  * [MODIFY command](#modify-command)
-  * [INSERT command](#insert-command)
-  * [XREF command](#xref-command)
-  * [END command](#end-command)
+    * [READ command](#read-command)
+    * [WRITE command](#write-command)
+    * [LIST command](#list-command)
+    * [PRINT command](#print-command)
+    * [MODIFY command](#modify-command)
+    * [INSERT command](#insert-command)
+    * [XREF command](#xref-command)
+    * [END command](#end-command)
   * [ADVEDIT LIMITATIONS](#advedit-limitations)
   * [Suggested entry for ADVEDIT](#suggested-entry-for-advedit)
 * [Chapter 5: Sample Adventure](#chapter-5)
@@ -422,7 +422,7 @@ E | END the ADVEDIT program.
 
 Most of these commands have options within them, description of each command is given below.
 
-### READ command
+#### READ command
 
 This command will read in an adventure database. Simply supply the adventure number and the drive number. If the drive number is not entered, the first occurrence of the file is used.
 
@@ -440,7 +440,7 @@ If an error occurs while reading a database, an appropriate error message is dis
 
 If bad data somehow gets into the database, a "*BAD SECURITY*" message is displayed. The database will have been read in, but the accuracy of the data cannot be guaranteed.
 
-### WRITE command
+#### WRITE command
 
 The WRITE command will store an adventure database on disk. The adventure number and drive number are requested. If the adventure being written out was previously read in, hitting \<ENTER\> for the adventure number and drive number will write the adventure out with the same specifications.
 
@@ -448,7 +448,7 @@ The adventure number entered must be in the same format as in the READ command.
 
 Before writing the database, ADVEDIT verifies that the HEADER is holding the correct limiting values of the number of actions, messages, etc. For example, suppose you entered 50 messages but the HEADER said there were only 40. Writing the database out without checking the limits would result in some lost data (messages 41-50). ADVEDIT makes a check and would write out all 50 messages.
 
-### LIST command
+#### LIST command
 
 This command is used to list on the CRT any part of the data base. After "L" is entered from the main menu a LIST sub-menu is displayed.
 
@@ -486,7 +486,7 @@ Now type in the limits (5 and 65) :
 
 The action entries should be listed starting at entry 5. After six have been listed, hit any key to continue listing. If the SPACE BAR is pressed while the section is listing, the LIST sub-menu will be reentered.
 
-### PRINT command
+#### PRINT command
 
 The PRINT command will give a hardcopy listing of any one section or all of the database. Hitting the "P" key while at the main menu will enter the PRINT sub-menu.
 
@@ -510,7 +510,7 @@ If the "-" key is pressed, the main menu is reentered.
 
 If any section of the database has been entered past its limiting value (the value held in the HEADER) then all of the data will not be printed. To fix this, make sure the HEADER points to at least the highest value of the database section being PRINTed.
 
-### MODIFY command
+#### MODIFY command
 
 The MODIFY command is used to edit an adventure. To enter the MODIFY sub-menu hit the "M" key while in the main menu.
 
@@ -620,7 +620,7 @@ Description ? Cloak room
 The numbers preceding the letters (N, S, E, etc.) are the
 previous adjacent room numbers.
 
-### INSERT command
+#### INSERT command
 
 The INSERT command will insert blank lines into certain data base sections. Hit the "I" key from the main menu to enter the INSERT sub-menu.
 
@@ -695,7 +695,7 @@ One warning about INSERT. When an insertion is made, the highest item in the dat
 
 Most of the code of the INSERT command is contained in the machine language file "XREF/CMD". If this file is not loaded before ADVEDIT is run do not use the INSERT command.
 
-### XREF command
+#### XREF command
 
 The XREF command returns the number of every action entry a noun, verb, room, message, object, bit flag or counter appears in. To use this command type "X" from the main menu.
 
@@ -793,7 +793,7 @@ One warning about the XREF command. Most of the code for this command is in the 
 
 If the ENTER key is pressed for the range of actions scanned, the upper limit scanned will be the upper limit held in the HEADER. If the HEADER value is not high enough to encompass all actions, any actions above the HEADER value will not be checked.
 
-### END command
+#### END command
 
 Pressing the "E" key from the main menu causes the END command to be executed. The END command simply returns control to BASIC.
 
