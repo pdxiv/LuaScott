@@ -576,7 +576,7 @@ Cond, Value
 Cond, Value
 or Msg it ?
 
-? LIGHT, TORCH \<ENTER\>
+? LIGHT, TORCH <ENTER>
 
 2
 ?
@@ -585,17 +585,17 @@ or Msg it ?
 PAR, 10
 PAR, 9
 
-\<ENTER\>
-\<ENTER\>
+<ENTER>
+<ENTER>
 
 EXX,X
-\<ENTER\>
+<ENTER>
 
 Cmd or Msg tt ?
 
-Cmd or Msg ft ? \<ENTER\>
-Cmd or Msg # ? \<ENTER\>
-Title ? \<ENTER\>
+Cmd or Msg ft ? <ENTER>
+Cmd or Msg # ? <ENTER>
+Title ? <ENTER>
 OK? Type: Y, N or - ? Y
 ```
 
