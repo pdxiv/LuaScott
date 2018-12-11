@@ -516,9 +516,11 @@ The MODIFY command is used to edit an adventure. To enter the MODIFY sub-menu hi
 
 The computer will display the following:
 
+```
 Which section do you want to modify:
 Header, Actions, Vocab, Rooms, Messages or Objects
 Type: H, A, V, R, M, or - ? _
+```
 
 To modify a section of the database, simply key in the first letter of its name. If the option selected is anything other than the HEADER, an inquiry is made for the lower and upper limits of the database section to be modified. Hitting ENTER here will let the user modify all elements of that section. One note however, the user can MODIFY past the limit value held in the HEADER for each data base section. If ENTER is hit for the lower and upper bounds inquiry, any elements above the upper limit in the HEADER will be missed. The fix is to make sure the HEADER points to at least the last item in each database section.
 
@@ -534,19 +536,25 @@ Verbs and nouns must be separated by a comma (VERB, NOUN). Verbs and nouns input
 
 Suppose an action entry was to have "LIGHT TORCH" as its verb-noun, the conditions were that object 10 must be being carried (object 10 is an unlit torch) and the commands would be to switch the location of the lit torch with the unlit one. The entry of the action would go as follows (underlined entries are input by the player):
 
-M
+`M`
 
 (from the main menu to enter the MODIFY sub-menu)
 
+```
 Which section do you want to modify:
 Header, Actions, Vocab, Rooms, Messages or Objects
 Type: H, A, V, R, M, or - ? A
+```
 
 (Select the Actions)
 
+```
 Lower Limit, Upper limit (ENTER is All) ? 123,123
+```
+
 (Select Action 123)
 
+```
 Action
 PAR
 PAR
@@ -589,6 +597,7 @@ Cmd or Msg ft ? \<ENTER\>
 Cmd or Msg # ? \<ENTER\>
 Title ? \<ENTER\>
 OK? Type: Y, N or - ? Y
+```
 
 See chapters 2 and 5 for more information on what the
 conditions and commands entered here actually do. The
@@ -599,23 +608,29 @@ condition. A "0" is entered to delete a command.
 To enter a room called "CLOAK ROOM" with a north exit to
 room number 10 the following would be entered:
 
-M (from the main menu to enter the MODIFY sub-menu)
+`M` (from the main menu to enter the MODIFY sub-menu)
 
+```
 Which section do you want to modify:
 Header, Actions, Vocab, Rooms, Messages or Objects
 Type: II, A, V, R, M, or - ? R
+```
 
 (Select the ROOMs)
 
+```
 Lower Limit, Upper limit (ENTER is All) ? 5,5
+```
 
 (Select room number 5)
 
+```
 Room 5: ON OS 0E 0W 0U 0D
 
 Room description:
 N,S,E,W,U,D rooms ? 10,0,0,0,0,0
 Description ? Cloak room
+```
 
 The numbers preceding the letters (N, S, E, etc.) are the
 previous adjacent room numbers.
