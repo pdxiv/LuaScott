@@ -115,7 +115,7 @@ Code | Symbol | Description
 86 | SAYCR | This just starts a new line on the display.
 87 | EXc,CR | This exchanges the values of the current room register with the Par #1 alternate room register. This may be used to remember more than one room. There are six alternate room registers numbered from 0 to 5.
 88 | DELAY | This command delays about 1 second before going on to the next command.
-89-101 | These | commands are undefined in version 8.2 of ADVENTURE and should not be used.
+89-101 | | These commands are undefined in version 8.2 of ADVENTURE and should not be used.
 102-149 | | Display messages 52-99.
 
 Each vocabulary entry (3) consists of a verb string and a noun string. Synonyms are handled by words beginning with an asterisk, which are treated the same as the previous verb or noun without an asterisk. Some of the vocabulary entries are predefined for the ADVENTURE program:
